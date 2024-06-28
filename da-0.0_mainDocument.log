@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.26)  28 JUN 2024 08:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.6.26)  28 JUN 2024 09:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1298,7 +1298,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 11.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 11.
-) (./da-1.3_abstract-en.tex [2]) (./da-1.5_thanksGiving-en.tex [3]) [4]) (./da-2_main.tex (./da-0.0_mainDocument.toc)
+) [2] (./da-1.3_abstract-en.tex) (./da-1.5_thanksGiving-en.tex [3]) [4]) (./da-2_main.tex (./da-0.0_mainDocument.toc)
 \tf@toc=\write6
 \openout6 = `da-0.0_mainDocument.toc'.
 
@@ -1514,15 +1514,15 @@ Package logreq Info: Writing requests to 'da-0.0_mainDocument.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40339 strings out of 476023
- 797960 string characters out of 5791582
+ 40334 strings out of 476023
+ 797894 string characters out of 5791582
  1940187 words of memory out of 5000000
- 61645 multiletter control sequences out of 15000+600000
- 625006 words of font info for 118 fonts, out of 8000000 for 9000
+ 61642 multiletter control sequences out of 15000+600000
+ 624909 words of font info for 117 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  89i,11n,131p,1061b,7357s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on da-0.0_mainDocument.pdf (20 pages, 604851 bytes).
+Output written on da-0.0_mainDocument.pdf (20 pages, 604568 bytes).
 PDF statistics:
  361 PDF objects out of 1000 (max. 8388607)
  280 compressed objects within 3 object streams
