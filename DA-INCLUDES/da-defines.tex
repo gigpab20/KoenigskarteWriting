@@ -1,0 +1,97 @@
+% flags for department and language
+
+\usepackage{ifthen}
+
+% DECLARATION OF VARAIBLES
+\newboolean{isInformatik} % declaration
+\newboolean{isEnglish} % declaration
+\newboolean{isDoublePagePrinting} % declaration
+\newboolean{isSansSerif} % declaration
+\newboolean{withAuthorOnPage} % declaration
+
+\newcommand\department{INF} % INF, AUT, MECH, ROB, 
+\setboolean{isEnglish}{true}
+\setboolean{isDoublePagePrinting}{true} 
+\setboolean{isSansSerif}{false}
+\setboolean{withAuthorOnPage}{true}
+
+% deutsche Anfuehrungszeichen 
+\newcommand{\anf}[1]{\glqq #1\grqq{}} %SH_220105 eingefügt
+
+% Diplom Thesis informations
+
+\newcommand{\daTitle}{TITLE OF THE DIPLOMA THESIS MISSING}
+\newcommand{\daYear}{MISSING YEAR (eg 2021/2022)}
+\newcommand{\daDocDate}{MISSING DATE}
+\newcommand{\daGrade}{MISSING GRADE}   % ev. ausgeblendet im Titelblatt
+ 
+\newcommand{\daSubTitle}{THIS IS THE SUBTITLE}  % nicht genutzt
+
+\newcommand{\daAuthorOne}{StudentI}
+\newcommand{\daAuthorTwo}{StudentII}
+\newcommand{\daAuthorThree}{StudentIII}
+\newcommand{\daAuthorFour}{StudentIV}
+\newcommand{\daAuthors}{\daAuthorOne \daAuthorTwo \daAuthorThree \daAuthorFour}
+
+\newcommand{\daSupervisorOne}{Prof. One}
+\newcommand{\daSupervisorTwo}{Prof. Two}
+\newcommand{\daSupervisorThree}{Prof. Three}
+\newcommand{\daPartner}{Partner Company}
+
+\newcommand*{\doubleOrSinglePaged}{
+	\ifthenelse{\boolean{isDoublePagePrinting}}{
+		\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{}{\rightmark}}
+		\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{\rightmark}{}}
+		\cfoot{}
+		
+		\fancyfoot[L]{\ifthenelse{\isodd{\value{page}}}{
+				\ifthenelse{\boolean{withAuthorOnPage}}{
+					\TheAuthor
+				}
+			}{
+				\thepage
+			}
+		}
+		\fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{
+				\thepage
+			}{
+				\ifthenelse{\boolean{withAuthorOnPage}}{
+					\TheAuthor
+				}
+			}
+		}
+	}{
+		% ********* begin einseitiger Druck *********** SH_220305
+		\fancyhead[R]{\rightmark}
+		\cfoot{\daTitle}
+		\fancyfoot[R]{\thepage}
+		\ifthenelse{\boolean{withAuthorOnPage}}{
+			\fancyfoot[L]{\TheAuthor}
+		}
+	}
+}
+
+\newcommand*{\doubleOrSinglePagedWithoutAuthor}{
+	\ifthenelse{\boolean{isDoublePagePrinting}}{
+		\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{}{\rightmark}}
+		\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{\rightmark}{}}
+		\cfoot{}
+		\fancyfoot[L]{\ifthenelse{\isodd{\value{page}}{\thepage}}}
+		\fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{\thepage}}
+	}{
+		% ********* begin einseitiger Druck *********** SH_220305
+		\fancyhead[R]{\rightmark}
+		\cfoot{\daTitle}
+		\fancyfoot[R]{\thepage}
+	}
+}
+
+
+\newcommand*{\SerifOrSans}[1]{
+	\ifthenelse{\boolean{isSansSerif}}{
+		\renewcommand{\familydefault}{\sfdefault}
+		\sffamily}{
+		\renewcommand{\familydefault}{\rmdefault}
+		\rmfamily
+	}
+}
