@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.9.11)  12 SEP 2024 11:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.9.11)  12 SEP 2024 12:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1254,12 +1254,12 @@ Package microtype Info: No adjustment of character kerning.
  (D:\Programme\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) (da-1_intro.tex (INF/da-1.0_titlePage-en.tex
-<images/htl_logo.pdf, id=154, 1191.80254pt x 463.31192pt>
+<images/htl_logo.pdf, id=158, 1191.80254pt x 463.31192pt>
 File: images/htl_logo.pdf Graphic file (type pdf)
 <use images/htl_logo.pdf>
 Package pdftex.def Info: images/htl_logo.pdf  used on input line 9.
 (pdftex.def)             Requested size: 184.37135pt x 71.6712pt.
-<images/inf_farbe_2.pdf, id=155, 451.6875pt x 229.21811pt>
+<images/inf_farbe_2.pdf, id=159, 451.6875pt x 229.21811pt>
 File: images/inf_farbe_2.pdf Graphic file (type pdf)
 <use images/inf_farbe_2.pdf>
 Package pdftex.def Info: images/inf_farbe_2.pdf  used on input line 15.
@@ -1310,8 +1310,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5] (SH/common_things.tex) (SC/01.tex) (SC/02.tex
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 37.
+[5] (SH/common_things.tex) (SC/01_Introduction.tex) (SC/02_Technologies.tex
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 39.
  (D:\Programme\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -1331,11 +1331,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.45 
+l.47 
       [1
 
 
-]) (VA/02.tex
+]) (SC/03_Design.tex) (SC/04_Backend.tex) (SC/05_AppFunctionality.tex) (SC/06_FinalThoughts.tex) (SC/07_Appendix.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1343,7 +1343,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[2{D:/Programme/MiKTeX/fonts/enc/dvips/base/8r.enc}]) (SH/01.tex
+[2{D:/Programme/MiKTeX/fonts/enc/dvips/base/8r.enc}])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1351,128 +1351,53 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3]
-Overfull \hbox (14.04953pt too wide) in paragraph at lines 43--44
-\T1/lmr/m/n/12 (-20) SI-Einheiten wer-den mit dem Be-fehl [][]\T1/pcr/m/n/12 \si{} []\T1/lmr/m/n/12 (-20) er-stellt. Die Eingabe [][]\T1/pcr/m/n/12 $[F] = \si{\newton}$
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[4{D:/Programme/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{D:/Programme/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{D:/Programme/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{D:/Programme/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[5]
-<images/thumb-htlkaindorf_1-bf57c0aa8b00a13c9a8b98cc8bea49f0.jpg, id=334, 401.5pt x 276.03125pt>
-File: images/thumb-htlkaindorf_1-bf57c0aa8b00a13c9a8b98cc8bea49f0.jpg Graphic file (type jpg)
-<use images/thumb-htlkaindorf_1-bf57c0aa8b00a13c9a8b98cc8bea49f0.jpg>
-Package pdftex.def Info: images/thumb-htlkaindorf_1-bf57c0aa8b00a13c9a8b98cc8bea49f0.jpg  used on input line 85.
-(pdftex.def)             Requested size: 364.19667pt x 250.4012pt.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 93.
- (D:\Programme\MiKTeX\tex/latex/lm\ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-))
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[6{D:/Programme/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <./images/thumb-htlkaindorf_1-bf57c0aa8b00a13c9a8b98cc8bea49f0.jpg>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[7]) (da-3_outro.tex
-
-Package biblatex Warning: Month out of range or not an integer
-(biblatex)                at entry 'htl-kaindorf:web' on input line 16.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[8] (da-0.0_mainDocument.lof)
-\tf@lof=\write7
-\openout7 = `da-0.0_mainDocument.lof'.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[9] (da-0.0_mainDocument.lot)
-\tf@lot=\write8
-\openout8 = `da-0.0_mainDocument.lot'.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[10] (da-3.1_abbreviation.tex
-Overfull \hbox (23.99997pt too wide) in alignment at lines 10--36
- [] [] 
- []
-
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[11]) (da-4_appendix.tex (da-4.1_meetings.tex [12]) (da-4.2_work.tex [13]
-Overfull \hbox (32.60216pt too wide) in paragraph at lines 9--28
- [][] 
- []
-
-[14]) (da-4.3_sourcecode.tex [15]) (da-4.4_drawings.tex [16])) (da-0.0_mainDocument.aux)
+[3]) (da-0.0_mainDocument.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `da-0.0_mainDocument.out' has not changed.
-(rerunfilecheck)             Checksum: C39E51BAE79151C6DD554FA88F93CE52;4896.
+(rerunfilecheck)             Checksum: DD2C58336563ED076EA7380C0F1FA84A;4228.
 Package logreq Info: Writing requests to 'da-0.0_mainDocument.run.xml'.
 \openout1 = `da-0.0_mainDocument.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40515 strings out of 474486
- 805282 string characters out of 5755480
- 1941542 words of memory out of 5000000
- 61947 multiletter control sequences out of 15000+600000
- 622122 words of font info for 118 fonts, out of 8000000 for 9000
+ 40287 strings out of 474486
+ 799998 string characters out of 5755480
+ 1942542 words of memory out of 5000000
+ 61797 multiletter control sequences out of 15000+600000
+ 612946 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,11n,107p,1091b,5185s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<D:/Programme/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmex10.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmr10.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmr12.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmr6.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmr8.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmri10.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmri12.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmri8.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><D:/Programme/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on da-0.0_mainDocument.pdf (22 pages, 645453 bytes).
+
+pdfTeX warning (dest): name{cite.0@htl-kaindorf:web} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@knuth-fa} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@knuth-acp} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@ctan} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@knuthwebsite} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@latexcompanion} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@dirac} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@einstein} has been referenced but does not exist, replaced by a fixed one
+
+<D:/Programme/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmr10.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmr12.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmr8.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmri12.pfb><D:/Programme/MiKTeX/fonts/type1/public/lm/lmri8.pfb><D:/Programme/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on da-0.0_mainDocument.pdf (9 pages, 472012 bytes).
 PDF statistics:
- 479 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 37700 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 357 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
+ 31559 words of extra memory for PDF output out of 35830 (max. 10000000)
 

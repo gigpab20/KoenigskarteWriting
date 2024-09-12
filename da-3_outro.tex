@@ -18,21 +18,13 @@
 \end{flushleft}
 \newpage
 
-\ifthenelse{\boolean{isEnglish}}{
-	\section{List of Figures}}	{
-	\section{Abbildungsverzeichnis}
-}
+
 
 
 {\def\section*#1{}\listoffigures}
 \pagebreak
 
-\ifthenelse{\boolean{isEnglish}}{
-	\section{Final Thoughts} }{
-	\subsection{Leon Edlinger}
-	\subsection{Paul Gigler}
-	\subsection{Andreas Weissl}
-}
+
 
 {\def\section*#1{}\listoftables}
 \pagebreak
