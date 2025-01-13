@@ -131,18 +131,11 @@
 
 
 \newcommand*{\inputLanguageText}[1]{
-	\ifthenelse{\boolean{isEnglish}}{
-		\input{DA-INCLUDES/EN/#1}
-	}{
-		\input{DA-INCLUDES/DE/#1}	
-	}
+	\input{IntroPart/#1}
 }
 
 \newcommand*{\inputDepartmentTitlePage}[1]{
-	\ifthenelse{\boolean{isEnglish}}{
-		\input{#1/da-1.0_titlePage-en.tex} }{
-		\input{#1/da-1.0_titlePage-de.tex}	
-	}
+	\input{IntroPart/da-1.0_titlePage-en.tex}
 }
 
 
