@@ -1,21 +1,9 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'da-0.0_mainDocument.blg'
-[119] biber-MSWIN64:340> INFO - === 
-[162] Biber.pm:419> INFO - Reading 'da-0.0_mainDocument.bcf'
-[314] Biber.pm:979> INFO - Found 8 citekeys in bib section 0
-[336] Biber.pm:4419> INFO - Processing section 0
-[350] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
-[399] bibtex.pm:1713> INFO - LaTeX decoding ...
-[419] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
-[517] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[517] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[517] Biber.pm:4239> INFO - Sorting list 'apa/apasortcite//global/global' of type 'entry' with template 'apa' and locale 'en-US'
-[518] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[540] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[540] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[541] Biber.pm:4239> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
-[541] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[554] bbl.pm:660> INFO - Writing 'da-0.0_mainDocument.bbl' with encoding 'UTF-8'
-[562] bbl.pm:763> INFO - Output to da-0.0_mainDocument.bbl
-[562] Biber.pm:131> WARN - legacy month field 'Dez' in entry 'htl-kaindorf:web' is not an integer - this will probably not sort properly.
-[562] Biber.pm:133> INFO - WARNINGS: 1
+[73] biber:340> INFO - === Mon Jan 13, 2025, 14:41:48
+[89] Biber.pm:419> INFO - Reading 'da-0.0_mainDocument.bcf'
+[157] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[177] bbl.pm:660> INFO - Writing 'da-0.0_mainDocument.bbl' with encoding 'UTF-8'
+[177] bbl.pm:763> INFO - Output to da-0.0_mainDocument.bbl
+[177] Biber.pm:131> WARN - The file 'da-0.0_mainDocument.bcf' does not contain any citations!
+[177] Biber.pm:133> INFO - WARNINGS: 1
