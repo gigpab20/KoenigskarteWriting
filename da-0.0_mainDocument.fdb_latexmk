@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber da-0.0_mainDocument"] 1736775707.38527 "da-0.0_mainDocument.bcf" "da-0.0_mainDocument.bbl" "da-0.0_mainDocument" 1737369146.53193 0
-  "da-0.0_mainDocument.bcf" 1737369146.39365 132875 01bd7b954b62a114c3e08c22b3ac0b53 "pdflatex"
+["biber da-0.0_mainDocument"] 1737370816.64058 "da-0.0_mainDocument.bcf" "da-0.0_mainDocument.bbl" "da-0.0_mainDocument" 1737371003.81698 0
+  "da-0.0_mainDocument.bcf" 1737371003.67876 132875 01bd7b954b62a114c3e08c22b3ac0b53 "pdflatex"
   (generated)
   "da-0.0_mainDocument.bbl"
   "da-0.0_mainDocument.blg"
   (rewritten before read)
-["pdflatex"] 1737369144.89588 "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" "da-0.0_mainDocument.pdf" "da-0.0_mainDocument" 1737369146.53225 0
+["pdflatex"] 1737371002.21798 "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" "da-0.0_mainDocument.pdf" "da-0.0_mainDocument" 1737371003.8173 0
   "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" 1736777184.42645 693 a28234a6cee6516653f53270f73c6db2 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1736268207 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1736268207 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
@@ -230,7 +230,7 @@
   "IntroPart/legal_declaration.txt" 1736777184.41978 731 695c496ddc93fd2d7839e8e6f0c50fbf ""
   "IntroPart/statutory.txt" 1736777184.41978 270 91389822b35d3a2b148d758587b1c3b4 ""
   "MainPart/FinalThoughts/05_FinalThoughts.tex" 1736777184.41978 107 78d6824c5aced22ef271cd5bdc3fabb7 ""
-  "MainPart/Introduction/01_Introduction.tex" 1737369143.09375 2231 22d2a56f22acdfc40e85a216cc08e72c ""
+  "MainPart/Introduction/01_Introduction.tex" 1737371002.00556 2264 15fdae03e954c85783949d301a432419 ""
   "MainPart/ResearchQuestions/04_ResearchQuestions.tex" 1736777184.41978 159 dbac591d0773ad23473b8b8b45c80fd0 ""
   "MainPart/Technologies/02_Technologies.tex" 1736777184.41978 687 61f839b2ba60a4fb7927f5247d8ab3b2 ""
   "MainPart/Technologies/Backend/backend.tex" 1736777184.41978 2507 2f1bb856a76381426b28a8d5d6d94642 ""
@@ -250,14 +250,14 @@
   "OutroPart/Appendix/da-4.3_sourcecode.tex" 1736777184.41978 53 f50f3a444f64e0361a94960c84791511 ""
   "OutroPart/Appendix/da-4.4_drawings.tex" 1736777184.41978 68 805d307fa6c3986e3eceb167aa4da93a ""
   "OutroPart/da-3_outro.tex" 1736777184.41978 440 9fec99e1740b30cb59f67136cb6e9f38 ""
-  "da-0.0_mainDocument.aux" 1737369146.38698 6469 42fba7c39f47d728f27abda427f89982 "pdflatex"
-  "da-0.0_mainDocument.bbl" 1736777184.41978 466 ee04f40f768daeed26442158e95aba61 "biber da-0.0_mainDocument"
-  "da-0.0_mainDocument.lof" 1737369146.39698 30 283c90c47f0e16887e96cec4ba110f76 "pdflatex"
-  "da-0.0_mainDocument.lot" 1737369146.39698 126 e8da415960305db743b6e4a5a208677d "pdflatex"
-  "da-0.0_mainDocument.out" 1737369146.39031 5561 ff1fed726e655662893844b938e5fea7 "pdflatex"
-  "da-0.0_mainDocument.run.xml" 1737369146.39698 2532 fe8b8fc28f6bd4d236b0991f6014fe30 "pdflatex"
+  "da-0.0_mainDocument.aux" 1737371003.6721 6469 42fba7c39f47d728f27abda427f89982 "pdflatex"
+  "da-0.0_mainDocument.bbl" 1737370817.46813 466 ee04f40f768daeed26442158e95aba61 "biber da-0.0_mainDocument"
+  "da-0.0_mainDocument.lof" 1737371003.6821 30 283c90c47f0e16887e96cec4ba110f76 "pdflatex"
+  "da-0.0_mainDocument.lot" 1737371003.6821 126 e8da415960305db743b6e4a5a208677d "pdflatex"
+  "da-0.0_mainDocument.out" 1737371003.67543 5561 ff1fed726e655662893844b938e5fea7 "pdflatex"
+  "da-0.0_mainDocument.run.xml" 1737371003.6821 2532 fe8b8fc28f6bd4d236b0991f6014fe30 "pdflatex"
   "da-0.0_mainDocument.tex" 1736777184.42645 693 a28234a6cee6516653f53270f73c6db2 ""
-  "da-0.0_mainDocument.toc" 1737369146.39698 3926 4b1f7b1210d766f662abaa1187227acc "pdflatex"
+  "da-0.0_mainDocument.toc" 1737371003.6821 3926 4b1f7b1210d766f662abaa1187227acc "pdflatex"
   "images/htl_logo.pdf" 1736332852.7525 321116 01b20317757bb3adbc4b5cc0da712bd6 ""
   "images/inf_farbe_2.pdf" 1736332852.7525 9400 3b39d68b0a88c235c7499d65dbc8a5d8 ""
   (generated)

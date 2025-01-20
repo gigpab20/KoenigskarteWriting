@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.16)  20 JAN 2025 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.16)  20 JAN 2025 12:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1353,7 +1353,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 \newpage
+l.33 \newpage
               [1
 
 
@@ -1541,7 +1541,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  89i,11n,107p,1142b,5185s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb>
-Output written on da-0.0_mainDocument.pdf (26 pages, 424447 bytes).
+Output written on da-0.0_mainDocument.pdf (26 pages, 424432 bytes).
 PDF statistics:
  461 PDF objects out of 1000 (max. 8388607)
  397 compressed objects within 4 object streams
