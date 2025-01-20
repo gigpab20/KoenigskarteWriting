@@ -1,0 +1,29 @@
+%! Author = weiss
+%! Date = 20.01.2025
+\Author{\daAuthorThree}
+
+% Packages
+\usepackage{amsmath}
+
+% Document
+\begin{document}
+
+    \section{Structure of the Backend}
+    The backend follows a layered architecture to promote separation of concerns, scalability, and maintainability. This section outlines the roles of each layer.
+
+    \subsection{Controller Layer}
+    The controller layer acts as the interface for incoming HTTP requests, delegating them to appropriate service methods.
+
+    \subsection{Service Layer}
+    The service layer contains business logic, validating data and coordinating interactions between controllers and repositories.
+
+    \subsection{Repository Layer}
+    Repositories abstract database operations, allowing the backend to interact with the database without explicit SQL queries.
+
+    \subsection{Persistence Layer (Entity Classes)}
+    Entity classes define the data model and its mapping to the relational database, ensuring a consistent schema.
+
+    \subsection{Applied Design Principles (DTOs)}
+    Data Transfer Objects (DTOs) enhance encapsulation and optimize data transfer between layers and external clients.
+
+\end{document}
