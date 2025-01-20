@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.11)  13 JAN 2025 14:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.16)  20 JAN 2025 11:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1317,7 +1317,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6] (./MainPart/Introduction/01_Introduction.tex) (./MainPart/Technologies/02_Technologies.tex (./MainPart/Technologies/Latex/LaTeX.tex) (./MainPart/Technologies/ProjectManagement/projectManagement.tex) (./MainPart/Technologies/Frontend/frontend.tex
+[6] (./MainPart/Introduction/01_Introduction.tex
+
+Package TODO: Warning: Bitte noch anpassen falls euch der Wortlaut net so passt! on input line 5.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--13
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--23
+
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1329,19 +1342,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.5 
-     [1
+l.33 \newpage
+              [1
 
 
-]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[2]) (./MainPart/Technologies/Backend/backend.tex
+]) (./MainPart/Technologies/02_Technologies.tex (./MainPart/Technologies/Latex/LaTeX.tex) (./MainPart/Technologies/ProjectManagement/projectManagement.tex) (./MainPart/Technologies/Frontend/frontend.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1349,7 +1354,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3]
+[2]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1357,7 +1362,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]) (./MainPart/Technologies/VersionControl/versionControl.tex
+[3]) (./MainPart/Technologies/Backend/backend.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1365,7 +1370,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5]
+[4]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1373,7 +1378,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6]) (./MainPart/Technologies/MapData/mapData.tex
+[5]) (./MainPart/Technologies/VersionControl/versionControl.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1381,7 +1386,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7]
+[6]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1389,7 +1394,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[8]) (./MainPart/Technologies/DevelopmentTools/developmentTools.tex) (./MainPart/Technologies/Deployment/deployment.tex)) (./MainPart/Wireframes/03_Wireframes.tex) (./MainPart/ResearchQuestions/04_ResearchQuestions.tex) (./MainPart/FinalThoughts/05_FinalThoughts.tex)
+[7]) (./MainPart/Technologies/MapData/mapData.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1397,7 +1402,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9]
+[8]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1405,7 +1410,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[10]) (./OutroPart/da-3_outro.tex
+[9]) (./MainPart/Technologies/DevelopmentTools/developmentTools.tex) (./MainPart/Technologies/Deployment/deployment.tex)) (./MainPart/Wireframes/03_Wireframes.tex) (./MainPart/ResearchQuestions/04_ResearchQuestions.tex) (./MainPart/FinalThoughts/05_FinalThoughts.tex)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[10]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[11]) (./OutroPart/da-3_outro.tex
 
 LaTeX Warning: Empty bibliography on input line 13.
 
@@ -1416,7 +1437,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[11] (./da-0.0_mainDocument.lof)
+[12] (./da-0.0_mainDocument.lof)
 \tf@lof=\write7
 \openout7 = `da-0.0_mainDocument.lof'.
 
@@ -1432,7 +1453,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12] (./OutroPart/Appendix/06_Appendix.tex (./OutroPart/Appendix/da-4.1_meetings.tex
+[13] (./OutroPart/Appendix/06_Appendix.tex (./OutroPart/Appendix/da-4.1_meetings.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1440,7 +1461,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13]) (./OutroPart/Appendix/da-4.2_work.tex
+[14]) (./OutroPart/Appendix/da-4.2_work.tex
 Overfull \hbox (32.60216pt too wide) in paragraph at lines 3--22
  [][] 
  []
@@ -1452,7 +1473,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14]) (./OutroPart/Appendix/da-4.3_sourcecode.tex
+[15]) (./OutroPart/Appendix/da-4.3_sourcecode.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1460,7 +1481,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[15]) (./OutroPart/Appendix/da-4.4_drawings.tex
+[16]) (./OutroPart/Appendix/da-4.4_drawings.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1468,7 +1489,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[16]) (./OutroPart/Appendix/da-3.1_abbreviation.tex
+[17]) (./OutroPart/Appendix/da-3.1_abbreviation.tex
 Overfull \hbox (23.99997pt too wide) in alignment at lines 3--29
  [] [] 
  []
@@ -1481,7 +1502,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[17]) (./da-0.0_mainDocument.aux)
+[18]) (./da-0.0_mainDocument.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1493,18 +1514,18 @@ Package logreq Info: Writing requests to 'da-0.0_mainDocument.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40042 strings out of 476023
- 795767 string characters out of 5791581
+ 40060 strings out of 476023
+ 795946 string characters out of 5791582
  1945187 words of memory out of 5000000
- 61336 multiletter control sequences out of 15000+600000
- 606670 words of font info for 98 fonts, out of 8000000 for 9000
+ 61337 multiletter control sequences out of 15000+600000
+ 607398 words of font info for 106 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  89i,11n,107p,1142b,5185s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb>
-Output written on da-0.0_mainDocument.pdf (24 pages, 420463 bytes).
+Output written on da-0.0_mainDocument.pdf (25 pages, 423282 bytes).
 PDF statistics:
- 452 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 457 PDF objects out of 1000 (max. 8388607)
+ 394 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
  29087 words of extra memory for PDF output out of 29859 (max. 10000000)
 
