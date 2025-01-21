@@ -32,6 +32,7 @@
 *-blx.aux
 *-blx.bib
 *.run.xml
+.idea/
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
