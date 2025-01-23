@@ -1,11 +1,12 @@
 # Fdb version 4
-["biber da-0.0_mainDocument"] 1736775707.38527 "da-0.0_mainDocument.bcf" "da-0.0_mainDocument.bbl" "da-0.0_mainDocument" 1737548082.19722 0
-  "da-0.0_mainDocument.bcf" 1737548082.06519 132875 01bd7b954b62a114c3e08c22b3ac0b53 "pdflatex"
+["biber da-0.0_mainDocument"] 0 "da-0.0_mainDocument.bcf" "da-0.0_mainDocument.bbl" "da-0.0_mainDocument" 1737629255.46301 -1
+  "da-0.0_mainDocument.bcf" 1737629255.3238 132875 01bd7b954b62a114c3e08c22b3ac0b53 "pdflatex"
+  "references.bib" 1737543606.74432 3240 e6da495ee7a03a618ac1bf28d8865cd1 ""
   (generated)
   "da-0.0_mainDocument.bbl"
   "da-0.0_mainDocument.blg"
   (rewritten before read)
-["pdflatex"] 1737548080.58864 "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" "da-0.0_mainDocument.pdf" "da-0.0_mainDocument" 1737548082.19754 0
+["pdflatex"] 1737629253.83001 "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" "da-0.0_mainDocument.pdf" "da-0.0_mainDocument" 1737629255.46335 0
   "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" 1737543606.66099 693 a28234a6cee6516653f53270f73c6db2 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1736268207 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1736268207 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
@@ -218,7 +219,7 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1736268207 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1737038123.13961 5313786 4c81e88a66e5a52f5ba6c198e2e1d2b4 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1737038120 7603444 5284320c41c38aa40836b141dc5b60d5 ""
-  "DA-INCLUDES/da-defines.tex" 1737543606.74099 2578 5e4db3816ecb1dcb71acdc71092d28c7 ""
+  "DA-INCLUDES/da-defines.tex" 1737629201.03258 2631 5221cf8a3058dc93e12f83082f6fe699 ""
   "DA-INCLUDES/da-packages.tex" 1737543606.74099 3085 f2a2c4c91263b02414546575c302def2 ""
   "DA-INCLUDES/da-syntaxHighlighting.tex" 1736332852.7425 6234 8c38763d95a93a68b8d0373eb5d375a8 ""
   "IntroPart/da-1.0_titlePage-en.tex" 1736777184.41978 1391 4bc8592f285e907479901a002dccf722 ""
@@ -236,7 +237,7 @@
   "MainPart/Technologies/Backend/backend.tex" 1736777184.41978 2507 2f1bb856a76381426b28a8d5d6d94642 ""
   "MainPart/Technologies/Deployment/deployment.tex" 1736777184.41978 131 9770fd57d8ee66718851ea432375a7ad ""
   "MainPart/Technologies/DevelopmentTools/developmentTools.tex" 1736777184.41978 1669 cf837384c711b12f9e780c5f20000407 ""
-  "MainPart/Technologies/Frontend/frontend.tex" 1737548080.36847 1890 062e4283320ef1177f6514083be27f3b ""
+  "MainPart/Technologies/Frontend/frontend.tex" 1737629253.6171 1895 0a1aa4de264633a12143f0c7c3b78ace ""
   "MainPart/Technologies/Latex/LaTeX.tex" 1736777184.41978 64 52eaef8f4916d252ec5fb930dd227ca6 ""
   "MainPart/Technologies/MapData/mapData.tex" 1736777184.41978 2508 a4a03fdd7579fd6ba8e4ae03144d2219 ""
   "MainPart/Technologies/ProjectManagement/projectManagement.tex" 1736777184.41978 259 f7a4d3871ce3532f28362c907cb8f27f ""
@@ -250,14 +251,14 @@
   "OutroPart/Appendix/da-4.3_sourcecode.tex" 1736777184.41978 53 f50f3a444f64e0361a94960c84791511 ""
   "OutroPart/Appendix/da-4.4_drawings.tex" 1736777184.41978 68 805d307fa6c3986e3eceb167aa4da93a ""
   "OutroPart/da-3_outro.tex" 1736777184.41978 440 9fec99e1740b30cb59f67136cb6e9f38 ""
-  "da-0.0_mainDocument.aux" 1737548082.05852 6463 4e9573cf9a72470889486a4aa79e5218 "pdflatex"
+  "da-0.0_mainDocument.aux" 1737629255.31714 6463 4e9573cf9a72470889486a4aa79e5218 "pdflatex"
   "da-0.0_mainDocument.bbl" 1737543606.74099 466 ee04f40f768daeed26442158e95aba61 "biber da-0.0_mainDocument"
-  "da-0.0_mainDocument.lof" 1737548082.06519 30 283c90c47f0e16887e96cec4ba110f76 "pdflatex"
-  "da-0.0_mainDocument.lot" 1737548082.06519 126 a42c6fe6b300a2aadf0b6e6b9a6b8a43 "pdflatex"
-  "da-0.0_mainDocument.out" 1737548082.06186 5561 ff1fed726e655662893844b938e5fea7 "pdflatex"
-  "da-0.0_mainDocument.run.xml" 1737548082.06519 2532 fe8b8fc28f6bd4d236b0991f6014fe30 "pdflatex"
+  "da-0.0_mainDocument.lof" 1737629255.32714 30 283c90c47f0e16887e96cec4ba110f76 "pdflatex"
+  "da-0.0_mainDocument.lot" 1737629255.32714 126 a42c6fe6b300a2aadf0b6e6b9a6b8a43 "pdflatex"
+  "da-0.0_mainDocument.out" 1737629255.32047 5561 ff1fed726e655662893844b938e5fea7 "pdflatex"
+  "da-0.0_mainDocument.run.xml" 1737629255.32714 2532 fe8b8fc28f6bd4d236b0991f6014fe30 "pdflatex"
   "da-0.0_mainDocument.tex" 1737543606.66099 693 a28234a6cee6516653f53270f73c6db2 ""
-  "da-0.0_mainDocument.toc" 1737548082.06519 3920 a77d1d0c919914fe21eaf1fdcbf38868 "pdflatex"
+  "da-0.0_mainDocument.toc" 1737629255.32714 3920 a77d1d0c919914fe21eaf1fdcbf38868 "pdflatex"
   "images/htl_logo.pdf" 1736332852.7525 321116 01b20317757bb3adbc4b5cc0da712bd6 ""
   "images/inf_farbe_2.pdf" 1736332852.7525 9400 3b39d68b0a88c235c7499d65dbc8a5d8 ""
   (generated)
