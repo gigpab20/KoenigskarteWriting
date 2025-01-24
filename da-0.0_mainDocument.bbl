@@ -16,5 +16,122 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{dagne2019flutter}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9ac4d303628db6200f7df42d6d1799e1}{%
+           family={Dagne},
+           familyi={D\bibinitperiod},
+           given={Lukas},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{fullhash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{bibnamehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{authorbibnamehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{authornamehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{authorfullhash}{9ac4d303628db6200f7df42d6d1799e1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Flutter for cross-platform App and SDK development}
+      \field{year}{2019}
+    \endentry
+    \entry{BibEntry}{book}{}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{title}{{Flutter for Beginners}}
+      \verb{urlraw}
+      \verb https://books.google.at/books?hl=de&lr=&id=pF6vDwAAQBAJ&oi=fnd&pg=PP1&dq=benefits+dart+language&ots=dZJWUGVs4x&sig=a196WqhXmQzuy23cmcKpEpIqn_k&redir_esc=y#v=onepage&q=benefits%20dart%20language&f=false
+      \endverb
+      \verb{url}
+      \verb https://books.google.at/books?hl=de&lr=&id=pF6vDwAAQBAJ&oi=fnd&pg=PP1&dq=benefits+dart+language&ots=dZJWUGVs4x&sig=a196WqhXmQzuy23cmcKpEpIqn_k&redir_esc=y#v=onepage&q=benefits%20dart%20language&f=false
+      \endverb
+    \endentry
+    \entry{flutterReadMe}{misc}{}
+      \field{sortinit}{f}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{note}{[Online; accessed 23. Jan. 2025]}
+      \field{title}{{flutter/README.md at master {$\cdot$} flutter/flutter}}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/flutter/flutter/blob/master/README.md
+      \endverb
+      \verb{url}
+      \verb https://github.com/flutter/flutter/blob/master/README.md
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{dagne2019flutter}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9ac4d303628db6200f7df42d6d1799e1}{%
+           family={Dagne},
+           familyi={D\bibinitperiod},
+           given={Lukas},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{fullhash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{bibnamehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{authorbibnamehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{authornamehash}{9ac4d303628db6200f7df42d6d1799e1}
+      \strng{authorfullhash}{9ac4d303628db6200f7df42d6d1799e1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Flutter for cross-platform App and SDK development}
+      \field{year}{2019}
+    \endentry
+    \entry{BibEntry}{book}{}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{title}{{Flutter for Beginners}}
+      \verb{urlraw}
+      \verb https://books.google.at/books?hl=de&lr=&id=pF6vDwAAQBAJ&oi=fnd&pg=PP1&dq=benefits+dart+language&ots=dZJWUGVs4x&sig=a196WqhXmQzuy23cmcKpEpIqn_k&redir_esc=y#v=onepage&q=benefits%20dart%20language&f=false
+      \endverb
+      \verb{url}
+      \verb https://books.google.at/books?hl=de&lr=&id=pF6vDwAAQBAJ&oi=fnd&pg=PP1&dq=benefits+dart+language&ots=dZJWUGVs4x&sig=a196WqhXmQzuy23cmcKpEpIqn_k&redir_esc=y#v=onepage&q=benefits%20dart%20language&f=false
+      \endverb
+    \endentry
+    \entry{flutterReadMe}{misc}{}
+      \field{sortinit}{f}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{note}{[Online; accessed 23. Jan. 2025]}
+      \field{title}{{flutter/README.md at master {$\cdot$} flutter/flutter}}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/flutter/flutter/blob/master/README.md
+      \endverb
+      \verb{url}
+      \verb https://github.com/flutter/flutter/blob/master/README.md
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

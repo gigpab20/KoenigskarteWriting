@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.16)  23 JAN 2025 11:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.16)  24 JAN 2025 20:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1341,7 +1341,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[2]) (./MainPart/Technologies/Backend/backend.tex
+[2{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]) (./MainPart/Technologies/Backend/backend.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1406,9 +1406,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]) (./OutroPart/da-3_outro.tex
-
-LaTeX Warning: Empty bibliography on input line 13.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1493,18 +1490,18 @@ Package logreq Info: Writing requests to 'da-0.0_mainDocument.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40047 strings out of 476023
- 795820 string characters out of 5791582
+ 40302 strings out of 476023
+ 801198 string characters out of 5791582
  1945187 words of memory out of 5000000
- 61337 multiletter control sequences out of 15000+600000
- 606852 words of font info for 100 fonts, out of 8000000 for 9000
+ 61579 multiletter control sequences out of 15000+600000
+ 611554 words of font info for 105 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  89i,11n,107p,1142b,5185s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb>
-Output written on da-0.0_mainDocument.pdf (24 pages, 421774 bytes).
+</usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on da-0.0_mainDocument.pdf (24 pages, 443791 bytes).
 PDF statistics:
- 452 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
- 29087 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 475 PDF objects out of 1000 (max. 8388607)
+ 408 compressed objects within 5 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 31135 words of extra memory for PDF output out of 35830 (max. 10000000)
 
