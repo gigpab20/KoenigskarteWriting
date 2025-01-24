@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber da-0.0_mainDocument"] 0 "da-0.0_mainDocument.bcf" "da-0.0_mainDocument.bbl" "da-0.0_mainDocument" 1737749068.18729 -1
-  "da-0.0_mainDocument.bcf" 1737749068.04817 133077 77ab72e98565854f9e6579e69106a33c "pdflatex"
+["biber da-0.0_mainDocument"] 0 "da-0.0_mainDocument.bcf" "da-0.0_mainDocument.bbl" "da-0.0_mainDocument" 1737750315.8801 -1
+  "da-0.0_mainDocument.bcf" 1737750315.7156 133077 77ab72e98565854f9e6579e69106a33c "pdflatex"
   "references.bib" 1737745945.26929 3869 d291cd50cd7d456bb1919b9396532f6f ""
   (generated)
   "da-0.0_mainDocument.bbl"
   "da-0.0_mainDocument.blg"
   (rewritten before read)
-["pdflatex"] 1737749066.45671 "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" "da-0.0_mainDocument.pdf" "da-0.0_mainDocument" 1737749068.18763 0
+["pdflatex"] 1737750313.79335 "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" "da-0.0_mainDocument.pdf" "da-0.0_mainDocument" 1737750315.88047 0
   "/mnt/Data/Data/HTL Kaindorf/5BHIF/Diplomarbeit/KoenigskarteWriting/da-0.0_mainDocument.tex" 1737543606.66099 693 a28234a6cee6516653f53270f73c6db2 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1736268207 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1736268207 2840 216e6e45ad352e2456e1149f28885bee ""
@@ -241,7 +241,7 @@
   "MainPart/Technologies/Backend/backend.tex" 1736777184.41978 2507 2f1bb856a76381426b28a8d5d6d94642 ""
   "MainPart/Technologies/Deployment/deployment.tex" 1736777184.41978 131 9770fd57d8ee66718851ea432375a7ad ""
   "MainPart/Technologies/DevelopmentTools/developmentTools.tex" 1736777184.41978 1669 cf837384c711b12f9e780c5f20000407 ""
-  "MainPart/Technologies/Frontend/frontend.tex" 1737749065.35803 1698 ced50470b21d87f93019cff635025d45 ""
+  "MainPart/Technologies/Frontend/frontend.tex" 1737750309.48239 1722 8df909f53ec444c12db1a178ebb75d0b ""
   "MainPart/Technologies/Latex/LaTeX.tex" 1736777184.41978 64 52eaef8f4916d252ec5fb930dd227ca6 ""
   "MainPart/Technologies/MapData/mapData.tex" 1736777184.41978 2508 a4a03fdd7579fd6ba8e4ae03144d2219 ""
   "MainPart/Technologies/ProjectManagement/projectManagement.tex" 1736777184.41978 259 f7a4d3871ce3532f28362c907cb8f27f ""
@@ -255,14 +255,14 @@
   "OutroPart/Appendix/da-4.3_sourcecode.tex" 1736777184.41978 53 f50f3a444f64e0361a94960c84791511 ""
   "OutroPart/Appendix/da-4.4_drawings.tex" 1736777184.41978 68 805d307fa6c3986e3eceb167aa4da93a ""
   "OutroPart/da-3_outro.tex" 1736777184.41978 440 9fec99e1740b30cb59f67136cb6e9f38 ""
-  "da-0.0_mainDocument.aux" 1737749068.0415 7153 f4a70dbf17df728c5e6a5158df96bd18 "pdflatex"
+  "da-0.0_mainDocument.aux" 1737750315.70894 7159 b2775307421f4e0b0e5fa8a6886105f1 "pdflatex"
   "da-0.0_mainDocument.bbl" 1737745984.73141 5460 a8a8757a84dbee06ee4d7042d355760b "biber da-0.0_mainDocument"
-  "da-0.0_mainDocument.lof" 1737749068.0515 30 283c90c47f0e16887e96cec4ba110f76 "pdflatex"
-  "da-0.0_mainDocument.lot" 1737749068.0515 126 a42c6fe6b300a2aadf0b6e6b9a6b8a43 "pdflatex"
-  "da-0.0_mainDocument.out" 1737749068.04483 5561 ff1fed726e655662893844b938e5fea7 "pdflatex"
-  "da-0.0_mainDocument.run.xml" 1737749068.0515 2532 fe8b8fc28f6bd4d236b0991f6014fe30 "pdflatex"
+  "da-0.0_mainDocument.lof" 1737750315.71893 30 283c90c47f0e16887e96cec4ba110f76 "pdflatex"
+  "da-0.0_mainDocument.lot" 1737750315.71893 126 6cc532ebe7b2d50b70f855f3aedd15ab "pdflatex"
+  "da-0.0_mainDocument.out" 1737750315.71227 5561 ff1fed726e655662893844b938e5fea7 "pdflatex"
+  "da-0.0_mainDocument.run.xml" 1737750315.71893 2532 fe8b8fc28f6bd4d236b0991f6014fe30 "pdflatex"
   "da-0.0_mainDocument.tex" 1737543606.66099 693 a28234a6cee6516653f53270f73c6db2 ""
-  "da-0.0_mainDocument.toc" 1737749068.0515 3920 a77d1d0c919914fe21eaf1fdcbf38868 "pdflatex"
+  "da-0.0_mainDocument.toc" 1737750315.71893 3926 ca554f2dcb8bee861b7009f0e027cf6b "pdflatex"
   "images/Technologies/flutterLogo.png" 1737748849.71043 97154 bbb812c75c9aef68c67d71b6366c3817 ""
   "images/Technologies/logo-white-text.png" 1737748662.02094 4320 72873c34b8f7693ac002eb8228c672c4 ""
   "images/htl_logo.pdf" 1736332852.7525 321116 01b20317757bb3adbc4b5cc0da712bd6 ""
