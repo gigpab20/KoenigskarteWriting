@@ -1,8 +1,5 @@
 Lieboch
-<<<<<<< Updated upstream
-=======
 Kaindorf
 HTBLA
 BitBucket
 Müllerferli
->>>>>>> Stashed changes
