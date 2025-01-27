@@ -1,20 +1,31 @@
-%\begin{appendices}
-
 \singlespacing    %Einfacher Zeilenabstand im Anhang
 
-\subsection{Meetings}
-\input{OutroPart/Appendix/da-4.1_meetings.tex}
+\section{Meetings}
+    \input{OutroPart/Appendix/da-4.1_meetings.tex}
+\pagebreak
 
-\subsection{Working Hours}
-\input{OutroPart/Appendix/da-4.2_work.tex}
+\section{Working Hours}
+    \input{OutroPart/Appendix/da-4.2_work.tex}
+\pagebreak
 
-\subsection{Source code directory}
+\section{Source code directory}
 \input{OutroPart/Appendix/da-4.3_sourcecode.tex}
+\pagebreak
 
-\subsection{List of illustrations}
-\input{OutroPart/Appendix/da-4.4_drawings.tex}
+\section{List of figures}
+{\def\section*#1{}\listoffigures}
+\pagebreak
 
-\subsection{Abbreviation}
+\section{List of tables}
+    {\def\section*#1{}\listoftables}
+\pagebreak
+
+\begin{flushleft}
+        \section{Bibliography}
+    \renewcommand{\headrulewidth}{0.4pt}
+    {\def\section*#1{}\printbibliography}
+\end{flushleft}
+\newpage
+
+\section{Abbreviation}
 \input{OutroPart/Appendix/da-3.1_abbreviation.tex}
-
-%\end{appendices}
