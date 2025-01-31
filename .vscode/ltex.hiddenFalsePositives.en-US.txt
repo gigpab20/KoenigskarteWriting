@@ -1,0 +1,1 @@
+{"rule":"A_INFINITIVE","sentence":"^\\QIt was intended to be a write once, run anywhere (WORA) language.\\E$"}
