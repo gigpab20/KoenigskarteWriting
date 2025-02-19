@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QAccording to Nasrullah Hamidli usability in human-computer interaction (HCI) relies on consistency, visibility, feedback, and simplicity.\\E$"}
