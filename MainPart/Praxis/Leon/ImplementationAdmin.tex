@@ -18,7 +18,7 @@ The Admin Panel is a Flutter-based administrative dashboard that allows the admi
     \begin{minipage}{0.38\textwidth}
     \centering
     \includegraphics[width=0.7\linewidth]{images/AdminPanel/Menu.png}
-    \caption{Navigation im Admin-Panel}
+    \caption{Navigation in Admin-Panel}
     \label{fig:adminpanel_navigation}
 \end{minipage}
 
@@ -40,13 +40,40 @@ The \texttt{AddressPage} displays all addresses in the database. With it, the ad
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{images/AdminPanel/AddressPage.png}
+    \caption{AddressPage}
 \end{figure}
 \end{subsection}
 
-
+\label{fig:Add Address}
 \subsubsection{Add Address}
 To add a new address, the button "Neue Adresse" is pressed. This triggers the \texttt{onClickNewAddress} method, which clears all \texttt{InputFields} and sets the boolean variable \texttt{isNewAddress} to \texttt{true}. This variable indicates that a new address is being saved. The cleared fields can then be filled with the new address information.\\When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs validation checks and verifies whether the address already exists in the database. If the address is valid and not a duplicate, the \texttt{AdminAddressProvider} is called to add the new address to the database.
 
+% \lstset{style=mycsharp, caption=saveAddress method}
+% \begin{lstlisting}
+%     void saveAddress(AdminAddressProvider provider) async {
+%     if (selectedAddresses.isEmpty) return;
+%     if (isNewAddress) {
+%       Address newAddress = createAddressFromInput();
+%       if (!validateAddressFields(newAddress)) return;
+%       newAddress.area = provider.areas.firstWhere((a) => a.desc == newAddress.area.desc);
+%       newAddress.specialFeature = provider.specialFeatures.firstWhere((s) => s.text == newAddress.specialFeature.text);
+%       if (selectedAddresses.length == 1) {
+%         newAddress.street = provider.streets.firstWhere(
+%           (s) => s.name == newAddress.street.name && s.postalCode == newAddress.street.postalCode,
+%         );
+%       }
+%       if (isDuplicateAddress(provider.addresses, newAddress)) {
+%         showNotification("Adresse existiert bereits", () => showAddAddressNotification = true);
+%         return;
+%       }
+%       if (await provider.addAddress(newAddress) == 200) {
+%         showNotification("Adresse hinzugefuegt", () => showAddAddressNotification = true);
+%       }
+%     } else {
+%       selectedAddresses.length > 1 ? updateMultipleAddresses(provider) : updateSingleAddress(provider);
+%     }
+%   }
+% \end{lstlisting}
 
 \subsubsection{Edit Address}
 \sloppy % Damit der Text (\texttt{DatabaseViewComponent}) nicht über den Rand hinausragt
@@ -58,6 +85,7 @@ After selecting addresses in the \texttt{MapComponent} or the \texttt{DatabaseVi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{images/AdminPanel/DeleteDialog.png}
+    \caption{Dialog to confirm deletion}
 \end{figure}
 
 \subsubsection{Validation}
@@ -82,19 +110,37 @@ To determine whether an edited or newly added address already exists, All addres
 \end{lstlisting}
 
 \paragraph{validateAddressFields}
+To make sure that all \texttt{InputFields} are filled, the \texttt{validateAddressFields} is called in the \texttt{saveAddress}(\ref{fig:Add Address}) method. This method needs an \texttt{Address}. So first an new \texttt{Address} is made and passed to \texttt{validateAddressFields}. It checks if all fields are filled and returns \texttt{true} if they are, otherwise \texttt{false}.
 
+\lstset{style=mycsharp, caption=InputFormatter in Inputfield}
+\begin{lstlisting}
+    bool validateAddressFields(Address address) {
+        if (address.street.name.isEmpty) {
+            showNotification("Strasse fehlt", () => showAddAddressNotification = true);
+        } else if (address.houseNumber.isEmpty) {
+            showNotification("Hausnummer fehlt", () => showAddAddressNotification = true);
+        } else if (address.specialFeature.text.isEmpty) {
+            showNotification("Besonderheit fehlt", () => showAddAddressNotification = true);
+        } else if (address.area.desc.isEmpty) {
+            showNotification("Gebiet fehlt", () => showAddAddressNotification = true);
+        } else if (address.latitude == 0.0 || address.longitude == 0.0) {
+            showNotification("Koordinaten fehlen", () => showAddAddressNotification = true);
+        } else {
+            return true;
+        }
+        return false;
+    }
+\end{lstlisting}
 
 
 \paragraph{InputField Validation}
 The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} inputs to ensure their correctness. Validation is applied only when the \texttt{isNumberInput} parameter is set to true. If that is the case, then the \texttt{inputFormatter} is passed to the \texttt{textfield} to validate the input. This \texttt{inputFormatter} guarantees that only valid inputs are accepted, preventing incorrect entries. These are the three validators used in the \texttt{InputField}:
-
 
 \begin{itemize}
     \item The first \texttt{FilteringTextInputFormatter} allows only numbers and dots.
     \item The first \texttt{TextInputFormatter} checks if the input contains more than one dot.
     \item The second \texttt{TextInputFormatter} guarantees that there are no more than three digits before the decimal point.
 \end{itemize}
-
 
 \lstset{style=mycsharp, caption=InputFormatter in Inputfield}
 \begin{lstlisting}
@@ -127,13 +173,43 @@ The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} input
 
 \subsubsection{Additional Functionalities}
 
-\paragraph{Select Coordinates on Map}
 
+\label{fig:Notification}
 \paragraph{Notification}
+To inform the administrator about the success of failure of an operation, a \texttt{Notification} is displayed on the bottom left over the \texttt{MapComponent}.
 
-\paragraph{Edit multiple addresses}
 
 \paragraph{Edit Odd / Even Streets}
+One requirement was that addresses from one street could be automatically added to two areas based on whether the house number is even or odd. This is because it is common for all addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This way, it is easier to assign the street sides to different areas, so that "Sternsinger" participants don't have to cross the street so often.\\\\
+To make this possible, the administrator has to select a street in the \texttt{MapComponent}(\ref{fig:Select Street}), then a blue button beneath the \texttt{InputFields} appears. \\
+\todo{Bild einfügen von Button}
+\\
+\begin{figure}[H]
+    \begin{minipage}{0.7\textwidth}
+        After pressing this button, a dialog appears, where the administrator can select the areas for the addresses with even and odd house numbers. To save the changes, the "Speichern" button needs to be pressed.
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/AdminPanel/splitStreetDialog.png}
+        \caption{Dialog to split street}
+    \end{minipage}
+\end{figure}
+
+
+The button triggers the \texttt{AdminAddressProvider} and shows a \texttt{Notification}(\ref{fig:Notification}) if the operation was successful or not. After that, the dialog is closed.
+
+\lstset{style=mycsharp, caption=onPressed save button in splitStreetDialog}
+\begin{lstlisting}
+    int resultCode = await addressProvider.putAddressesOddEven(selectedAddresses.first.street.name, selectedAddresses.first.street.postalCode, selectedAreaEven, selectedAreaOdd);
+    if (resultCode == 200) {
+        showNotification("Adressen gespeichert", () => showAddressSavedNotification = true);
+    } else {
+        showNotification("Fehler beim Speichern", () => showAddAddressNotification = true);
+    }
+    if (!context.mounted) return;
+    Navigator.of(context).pop();
+\end{lstlisting}
 
 
 \begin{figure}[H]
@@ -194,6 +270,17 @@ This is an example of how a \texttt{FilterRow} is defined in the \texttt{Address
 
 
 \subsubsection{MapComponent}
+
+
+\paragraph{Edit multiple Addresses}
+
+\label{fig:Select Street}
+\paragraph{Select Street}
+
+\paragraph{onClickNewAddress}
+
+\paragraph{Select Coordinates on Map}
+
 
 \subsubsection{DatabaseViewComponent}
 
