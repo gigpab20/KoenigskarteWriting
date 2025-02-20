@@ -12,7 +12,7 @@ The Admin Panel is a Flutter-based administrative dashboard that allows the admi
 
 \begin{minipage}{0.58\textwidth}
     \setstretch{1.5} % Erhöht den Zeilenabstand
-    The file \texttt{AdminNavigation} is used to manage the navigation between the different pages of the Admin Panel. The navigation can be done via a sidebar on the left which can be set visible via a button on the top left of the screen. The widget contains a list of pages and maintains an internal state (\texttt{indexState}) to keep track of the currently selected page. Whenever a page is selected in the sidebar, the \texttt{indexState} is updated and the corresponding page is displayed.
+    The file \texttt{AdminNavigation} is used to navigate between the different pages of the Admin Panel. The navigation can be done via a sidebar on the left which can be set visible via a button on the top left of the screen. The widget contains a list of pages and maintains an internal state (\texttt{indexState}) to keep track of the currently selected page. Whenever a page is selected in the sidebar, the \texttt{indexState} is updated and the corresponding page is displayed.
     \end{minipage}
     \hfill
     \begin{minipage}{0.38\textwidth}
@@ -26,39 +26,121 @@ The Admin Panel is a Flutter-based administrative dashboard that allows the admi
 
 
 
-\subsection{Pages}
 
-\begin{subsubsection}{AddressPage}
+\begin{subsection}{AddressPage}
 
-The Page \texttt{AddressPage} displays all addresses in the database. With it, the administrator can add, edit and delete addresses into the database. All addresses are shown eather in the \texttt{MapComponent} or the \texttt{DatabaseViewComponent} on the right. On the left of the page are \texttt{InputFields}, which are used to enter new information about a new address, or edit an existing one. Overlapping the \texttt{MapComponent} there are:
+The \texttt{AddressPage} displays all addresses in the database. With it, the administrator can add, edit and delete addresses into the database. All addresses are shown either in the \texttt{MapComponent} or the \texttt{DatabaseViewComponent} on the right. On the left of the page are \texttt{InputFields} (\ref{fig:InputField}), which are used to enter new information about a new address, or edit an existing one. Overlapping the \texttt{MapComponent} there are:
 \begin{itemize}
   \item a field to filter the addresses displayed
   \item a button with a dropdown menu to select an edit a street
   \item a switch to toggle between the \texttt{MapComponent} and the \texttt{DatabaseViewComponent}
-  \item a information box on the bottom right corner to display the coordinates of the mouse pointer on the map
-  \item another information box on the bottom left corner to display the selected coordinates, which is only visible when the admin presses the map
+  \item a information box on the bottom left corner to display the selected coordinates, which is only visible when the admin presses the map
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{images/AdminPanel/AddressPage.png}
 \end{figure}
-\end{subsubsection}
+\end{subsection}
 
 
-\paragraph{Add Address}
+\subsubsection{Add Address}
+To add a new address, the button "Neue Adresse" is pressed. This triggers the \texttt{onClickNewAddress} method, which clears all \texttt{InputFields} and sets the boolean variable \texttt{isNewAddress} to \texttt{true}. This variable indicates that a new address is being saved. The cleared fields can then be filled with the new address information.\\When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs validation checks and verifies whether the address already exists in the database. If the address is valid and not a duplicate, the \texttt{AdminAddressProvider} is called to add the new address to the database.
 
 
-\paragraph{Edit Address}
+\subsubsection{Edit Address}
+\sloppy % Damit der Text (\texttt{DatabaseViewComponent}) nicht über den Rand hinausragt
+Existing addresses can be edited, by selecting an address in the \texttt{MapComponent} or the \texttt{DatabaseViewComponent}. The \texttt{InputFields} are then filled with the information of the selected address and however, in this case, the boolean variable \texttt{isNewAddress} is set to \texttt{false}, to indicate that an existing address or addresses are being updated. The admin can then edit the information and press the "Speichern" button. This triggers the \texttt{saveAddress} method, which performs the same validation checks as when adding a new address. The \texttt{AdminAddressProvider} updates the selected addresses in the database.
 
-\paragraph{Delete Address}
+\subsubsection{Delete Address}
+After selecting addresses in the \texttt{MapComponent} or the \texttt{DatabaseViewComponent}, the admin can press the "Löschen" button to delete them. This triggers the \texttt{deleteAddress} method, which calls the \texttt{AdminAddressProvider} to delete the selected addresses.\\The method also triggers the \texttt{showDeleteDialog} method, which displays a \texttt{AlertDialog} to confirm the action to prevent accidental deletions.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/AdminPanel/DeleteDialog.png}
+\end{figure}
+
+\subsubsection{Validation}
+Validation is the process of checking that data meets specific criteria before it is accepted and added. It is crucial to ensure that the data entered is correct.
+\paragraph{isDuplicateAddress}
+To determine whether an edited or newly added address already exists, All addresses are compared with the new address. It is called in the \texttt{saveAddress} method.  If it already exists, the method returns \texttt{true}, otherwise \texttt{false}. A duplicate address is identified by the following criteria:
+\begin{itemize}
+    \item street name
+    \item postal code
+    \item house number
+\end{itemize}
+
+\lstset{style=mycsharp, caption=isDuplicateAddress method}
+\begin{lstlisting}
+    bool isDuplicateAddress(List<Address> existingAddresses, Address newAddress) {
+        return existingAddresses.any((existing) =>
+            existing.street.name == newAddress.street.name &&
+            existing.street.postalCode == newAddress.street.postalCode &&
+            existing.houseNumber == newAddress.houseNumber
+        );
+    }
+\end{lstlisting}
+
+\paragraph{validateAddressFields}
+
+
+
+\paragraph{InputField Validation}
+The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} inputs to ensure their correctness. Validation is applied only when the \texttt{isNumberInput} parameter is set to true. If that is the case, then the \texttt{inputFormatter} is passed to the \texttt{textfield} to validate the input. This \texttt{inputFormatter} guarantees that only valid inputs are accepted, preventing incorrect entries. These are the three validators used in the \texttt{InputField}:
+
+
+\begin{itemize}
+    \item The first \texttt{FilteringTextInputFormatter} allows only numbers and dots.
+    \item The first \texttt{TextInputFormatter} checks if the input contains more than one dot.
+    \item The second \texttt{TextInputFormatter} guarantees that there are no more than three digits before the decimal point.
+\end{itemize}
+
+
+\lstset{style=mycsharp, caption=InputFormatter in Inputfield}
+\begin{lstlisting}
+    inputFormatters: widget.isNumberInput == true
+        ? <TextInputFormatter>[
+            FilteringTextInputFormatter.allow(RegExp('[0-9.]')),
+            TextInputFormatter.withFunction(
+                (oldValue, newValue) {
+                if (newValue.text.split('.').length - 1 > 1) {
+                    return oldValue;
+                }
+                return newValue;
+            }),
+            TextInputFormatter.withFunction(
+                (oldValue, newValue) {
+                String text = newValue.text;
+                if (text.isNotEmpty) {
+                    final parts = text.split('.');
+                    if (parts[0].length > 3) {
+                    return oldValue;
+                }
+            }
+            return newValue;
+            }),
+          ]
+        : null,
+\end{lstlisting}
+
+
+
+\subsubsection{Additional Functionalities}
+
+\paragraph{Select Coordinates on Map}
+
+\paragraph{Notification}
+
+\paragraph{Edit multiple addresses}
+
+\paragraph{Edit Odd / Even Streets}
 
 
 \begin{figure}[H]
     \setstretch{1.5} % Erhöht den Zeilenabstand
     \centering
     \begin{minipage}{0.55\textwidth} % Linke Seite für den Text
-        \paragraph{Filter}
+        \subsubsection{Filter}
         With the Filter field, the administrator can filter the addresses displayed. It contains three dropdown menus to set the filter criteria, with one checkbox for each to toggle them. These filters can be combined as desired. 
     \end{minipage}
     \hfill 
@@ -105,7 +187,7 @@ This is an example of how a \texttt{FilterRow} is defined in the \texttt{Address
 
  
 
-\subsubsection{ListEditPage}
+\subsection{ListEditPage}
 
 
 \subsection{Components}
@@ -130,6 +212,7 @@ This is an example of how a \texttt{FilterRow} is defined in the \texttt{Address
 \subsection{Widgets}
 
 \subsubsection{InputField}
+\label{fig:InputField} 
 
 \subsubsection{FilterRow}
 \label{fig:FilterRow}
