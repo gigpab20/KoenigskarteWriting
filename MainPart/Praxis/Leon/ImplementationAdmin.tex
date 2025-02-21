@@ -176,20 +176,68 @@ The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} input
 
 \label{fig:Notification}
 \paragraph{Notification}
-To inform the administrator about the success of failure of an operation, a \texttt{Notification} is displayed on the bottom left over the \texttt{MapComponent}.
+To inform the administrator about the success or failure of an operation, a \texttt{Notification} is displayed on the bottom left over the \texttt{MapComponent}. This notification appears when an address is added, edited, deleted, or when validation fails.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{images/AdminPanel/NotificationExamples.png}
+    \caption{Notification examples}
+\end{figure}
+
+To display this notification, the \texttt{showNotification} method is called. This method sets the \texttt{notificationVisible} variable to \texttt{true} and starts a \texttt{Timer} to turn it set it back to \texttt{false} three seconds later, so it goes away in a short time. This method accepts a message as a parameter, which is saved in the \texttt{notificationText} variable.
+\lstset{style=mycsharp, caption=showNotification method}
+\begin{lstlisting}
+    void showNotification(String message) {
+    setState(() {
+      notificationText = message;
+      notificationVisible = true;
+    }); 
+    Timer(Duration(seconds: 5), () {
+      setState(() {
+        notificationVisible = false;
+      });
+    });
+  }
+\end{lstlisting}
+
+When the \texttt{notificationVisible} variable is set to \texttt{true}, the UI-component which shows the notification is rendered.
+\lstset{style=mycsharp, caption=Notification in AddressPage}
+\begin{lstlisting}
+    Positioned(
+        left: 10,
+        bottom: 10,
+        child: (notificationVisible)
+            ? Container(
+                padding: EdgeInsets.all(4),
+                color: Colors.yellow,
+                child: Text(
+                    notificationText,
+                    style: TextStyle(fontSize: 20),
+                ),
+                )
+            : Container(),
+        ),
+\end{lstlisting}
+
 
 
 \paragraph{Edit Odd / Even Streets}
 One requirement was that addresses from one street could be automatically added to two areas based on whether the house number is even or odd. This is because it is common for all addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This way, it is easier to assign the street sides to different areas, so that "Sternsinger" participants don't have to cross the street so often.\\\\
 To make this possible, the administrator has to select a street in the \texttt{MapComponent}(\ref{fig:Select Street}), then a blue button beneath the \texttt{InputFields} appears. \\
-\todo{Bild einfügen von Button}
-\\
+
 \begin{figure}[H]
-    \begin{minipage}{0.7\textwidth}
-        After pressing this button, a dialog appears, where the administrator can select the areas for the addresses with even and odd house numbers. To save the changes, the "Speichern" button needs to be pressed.
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/AdminPanel/splitStreetButton.png}
+    \caption{Button to split street}
+\end{figure}
+
+\begin{figure}[H] 
+    \begin{minipage}{0.6\textwidth}
+        After pressing this button, a dialog appears, where the administrator can select the areas for the addresses with even and odd house numbers.
     \end{minipage}
     \hfill
-    \begin{minipage}{0.25\textwidth}
+    \begin{minipage}{0.35\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/AdminPanel/splitStreetDialog.png}
         \caption{Dialog to split street}
@@ -197,7 +245,7 @@ To make this possible, the administrator has to select a street in the \texttt{M
 \end{figure}
 
 
-The button triggers the \texttt{AdminAddressProvider} and shows a \texttt{Notification}(\ref{fig:Notification}) if the operation was successful or not. After that, the dialog is closed.
+The "Speichern" button triggers the \texttt{AdminAddressProvider} and shows a \texttt{Notification}(\ref{fig:Notification}) if the operation was successful or not. After that, the dialog is closed.
 
 \lstset{style=mycsharp, caption=onPressed save button in splitStreetDialog}
 \begin{lstlisting}
@@ -264,7 +312,7 @@ This is an example of how a \texttt{FilterRow} is defined in the \texttt{Address
  
 
 \subsection{ListEditPage}
-
+The \texttt{ListEditPage} is used to manage streets, special features and areas. 
 
 \subsection{Components}
 
@@ -300,6 +348,7 @@ This is an example of how a \texttt{FilterRow} is defined in the \texttt{Address
 
 \subsubsection{InputField}
 \label{fig:InputField} 
+
 
 \subsubsection{FilterRow}
 \label{fig:FilterRow}
