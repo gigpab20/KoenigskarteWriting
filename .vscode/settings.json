@@ -1,0 +1,10 @@
+{
+    "editor.rulers": [80,120],
+
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#7C62D6"
+    },
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingIndent": "same",
+    "editor.wordWrapColumn": 80,
+}
