@@ -4,6 +4,12 @@
 
     A well-structured backend is essential for building a scalable and maintainable application. This chapter explores the different layer of our backend. Each layer has its own purpose in handling client requests, processing logic in the code or managing database operations. Furthermore, this chapter provides an overview of the applied design principles we used in our backend.
 
+    \begin{figure} [H]
+        \centering
+        \includegraphics [width=0.75\textwidth] {images/andreas/backendstructure/springBootLayers.png}
+        \caption{Layers of Spring Boot}
+    \end{figure}
+
     \subsection{Controller Layer}
     The controller layer of a Spring Boot application is a significant layer that takes care of incoming HTTP requests and decides the appropriate response. It serves as the interface between the client and the backend which receives requests, hands over the tasks to the service layer and provides the responses accordignly. It ensures that the data which is used by the logic in the application is properly and effectively processed. \newline
     In a standard configuration, controllers handle a collection of HTTP methods. Amongst those HTTP methods are GET, POST, PUT and DELETE. Each methods has a certain function or action that are then performed by the application. Furthermore, every type of method corresponds to different operations on the data, such as retrieving, creating, updating or deleting information. Each controller belongs to a unique endpoint which serves as the interface for interacting with the application. The controller then uses service methods to execute the logic and return and appropriate response. \newline
