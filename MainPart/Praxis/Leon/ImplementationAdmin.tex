@@ -1,11 +1,12 @@
 \Author{\daAuthorOne}
 % \usepackage[backend=biber, style=alphabetic]{biblatex}
 
-The Admin Panel is a centralized administrative dashboard to efficiently manage all addresses within a single environment. It is used to plan for future "Sternsinger" events, ensuring that every address that needs to be visited is covered and that all addresses are efficiently distributed among participating groups. Additionally, it enables the assignment of areas containing addresses a group needs to visit. This zoning feature ensures that each group is responsible for visiting only the addresses within their assigned area.\\
+The Admin Panel is a centralized administrative dashboard to efficiently manage all addresses within a single environment. It is used for planning upcoming 'Sternsinger' events, ensuring that all required addresses are covered and effectively distributed among participating groups. Additionally, it provides a way to designate areas containing addresses that a group needs to visit. This zoning feature ensures that each group is responsible for only the addresses within their designated area.\\
 
-With the tool, administrators can perform CRUD (Create, Read, Update, Delete) operations on addresses, streets, and areas. These features make it easy to quickly address issues and make changes to the areas that participants need to visit. For example, if a new street is added to the neighborhood, the administrator can update the system to include this street and assign it to the appropriate area. Similarly, if a group drops out, the administrator can quickly reassign the addresses that have not yet been visited to other groups. This ensures that the data remains up-to-date and allows for quick reactions to special cases, helping with the planning and execution of "Sternsinger" events.\\
+With this tool, administrators can perform CRUD (Create, Read, Update, Delete) operations on addresses, streets, and areas. These features make it easy to quickly address issues and make changes to the areas that participants need to visit. For example, when a new street is added to the neighborhood, the administrator can update the system to include it and assign it to the appropriate area. Similarly, if a group withdraws from the event, the administrator can reassign any unvisited addresses to other groups. This ensures that the data remains up-to-date and allows for quick reactions to special cases, helping with the planning and execution of 'Sternsinger' events.\\
 
-This chapter will outline the implementation of the Admin Panel and describe the different components, functionalities, and widgets of this tool. Additionally, it will provide information on how to use it.\\\\
+This chapter will outline the implementation of the Admin Panel, detailing its components, functionalities, and widgets, and providing guidance on how to use them.\\\\
+
 
 \subsection{Navigation}
 
@@ -13,9 +14,10 @@ This chapter will outline the implementation of the Admin Panel and describe the
 
 \begin{minipage}{0.58\textwidth}
     \setstretch{1.5} % Erhöht den Zeilenabstand
-    To navigate between pages, a sidebar on the left is used, which can be toggled with a button in the top-left corner of the screen. It shows a list of all pages, allowing users to switch between them with a click.
+    To navigate between pages, a sidebar on the left is used, which can be toggled with a button in the top-left corner of the screen. It displays a list of all pages, allowing users to switch between them with a click.
 
-    The navigation is implemented in the file \texttt{AdminNavigation}. It contains a list of pages with titles. These titles are displayed at the top of the screen above the corresponding page. To keep track of the currently selected page, an internal state (\texttt{indexState}) is used. Whenever a page is selected in the sidebar, the \texttt{indexState} is updated, and the corresponding page is displayed. This widget is the main component. It makes sure that all pages are properly displayed.
+    The navigation is implemented in the file \texttt{AdminNavigation}. It contains a list of \texttt{ScreenItems} (see \ref{fig:ScreenItem}). These titles are displayed at the top of the screen above the corresponding page. To keep track of the currently selected page, an internal state (\texttt{indexState}) is used. Whenever a page is selected in the sidebar, the \texttt{indexState} is updated, and the corresponding page is displayed. This widget is the main component. It makes sure that all pages are properly displayed.
+
     \end{minipage}
     \hfill
     \begin{minipage}{0.38\textwidth}
@@ -35,14 +37,14 @@ This chapter will outline the implementation of the Admin Panel and describe the
     The first page, the \texttt{AddressPage}, displays an interface to create, update, and delete address data. It uses a form with various input fields (e.g., street, house number, coordinates, special features) and a map or database view to visualize and select addresses. The page is divided into two parts:
 
     \begin{itemize}
-        \item On the right side, all addresses are shown either in the \texttt{AdminMapComponent} (\ref{fig:AdminMapComponent}) or the \texttt{DatabaseViewComponent} (\ref{fig:DatabaseViewComponent}). These two components display the same addresses but in different ways, to give the administrator the choice of how they want to view the addresses.
-        \item On the left side of the page are \texttt{InputFields} (\ref{fig:InputField}), which are used to enter new information about a new address or edit an existing one.
+        \item On the right side, all addresses are shown either in the \texttt{AdminMapComponent} (\ref{fig:AdminMapComponent}) or the \texttt{DatabaseViewComponent} (\ref{fig:DatabaseViewComponent}). These two components display the same addresses but in different ways, giving the administrator the choice of how they want to view the addresses.
+        \item On the left side of the page, there are \texttt{InputFields} (\ref{fig:InputField}), which are used to enter new information about a new address or edit an existing one.
     \end{itemize}
 
-    Overlaying the \texttt{AdminMapComponent}, there are:
+    Overlaying the \texttt{AdminMapComponent}, the following elements are displayed:
 
     \begin{itemize}
-        \item A field to filter the addresses displayed.
+        \item A field to filter the addresses that are displayed.
         \item A button with a dropdown menu to select and edit a street.
         \item A switch to toggle between the \texttt{AdminMapComponent} and the \texttt{DatabaseViewComponent}.
         \item An information box in the bottom left corner to display \texttt{Notifications} (\ref{fig:Notification}) about the completed operations.
@@ -56,46 +58,24 @@ This chapter will outline the implementation of the Admin Panel and describe the
         \caption{AddressPage}
     \end{figure}
 \end{subsection}
+
 \newpage
 
 \subsubsection{Add Address}
     \label{fig:Add Address}
 
-    To add a new address, the button "Neue Adresse" is pressed. A single click on the map does the same thing, however it automatically fills in the coordinates of the location where the mouse was clicked. This triggers the \texttt{onClickNewAddress} method, which performs several key operations: 
-    
+    To add a new address, the "Neue Adresse" button is pressed. This triggers the \texttt{onClickNewAddress} method, which performs several key operations: 
+
     \begin{itemize}
         \item All \texttt{InputFields} are cleared.
         \item The boolean variable \texttt{isNewAddress} is set to \texttt{true}, indicating that a new address is being created.
     \end{itemize}
-    
-    The cleared fields can then be filled with the new information. When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs several validation checks which can be seen in \ref{fig:Validation}. If the address is valid, the \texttt{AdminAddressProvider} is called to add it to the database. If the operation was successful, a \texttt{Notification} is displayed and the newly added address appears on the map.
 
-% \lstset{style=mycsharp, caption=saveAddress method}
-% \begin{lstlisting}
-%     void saveAddress(AdminAddressProvider provider) async {
-%     if (selectedAddresses.isEmpty) return;
-%     if (isNewAddress) {
-%       Address newAddress = createAddressFromInput();
-%       if (!validateAddressFields(newAddress)) return;
-%       newAddress.area = provider.areas.firstWhere((a) => a.desc == newAddress.area.desc);
-%       newAddress.specialFeature = provider.specialFeatures.firstWhere((s) => s.text == newAddress.specialFeature.text);
-%       if (selectedAddresses.length == 1) {
-%         newAddress.street = provider.streets.firstWhere(
-%           (s) => s.name == newAddress.street.name && s.postalCode == newAddress.street.postalCode,
-%         );
-%       }
-%       if (isDuplicateAddress(provider.addresses, newAddress)) {
-%         showNotification("Adresse existiert bereits", () => showAddAddressNotification = true);
-%         return;
-%       }
-%       if (await provider.addAddress(newAddress) == 200) {
-%         showNotification("Adresse hinzugefuegt", () => showAddAddressNotification = true);
-%       }
-%     } else {
-%       selectedAddresses.length > 1 ? updateMultipleAddresses(provider) : updateSingleAddress(provider);
-%     }
-%   }
-% \end{lstlisting}
+    The cleared fields can then be filled with the new information. When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs several validation checks which can be seen in \ref{fig:Validation}. If the address is valid, the \texttt{AdminAddressProvider} is called to add it to the database. If the operation was successful, a \texttt{Notification} is displayed and the newly added address appears on the map.\\
+
+    The \texttt{onClickNewAddress} method is also called within the \texttt{AdminMapComponent} when the map is clicked, to easily add a new address by clicking on the map. This is done by passing the coordinates of the click to the \texttt{onClickNewAddress} method.
+
+
 
 \subsubsection{Edit Address}
 \sloppy % Damit der Text (\texttt{DatabaseViewComponent}) nicht über den Rand hinausragt
@@ -108,7 +88,7 @@ The admin can then edit the information and press the "Speichern" button. This t
 \subsubsection{Delete Address}
 After selecting an address, the admin can press the "Löschen" button to delete it. This triggers the \texttt{deleteAddress} method, which calls the \texttt{AdminAddressProvider} to delete the selected addresses and displays the \texttt{Notification}.\\
 
-The method also triggers the \texttt{showDeleteDialog} method, which displays a \texttt{AlertDialog} to confirm the action and prevent accidental deletions.
+The method also triggers the \texttt{showDeleteDialog} method, which displays an \texttt{AlertDialog} to confirm the action and prevent accidental deletions.
 
 \begin{figure}[H]
     \centering
@@ -119,9 +99,12 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays a 
 
 \subsubsection{Validation}
 \label{fig:Validation}
-    Validation is the process of checking that data meets specific criteria before it is accepted and added. It is crucial to ensure that the data entered is correct, consistent, and meets the required standards to maintain data integrity and reliability. \autocite{ContributorstoWikimediaprojects2025Feb}
+    Validation is the process of checking that data meets specific criteria before it is accepted and added to a system or database. This ensures the data is accurate, consistent, and conforms to required standards. Validation prevents errors and inconsistencies that could arise from invalid or incomplete data, maintaining the integrity and reliability of the system. It helps catch mistakes early, such as missing fields or incorrect data inputs. By ensuring only valid data is processed, validation plays a crucial role in preserving data quality. \autocite{ContributorstoWikimediaprojects2025Feb}
+
 \paragraph{isDuplicateAddress}
-    To determine whether an edited or newly added address already exists, All addresses are compared with the new address. It is called in the \texttt{saveAddress} method.  If it already exists, the method returns \texttt{true}, otherwise \texttt{false}. A duplicate address is identified by the following criteria:
+    To determine whether an edited or newly added address already exists in the system, a comparison is made between the new address and all the existing addresses. This process ensures that any potential duplication is detected before the address is saved. The comparison takes place within the method \texttt{saveAddress}, which is responsible for handling the saving operation. If an address is found to be identical to an already existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\\
+
+    A duplicate address is identified by the following criteria:
     \begin{itemize}
         \item street name
         \item postal code
@@ -130,7 +113,10 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays a 
 
     \lstset{style=mycsharp, caption=isDuplicateAddress method}
     \begin{lstlisting}
-        bool isDuplicateAddress(List<Address> existingAddresses, Address newAddress) {
+        bool isDuplicateAddress(
+                List<Address> existingAddresses,
+                Address newAddress
+            ) {
             return existingAddresses.any((existing) =>
                 existing.street.name == newAddress.street.name &&
                 existing.street.postalCode == newAddress.street.postalCode &&
@@ -139,58 +125,41 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays a 
         }
     \end{lstlisting}
 
-\paragraph{InputField filled Validation}
-To make sure that all \texttt{InputFields} are filled, the \texttt{validateAddressFields} is called in the \texttt{saveAddress}(\ref{fig:Add Address}) method. This method needs an \texttt{Address}. So first an new \texttt{Address} is made and passed to \texttt{validateAddressFields}. It checks if all fields are filled and returns \texttt{true} if they are, otherwise \texttt{false}.
+\newpage
 
-\lstset{style=mycsharp, caption=InputFormatter in Inputfield}
-\begin{lstlisting}
-    bool validateAddressFields(Address address) {
-        if (address.street.name.isEmpty) {
-            showNotification("Strasse fehlt", () => showAddAddressNotification = true);
-        } else if (address.houseNumber.isEmpty) {
-            showNotification("Hausnummer fehlt", () => showAddAddressNotification = true);
-        } else if (address.specialFeature.text.isEmpty) {
-            showNotification("Besonderheit fehlt", () => showAddAddressNotification = true);
-        } else if (address.area.desc.isEmpty) {
-            showNotification("Gebiet fehlt", () => showAddAddressNotification = true);
-        } else if (address.latitude == 0.0 || address.longitude == 0.0) {
-            showNotification("Koordinaten fehlen", () => showAddAddressNotification = true);
-        } else {return true;}
-        return false;
-    }
-\end{lstlisting}
+\paragraph{InputField filled Validation}
+To ensure that all the required \texttt{InputFields} are properly filled, the \texttt{validateAddressFields} method is called within the \texttt{saveAddress}(\ref{fig:Add Address}) method. The \texttt{validateAddressFields} method requires an \texttt{Address} object as its parameter.
+
+To start the process, a new \texttt{Address} object is created, which is then passed to the \texttt{validateAddressFields} method. The method checks each field within the \texttt{Address} to ensure that all required information is present and valid. If a field is missing or incomplete, a notification is triggered to inform the user of the missing data, such as "Strasse fehlt" or "Koordinaten fehlen." If all fields are filled out correctly, the method returns \texttt{true}, signaling that the address can be saved. However, if any field is incomplete, the method returns \texttt{false}, preventing the address from being saved until all necessary information is provided.
+
 
 
 \paragraph{InputField Coordinates Validation}
 \label{fig:InputField Coordinates Validation}
-    The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} inputs to ensure their correctness. Validation is applied only when the \texttt{isCoordinateInput} parameter is set to true. If that is the case, then the \texttt{inputFormatter} is passed to the \texttt{textfield} to validate the input. This \texttt{inputFormatter} guarantees that only valid inputs are accepted, preventing incorrect entries. These are the three validators used in the \texttt{InputField}:
-
+    The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} inputs to ensure their correctness. Validation is applied only when the \texttt{isCoordinateInput} parameter is set to \texttt{true}. If that is the case, the \texttt{inputFormatter} is passed to the \texttt{textfield} to validate the input. This \texttt{inputFormatter} guarantees that only valid inputs are accepted, preventing incorrect entries. These are the three validators used in the \texttt{InputField}:
 
 
     \begin{itemize}
-
         \item A \texttt{FilteringTextInputFormatter} with a regular expression is used to restrict the input to digits, decimal points, and an optional minus sign at the beginning.
-        
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.2\linewidth]{images/AdminPanel/regexInputFormatter.png}
             \caption{Regular expression for input validation}
         \end{figure}
-                
         \item A \texttt{TextInputFormatter} prevents multiple decimal points in a single number. If a user attempts to insert a second decimal point, the input is automatically rejected.
-        
-        \item The last \texttt{TextInputFormatter} ensures the number of digits before the decimal point is limited to a maximum of 3. Additionally, the value before the decimal point must not exceed 180.
+        \item The last \texttt{TextInputFormatter} ensures that the number of digits before the decimal point is limited to a maximum of 3. Additionally, the value before the decimal point must not exceed 180.
     \end{itemize}
+    
 \newpage
 
 
 \subsubsection{Additional Functionalities}
-    This section highlights various functionalities implemented to improve the overall usability of the application. These additions are designed to support administrative tasks and ensure a seamless user experience.
+    This section outlines several functionalities that have been integrated to improve the overall usability and efficiency of the application. These enhancements are specifically designed to simplify tasks while ensuring a smooth and intuitive user experience.
 
 \paragraph{Notification}
 \label{fig:Notification}
 
-    To inform the administrator about the success or failure of an operation, a \texttt{Notification} is displayed on the bottom left, overlaying the \texttt{AdminMapComponent}. This notification appears when:
+    To inform the administrator about the success or failure of an operation, a \texttt{Notification} is displayed at the bottom left, overlaying the \texttt{AdminMapComponent}. This \texttt{Notification} appears when:
 
     \begin{itemize}
         \item An address is added, edited, or deleted.
@@ -205,10 +174,10 @@ To make sure that all \texttt{InputFields} are filled, the \texttt{validateAddre
     \caption{Notification examples}
 \end{figure}
 
-To display this notification, the \texttt{showNotification} method is called. This method sets the \texttt{notificationVisible} variable to \texttt{true} and starts a \texttt{Timer} to turn it set it back to \texttt{false} three seconds later, so it goes away in a short time. This method accepts a message as a parameter, which is saved in the \texttt{notificationText} variable.
+To display this notification, the \texttt{showNotification} method is called. This method sets the \texttt{notificationVisible} variable to \texttt{true} and starts a \texttt{Timer} to reset it to \texttt{false} after three seconds, causing the notification to disappear shortly after. The method accepts a message as a parameter, which is stored in the \texttt{notificationText} variable.
 \lstset{style=mycsharp, caption=showNotification method}
 \begin{lstlisting}
-    void showNotification(String message) {
+void showNotification(String message) {
     setState(() {
       notificationText = message;
       notificationVisible = true;
@@ -242,35 +211,17 @@ When the \texttt{notificationVisible} variable is set to \texttt{true}, the UI-c
 
 \subsubsection{Edit multiple addresses}
 \label{fig:Edit multiple addresses}
-To make it easier to edit mulitple addresses at once, the CTRL-Button on the keyboard is listened to. When the CTRL-Button is pressed, the \texttt{isCtrlPressed} variable is set to \texttt{true}. This variable is passet to the \texttt{DatabaseViewComponent} and the \texttt{AdminMapComponent}, to inform them that multiple addresses want to be selected. The components can use the, as a parameter given, \texttt{markerSelected} function to set the selected addresses in the \texttt{AddressPage}. The \texttt{saveAddress} method is called to save multiple addresses.\\
+To make it easier to edit multiple addresses at once, the CTRL key on the keyboard is listened to. When the CTRL key is pressed, the \texttt{isCtrlPressed} variable is set to \texttt{true}. This variable is passed to the \texttt{DatabaseViewComponent} and the \texttt{AdminMapComponent} to inform them that multiple addresses are to be selected. The components can use the \texttt{markerSelected} function, passed as a parameter, to set the selected addresses in the \texttt{AddressPage}. The \texttt{saveAddress} method is then called to save the selected addresses.\\
+
+To detect when the CTRL key is pressed or released, the predefined \texttt{RawKeyboardListener} widget is utilized. This widget listens for keyboard events and updates the state of the \texttt{isCtrlPressed} variable accordingly. When the CTRL key is pressed, the widget sets \texttt{isCtrlPressed} to \texttt{true}, indicating that the key is being held down. Conversely, when the CTRL key is released, \texttt{isCtrlPressed} is set to \texttt{false}, signaling that the key is no longer pressed.\\
+
+To handle repeated key presses effectively, especially when the CTRL key is held down, a condition is implemented to avoid continuously setting \texttt{isCtrlPressed} to \texttt{true}. This is achieved by checking the \texttt{event.repeat} property, ensuring that the variable is only updated when \texttt{event.repeat == false}.
+\newpage
 
 
 
-To listen to the CTRL-Button, the predefined \texttt{RawKeyboardListener} is used. This widget sets the \texttt{isCtrlPressed} variable to \texttt{true} when the CTRL-Button is pressed and to \texttt{false} when it is released. to make sure that repeadetly pressing the CTRL-Button, which happens if the button is pressed and held, does not interfere with the \texttt{isCtrlPressed} variable, the condition \texttt{event.repeat == false} is used.
+The \texttt{markerSelected} method also updates the \texttt{InputField} by listing the house numbers of the selected addresses in the controller. This ensures that the user is presented with a clear overview of all the selected addresses house numbers, making it easier to manage multiple selections.
 
-\lstset{style=mycsharp, caption=RawKeyboardListener in AddressPage}
-\begin{lstlisting}
-    RawKeyboardListener(
-        autofocus: true,
-        focusNode: FocusNode(),
-          onKey: (event) {
-          if ((event.isKeyPressed(LogicalKeyboardKey.controlLeft) ||
-               event.isKeyPressed(LogicalKeyboardKey.control) || 
-               event.isKeyPressed(LogicalKeyboardKey.controlRight)) && event.repeat == false) {
-              setState(() {
-                isCtrlPressed = true;
-              });
-          } else if (event is RawKeyUpEvent && event.logicalKey == LogicalKeyboardKey.controlLeft) {
-              setState(() {
-                isCtrlPressed = false;
-              });
-          }
-        },
-    ),
-\end{lstlisting}
-
-
-The \texttt{markerSelected} method also updates the \texttt{InputField} for the house number by listing the house numbers of the selected addresses in the controller.
 
 \lstset{style=mycsharp, caption=Listed house numbers for multiple selected addresses}
 \begin{lstlisting}
@@ -280,20 +231,30 @@ The \texttt{markerSelected} method also updates the \texttt{InputField} for the 
               .join(', ');
 \end{lstlisting}
 
-The \texttt{InputField} looks like this:
+The \texttt{InputField} then looks like this:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{images/AdminPanel/listedHouseNumbersInputField.png}
     \caption{House numbers of multiple selected addresses}
 \end{figure}
 
-The selected addresses are saved in the \texttt{selectedAddresses} variable in the \texttt{AddressPage}. If multiple addresses are selected, certain \texttt{InputFields} such as house numbers, coordinates, or comments will be disabled because changing them for all selected addresses would not make sense. This can be achieved by setting the \texttt{editable} parameter of these \texttt{InputFields} to \texttt{selectedAddresses.length <= 1}, so that they are only editable when a single address is selected.
+The selected addresses are saved in the \texttt{selectedAddresses} variable in the \texttt{AddressPage}. If multiple addresses are selected, certain \texttt{InputFields}, such as house numbers, coordinates, or comments, will be disabled because changing them for all selected addresses would not make sense. This is achieved by setting the \texttt{editable} parameter of these \texttt{InputFields} to \texttt{selectedAddresses.length <= 1}, ensuring that they are only editable when a single address is selected.
+
 
 \subsubsection{Edit all Addresses from a Street}
-All addresses from a street can be edited at once. This is almost the same as editing multiple addresses (\ref{fig:Edit multiple addresses}), but instead of selecting the addresses by clicking on them, a street is selected. When a street is selected, all its addresses are selected. A street can be selected in two ways:
+All addresses from a street can be edited at once. This process is very similar to editing multiple addresses (\ref{fig:Edit multiple addresses}), but instead of individually selecting each address by clicking on it, the entire street is selected. Once a street is chosen, all addresses associated with that street are selected. This feature simplifies the process of managing multiple addresses within the same street. A street can be selected in two ways:
+
+
 
 \paragraph{Select Street via AdminMapComponent}
-Every click on the \texttt{AdminMapComponent} is checked if it is near a street. Because there is no predefined method to check if a point is on a street, the \texttt{isPointNearPolyline} method was implemented. This method checks if the click was on the street. More information about this method can be found in the \texttt{AdminMapComponent} section \ref{fig:AdminMapComponent}.\\
+Every click on the \texttt{AdminMapComponent} is checked to see if it is near a street. Since there is no predefined method to check if a point is on a street, the \texttt{isPointNearPolyline} method was implemented. This method checks whether the click was on the street. More information about this method can be found in the \texttt{AdminMapComponent} section \ref{fig:AdminMapComponent}.\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/AdminPanel/Street.png}
+    \caption{Street example in AdminMapComponent}
+\end{figure}
+
 
 \paragraph{Select Street via Button}
 This was implemented because we encountered a problem where it was not possible to click on a street on some devices. To ensure that this feature is usable on all devices, a dropdown button to choose a street and a button to select it were implemented.\\
@@ -306,9 +267,7 @@ This was implemented because we encountered a problem where it was not possible 
 
 
 \subsubsection{Edit Odd / Even Streets}
-One requirement was that addresses from one street could be automatically added to two areas based on whether the house number is even or odd. This is because it is common for all addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This way, it is easier to assign the street sides to different areas, so that "Sternsinger" participants don't have to cross the street so often.\\\\
-To make this possible, the administrator has to select a street in the \texttt{AdminMapComponent}(\ref{fig:Select Street}), then a blue button beneath the \texttt{InputFields} appears. \\
-
+One requirement was that addresses from one street could be automatically added to two areas based on whether the house number is even or odd. This is because it is common for all addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This makes it easier to assign the street sides to different areas, so that "Sternsinger" participants don't have to cross the street so often.\\ To make this possible, the administrator has to select a street in the \texttt{AdminMapComponent}(\ref{fig:Select Street}), then a blue button beneath the \texttt{InputFields} appears. \
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/AdminPanel/splitStreetButton.png}
@@ -317,7 +276,7 @@ To make this possible, the administrator has to select a street in the \texttt{A
 
 \begin{figure}[H] 
     \begin{minipage}{0.6\textwidth}
-        After pressing this button, a dialog appears, where the administrator can select the areas for the addresses with even and odd house numbers.
+        After pressing this button, a dialog appears, where the administrator can select the areas for the addresses with even and odd house numbers. The "Speichern" button triggers the \texttt{AdminAddressProvider} and displays a \texttt{Notification} (\ref{fig:Notification}) indicating whether the operation was successful or not. Afterward, the dialog is closed.
     \end{minipage}
     \hfill
     \begin{minipage}{0.35\textwidth}
@@ -328,19 +287,7 @@ To make this possible, the administrator has to select a street in the \texttt{A
 \end{figure}
 
 
-The "Speichern" button triggers the \texttt{AdminAddressProvider} and shows a \texttt{Notification}(\ref{fig:Notification}) if the operation was successful or not. After that, the dialog is closed.
-
-\lstset{style=mycsharp, caption=onPressed save button in splitStreetDialog}
-\begin{lstlisting}
-    int resultCode = await addressProvider.putAddressesOddEven(selectedAddresses.first.street.name, selectedAddresses.first.street.postalCode, selectedAreaEven, selectedAreaOdd);
-    if (resultCode == 200) {
-        showNotification("Adressen gespeichert", () => showAddressSavedNotification = true);
-    } else {
-        showNotification("Fehler beim Speichern", () => showAddAddressNotification = true);
-    }
-    if (!context.mounted) return;
-    Navigator.of(context).pop();
-\end{lstlisting}
+\newpage
 
 
 \begin{figure}[H]
@@ -354,12 +301,13 @@ The "Speichern" button triggers the \texttt{AdminAddressProvider} and shows a \t
     \begin{minipage}{0.4\textwidth} % Rechte Seite für das Bild
         \centering
         \includegraphics[width=\linewidth]{images/AdminPanel/FilterField.png}
-        \caption{Filter field in AddressPage}
+        \caption{Filter in AddressPage}
         \label{fig:adminpanel_filter}
     \end{minipage}
 \end{figure}
 
-The filter is passed and applied to the \texttt{AdminMapComponent} and the \texttt{DatabaseViewComponent}. The criteria and their enabled/disabled state are managed by the following variables in the \texttt{AddressPage} class.
+The filter is passed and applied to both the \texttt{AdminMapComponent} and the \texttt{DatabaseViewComponent}. This ensures that the data presented to the user is filtered according to the criteria they select. The criteria and their enabled/disabled state are managed by a series of variables within the \texttt{AddressPage} class. These variables control which filters are active and hold the selected filter values. The variables are defined as follows:
+
 \lstset{style=mycsharp, caption=Filter variables in AddressPage}
 \begin{lstlisting}
     bool specialFeatureFilter = false;
@@ -371,29 +319,31 @@ The filter is passed and applied to the \texttt{AdminMapComponent} and the \text
     String selectedAreaFilter = "";
 \end{lstlisting}
 
-This is an example of how a \texttt{FilterRow} is defined in the \texttt{AddressPage} class (\ref{fig:FilterRow}):
-\lstset{style=mycsharp, caption=FilterRow in AddressPage}
+
+
+The filter is then applied to the addresses in the components. The filtering process is done step-by-step, starting with the area filter, followed by the special feature filter, and finally the street filter. If any of the filter conditions are met, the addresses are filtered accordingly. Only the \texttt{filteredAddresses} are displayed in the \texttt{AdminMapComponent} and the \texttt{DatabaseViewComponent}.
+
+
+\lstset{style=mycsharp, caption=Filtering addresses in AddressPage}
 \begin{lstlisting}
-    FilterRow(
-        label: "Besonderheit:",
-        tooltipMessage: "Besonderheitsfilter aktivieren/deaktivieren",
-        filterValue: specialFeatureFilter,
-        onFilterChanged: (bool? newValue) {
-          setState(() => specialFeatureFilter = newValue ?? false);
-        },
-        selectedValue: selectedSpecialFeatureFilter,
-        items: specialFeatureTextList,
-        onDropdownChanged: (String? newValue) {
-          setState(() => selectedSpecialFeatureFilter = newValue ?? "");
-        },
-      ),
+    if (widget.isGebietFilter && currentGebietFilter != null) {
+      filteredAddresses = addresses.where((address) => address.area.desc == currentGebietFilter).toList();
+    }
+    if (widget.isBesonderheitFilter && currentBesonderheitFilter != null) {
+      filteredAddresses = filteredAddresses.where((address) => address.specialFeature.text == currentBesonderheitFilter).toList();
+    }
+    if (widget.isStreetFilter && currentStreetFilter != null) {
+      String name = currentStreetFilter!.split("  ")[0];
+      String number = currentStreetFilter!.split("  ")[1];
+      filteredAddresses = filteredAddresses.where((address) => address.street.name == name && address.street.postalCode == number).toList();
+    } 
 \end{lstlisting}
 
 
  
 
 \subsection{ListEditPage}
-The \texttt{ListEditPage} is used to manage \textbf{streets}, \textbf{special features}, and \textbf{areas}. It allows the administrator to add, edit, and delete these entities. The page is divided into two parts. On the right side, all entities are displayed in a table and can be selected. On the left, there is a dropdown menu for selecting between the three options. The information of the selected item is shown in \texttt{InputFields} on the this side, where the information can be edited, saved or deleted using the "Speichern" or the "Löschen" button.
+The \texttt{ListEditPage} is used to manage \textbf{streets}, \textbf{special features}, and \textbf{areas}. It allows the administrator to add, edit, and delete these entities. The page is divided into two parts. On the right side, all entities are displayed in a table and can be selected. On the left, there is a dropdown menu for selecting between the three options. The information of the selected item is shown in \texttt{InputFields}, where the information can be edited, saved, or deleted using the "Speichern" or "Löschen" button.
 
 \begin{figure}[H]
     \centering
@@ -402,7 +352,9 @@ The \texttt{ListEditPage} is used to manage \textbf{streets}, \textbf{special fe
 \end{figure}
 
 \subsubsection{QR-Code Visualization for Areas}
-To make it easier for users of the user application to get information about their area, a QR-Code is generated for every area, which can be scanned to get all information. The QR-Code contains the name of the area. The currently selected area is saved in the \texttt{selectedItem} variable.
+To make it easier for users of the user application to get information about their area, a QR-Code is generated for the selected area, which can be scanned to get all information. The QR-Code contains the name of the area. The currently selected area is saved in the \texttt{selectedItem} variable.\\
+
+
 
 \begin{figure}[H]
     \centering
@@ -423,17 +375,19 @@ To display the QR-Code, the \texttt{QrImageView} Widget is used.
 \end{lstlisting}
 
 \subsubsection{QR-Code-PDF Download}
-A PDF with all QR-Codes for all areas can be downloaded, making it easier to distribute the information to users. The PDF is generated with the \texttt{savePDF} method of the \texttt{PDFSaver} class.
+A PDF with QR codes for all areas can be downloaded, making it easier to distribute the information to users. The PDF is generated using the \texttt{savePDF} method of the \texttt{PDFSaver} class.\\
 
-A QR-Code is generated with the \texttt{generateQRCode} method in the \texttt{ListEditPage} class. This method takes a string as the parameter and converts this string to a QR-Code using the predefined \texttt{QrPainter}, which helps with painting a QR-Code \autocite{pub.dev/QrPainter-class}. The method then generates an image of the QR code with this class, converts this into byte data in PNG format, and finally transforms the byte data into a list of bytes (Uint8List) that can be used to display the QR-code in the pdf.\\
+To generate the QR codes, the \texttt{generateQRCode} method in the \texttt{ListEditPage} class is used. This method takes a \texttt{String} as a parameter and converts it into a QR code using the predefined \texttt{QrPainter}, which assists in rendering the QR code \autocite{pub.dev/QrPainter-class}. It then generates an image of the QR code, converts it into PNG byte data, and transforms the byte data into a list of bytes (\texttt{Uint8List}) to be used in the PDF. \\
 
-The savePdf method generates a PDF document containing QR-codes for all areas. It uses the predefined pdf package, imported as pw, to create and manage the PDF \autocite{pub.dev/pdf}. The function starts by initializing a new PDF using the pw.Document() class and an empty list to store the generated QR codes. It then iterates over a list of areas, generating a QR code for each area's description using the \texttt{generateQRCode} method and adding it to the list.\\
+Then the \texttt{savePdf} method of the \texttt{PDFSaver} class creates a PDF document containing the QR codes for all areas. It uses the predefined \texttt{pdf} package (imported as \texttt{pw}) to manage the PDF document \autocite{pub.dev/pdf}. The function starts by initializing a new PDF using the \texttt{pw.Document()} class and an empty list to store the generated QR codes. The method then iterates over the list of areas, generating a QR code for each description of all areas using \texttt{generateQRCode} and adding it to the list.\\
 
-After that, a page is added to the PDF document using the pw.MultiPage widget, which includes a title and every description of all areas with their corresponding QR-codes. After building the page content, the PDF data is saved to a variable by calling pdf.save(). Finally, the PdfSaver.savePdf method is called with the data to save it to a PDF named "Gebiete.pdf".
+After that, a page is added to the PDF document using the \texttt{pw.MultiPage} widget. This page includes a title and the description of each area along with its corresponding QR code. After building the page content, the PDF data is saved by calling \texttt{pdf.save()}. Finally, the \texttt{PdfSaver.savePdf} method is called to save the PDF as "Gebiete.pdf."
 
-
-
-\todo{QR-Code PDF Download Foto einfügen}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{images/AdminPanel/GebietePDF.png}
+    \caption{PDF with QR-Codes for all areas}
+\end{figure}
 
 
 
@@ -442,7 +396,8 @@ After that, a page is added to the PDF document using the pw.MultiPage widget, w
 
 \subsubsection{AdminMapComponent}
 \label{fig:AdminMapComponent}
-With this component, the addresses can be displayed on a geographic map. The map used is the OpenStreetMap which if free to use for everyone. Even though the Admin Panel is not used commercially, OpenStreetMap's attribution rules are followed. The map shows the required copyright notice "© OpenStreetMap contributors" in the bottom-left corner. The word "OpenStreetMap" is clickable and links directly to https://www.openstreetmap.org/copyright, opening the official license page in a new tab. This meets OpenStreetMap's license requirements by clearly acknowledging the data source and linking to their terms. \autocite{OpenStreetMap}
+With this component, the addresses can be displayed on a geographic map. The map used is OpenStreetMap, which is free to use for everyone. Even though the Admin Panel is not used commercially, OpenStreetMap's attribution rules are followed. The map shows the required copyright notice "© OpenStreetMap contributors" in the bottom-left corner. The word "OpenStreetMap" is clickable and links directly to \url{https://www.openstreetmap.org/copyright}, opening the official license page in a new tab. This meets OpenStreetMap's license requirements by clearly acknowledging the data source and linking to their terms. \autocite{OpenStreetMap}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\linewidth]{images/AdminPanel/Openstreetmapverweis.png}
@@ -455,9 +410,10 @@ With this component, the addresses can be displayed on a geographic map. The map
 \paragraph{Select Street}
 \label{fig:Select Street}
 
-To select a street, the \texttt{isPointNearPolyline} method was implemented. This method checks if the click was on a street. As parameters, it takes the coordinates of the click as a \texttt{LatLng} object and a street as a list of \texttt{LatLngs}. After each click on the map, a loop is triggered that calls the \texttt{isPointNearPolyline} method for every street, passing the click coordinates during each iteration.\\
+To select a street, the \texttt{isPointNearPolyline} method was implemented. This method checks if the click was on a street. It takes the coordinates of the click as a \texttt{LatLng} object and a street as a list of \texttt{LatLngs}. After each click on the map, a loop is triggered that calls the \texttt{isPointNearPolyline} method for every street, passing the click coordinates during each iteration.\\
 
-The \texttt{isPointNearPolyline} uses another loop, which iterates over all points of the street. Because the street is represented as a list of \texttt{LatLngs}, every two points are connected to form a line. Every iteration of the loop a helper method \texttt{isNear} is called, which calculates the distance between the click and the currently iterated line segment. 
+The \texttt{isPointNearPolyline} method uses another loop, which iterates over all points of the street. Since the street is represented as a list of \texttt{LatLngs}, every two consecutive points are connected to form a line. During each iteration of the loop, a helper method \texttt{isNear} is called, which calculates the distance between the click and the currently iterated line segment.
+
 
 \lstset{style=mycsharp, caption=isPointNearPolyline method}
 \begin{lstlisting}
@@ -488,19 +444,32 @@ The \texttt{isNear} method takes the click point, the two points for the line an
 \end{lstlisting}
 
 
-\paragraph{onClickNewAddress}
 
 \paragraph{Select Coordinates on Map}
 \label{fig:Select Coordinates on Map}
 
+To select coordinates to the currently selected address, the method \texttt{onCoordinateSelected} is called via a callback from the \texttt{AdminMapComponent}. This method sets the coordinates of the selected address to the coordinates of the click. The \texttt{InputFields} for the coordinates are then filled with the new coordinates.\\ 
+
+Because it wouldnt make any sense to select coordinates for multiple addresses at once, the length of the \texttt{selectedAddresses} list is checked. Only if it is smaller to 2, the coordinates can be selected.
+
+
 \subsubsection{DatabaseViewComponent}
 \label{fig:DatabaseViewComponent}
-To display the addresses in a table, this component is used. As parameters it takes the \texttt{selectedAddresses}, the filter variables aswell as the \texttt{isCtrlPressed} variable from the \texttt{AddressPage}, which is used to track if mulitple addresses want to be selected. The \texttt{selectedAddresses} are displayed in the table and can be selected by clicking on them. \\
+To display the addresses in a table, this component was implemented. It takes the \texttt{selectedAddresses}, the filter variables, and the \texttt{isCtrlPressed} variable from the \texttt{AddressPage} as parameters. The \texttt{isCtrlPressed} variable is used to track whether multiple addresses are being selected. The \texttt{selectedAddresses} are displayed in the table and can be selected by clicking on them.\\
 
-On the top are two fields 
+Above the table, two fields are displayed: one showing the number of selected addresses and the other showing the total number of found addresses. The table is implemented using the \texttt{ListView} widget, a predefined widget in Flutter.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/AdminPanel/DataBaseViewComponent.png}
+    \caption{DatabaseViewComponent}
+\end{figure}
+
+
 
 \subsubsection{PDFSaver}
-The \texttt{PdfSaver} class provides a static method to save a PDF file from a byte array. The method \texttt{savePdf} takes a Uint8List of bytes and a String representing the file name as parameters. Depending on the platform, it saves the PDF file accordingly.\\
+The \texttt{PdfSaver} class provides a static method to save a PDF file from a byte array. The method \texttt{savePdf} takes a \texttt{Uint8List} of bytes and a \texttt{String} representing the file name as parameters. Depending on the platform, it saves the PDF accordingly.
 
 
 \lstset{style=mycsharp, caption=savePdf method in PDFSaver}
@@ -561,21 +530,48 @@ Here is a typical method in the \texttt{AdminAddressProvider} class. It contains
     }
 \end{lstlisting}
 
-\subsubsection{CustomHttpClient}
-
 \subsection{Models}
+Models represent and manage data structures within the Admin Panel. They are designed to encapsulate data and provide a structured approach for interacting with it. Various models have been developed to ensure maintainability and efficiency.
+
+
 
 \subsubsection{AreaWithBorder}
+To associate an area with its border coordinates, the \texttt{AreaWithBorder} model was introduced. It stores all border points as a list of \texttt{LatLng} objects, which are then used in the \texttt{AdminMapComponent} to draw the boundary. This visualization helps to clearly distinguish which addresses belong to which area.
+
+\lstset{style=mycsharp, caption=AreaWithBorder class}
+\begin{lstlisting}
+  class AreaWithBorder {
+    final Area area;
+    final List<LatLng> border;
+  
+    AreaWithBorder(this.area, this.border);
+  }
+\end{lstlisting}
 
 \subsubsection{ScreenItem}
+\label{fig:ScreenItem}
+The \texttt{ScreenItem} was created to store data related to a menu option in the \texttt{AdminNavigation}. It is used to save the title, associated screen, and icon for each navigation item.
+
+\lstset{style=mycsharp, caption=ScreenItem class}
+\begin{lstlisting}
+    class ScreenItem {
+        final String title;
+        final Widget screen;
+        final Icon icon;
+        
+        ScreenItem({required this.title, required this.screen, required this.icon});
+    }
+\end{lstlisting}
+
 
 \subsection{Widgets}
+Widgets are used to build and reuse UI components in Flutter. They help maintain a consistent look and feel across the entire interface, ensuring a seamless user experience. Several custom widgets were implemented for the Admin Panel.
 
 \subsubsection{InputField}
 \label{fig:InputField} 
-This widget defines a customizable input field. The \texttt{InputField} requires a label and a \texttt{TextEditingController} for managing the input. Optional parameters include a boolean \texttt{editable}, a list of \texttt{Strings} called \texttt{dropDownOptions} and a boolean \texttt{isCoordinateInput} to specify if the input should be numeric.\\
+This widget defines a customizable input field. The \texttt{InputField} requires a label and a \texttt{TextEditingController} to manage the input. Optional parameters include a boolean \texttt{editable}, a list of \texttt{Strings} called \texttt{dropDownOptions}, and a boolean \texttt{isCoordinateInput} to specify whether the input should be numeric.
 
-To display if the \texttt{InputField} is editable, icons are displayed on the left side of the field. If the field is not editable, the icon is a blocked symbol, and if it is editable, a pencil is displayed. When the \texttt{InputField} is editable and it is not a dropdown, a cross is displayed on the right side. When it is pressed, the content is cleared.\\
+To indicate whether the \texttt{InputField} is editable, icons are displayed on the left side of the field. If the field is not editable, a blocked symbol appears. If it is editable, a pencil icon is shown. When the \texttt{InputField} is editable and not a dropdown, a cross icon appears on the right side. Pressing this icon clears the content.
 
 \begin{figure}[H]
     \centering
@@ -583,24 +579,43 @@ To display if the \texttt{InputField} is editable, icons are displayed on the le
     \caption{InputField examples}
 \end{figure}
 
-If the dropDownOptions parameter is provided with a non-empty list of strings, the input field renders as a dropdown menu. The selected value is displayed, and users can choose from the provided options. The dropdown value is automatically synced with the TextEditingController.\\
+If the \texttt{dropDownOptions} parameter is provided with a non-empty list of \texttt{Strings}, the input field is rendered as a dropdown menu. The selected value is displayed, and users can choose from the available options. The selected dropdown value is automatically synchronized with the \texttt{TextEditingController}.
 
-To guarantee valid inputs, the \texttt{InputField} uses an \texttt{inputFormatter} to validate the input. This formatter is only applied when the \texttt{isNumberInput} parameter is set to true. For further information about the validation, see \ref{fig:InputField Coordinates Validation}.
+To ensure valid inputs, the \texttt{InputField} uses an \texttt{inputFormatter} for validation. This formatter is applied only when the \texttt{isNumberInput} parameter is set to true. For more details about the validation, refer to \ref{fig:InputField Coordinates Validation}.
 
 
 \subsubsection{FilterRow}
 \label{fig:FilterRow}
 
-This widget defines a reusable filter row. The \texttt{FilterRow} combines a label, a toggleable checkbox, and a dropdown menu to enable dynamic data filtering. It requires several parameters:
+This widget defines a reusable filter row. The \texttt{FilterRow} combines a label, a toggleable checkbox, and a dropdown menu to enable dynamic data filtering. It requires several parameters, including callbacks. A callback is a method passed as an argument to another function and executed after a specific event. These callbacks are used to handle activating and deactivating the filter, as well as changes to the filter's state and the selected dropdown value. The following parameters are used:
+
 \begin{itemize}
-    \item \texttt{label}: A string for identifying the filter.
-    \item \texttt{tooltipMessage}: A message to display when hovering over the checkbox.
-    \item \texttt{filterValue}: A boolean to track the filter's active state.
-    \item \texttt{items}: A list of strings for the dropdown options.
+    \item \texttt{label}: Identification string for the filter.
+    \item \texttt{tooltipMessage}: Message displayed when hovering over the checkbox.
+    \item \texttt{filterValue}: Boolean value tracking the filter's active state.
+    \item \texttt{items}: List of strings for the dropdown options.
     \item \texttt{selectedValue}: Manages the selected dropdown value.
-    \item \texttt{onFilterChanged}: A callback for updating the filter state. 
-    \item \texttt{onDropdownChanged}: A callback for updating the selected dropdown value.
+    \item \texttt{onFilterChanged}: Callback for updating the filter state.
+    \item \texttt{onDropdownChanged}: Callback for updating the selected dropdown value.
 \end{itemize}
+
+This is an example of how a \texttt{FilterRow} is defined in the \texttt{AddressPage} class (\ref{fig:FilterRow}):
+\lstset{style=mycsharp, caption=FilterRow in AddressPage}
+\begin{lstlisting}
+    FilterRow(
+        label: "Besonderheit:",
+        tooltipMessage: "Besonderheitsfilter aktivieren/deaktivieren",
+        filterValue: specialFeatureFilter,
+        onFilterChanged: (bool? newValue) {
+          setState(() => specialFeatureFilter = newValue ?? false);
+        },
+        selectedValue: selectedSpecialFeatureFilter,
+        items: specialFeatureTextList,
+        onDropdownChanged: (String? newValue) {
+          setState(() => selectedSpecialFeatureFilter = newValue ?? "");
+        },
+      ),
+\end{lstlisting}
 
 
 \begin{figure}[H]
