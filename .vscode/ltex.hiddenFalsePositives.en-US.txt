@@ -1,1 +1,2 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QAccording to Nasrullah Hamidli usability in human-computer interaction (HCI) relies on consistency, visibility, feedback, and simplicity.\\E$"}
+{"rule":"THE_PUNCT","sentence":"^\\QThe route gets marked by an, again, bright blue line, which creates a good contrast to the other colors used on the map and draws the attention of the user.\\E$"}

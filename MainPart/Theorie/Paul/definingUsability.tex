@@ -4,8 +4,7 @@ Since my research question "How can user-experience principals add to an intuiti
 
 \blankLine
 
-Usability is a critical aspect of software and interface design, ensuring that users can efficiently and effectively interact with a product or system. Its job is to provide clear feedback and "experiences" to the user, so interactions between software and human feel smooth and straight forward. Because each human being is different in its emotional experiences, it is difficult to design a kind of "one size fits all" solution. Due to this circumstance, many studies and experiments were conducted.
-\autocite{Paul:Usability101}
+Usability is a critical aspect of software and interface design, ensuring that users can efficiently and effectively interact with a product or system. Its job is to provide clear feedback and "experiences" to the user, so interactions between software and human feel smooth and straight forward. Because each human being is different in its emotional experiences, it is difficult to design a kind of "one size fits all" solution. Due to this circumstance, many studies and experiments were conducted. \autocite{Paul:Usability101}
 
 \subsection{Why it is important}
 
@@ -45,39 +44,44 @@ According to Jakob Nielsen, usability consists of five core components. To achie
 
 \blankLine
 
-Now that we know these key points, what measures can we take to reach the goal of great usability? According to Nasrullah Hamidli, human-computer-interaction relies on consistency, visibility, feedback, and simplicity. Consistency ensures users do not need to learn new interactions for each task. For example, buttons should look alike and be in a similar location. This makes for a more natural navigation across the product and an overall familiar feel. Simplicity connects directly to this. Its goal is to minimize clutter and make user interfaces easy to understand and provide one, clear way to accomplish a task, not many possible, but complicated and unintuitive ways. It also aims to reduce distractions. Visibility allows users to clearly understand their options at any given moment, this is most often achieved through visual cues, like, grayed out buttons. This goes hand in hand with the feedback aspect, which provides immediate confirmation of actions. Loading indicators, color-changes and alike get used most often.
+Now that we are aware of these key points, what measures can we take to reach the goal of great usability? According to Nasrullah Hamidli, human-computer-interaction relies on consistency, visibility, feedback, and simplicity. Consistency ensures users do not need to learn new interactions for each task. For example, buttons should look alike and be in a similar location. This makes for a more natural navigation across the product and an overall familiar feel. Simplicity connects directly to this. Its goal is to minimize clutter and make user interfaces easy to understand and provide one, clear way to accomplish a task, not many possible, but complicated and unintuitive ways. It also aims to reduce distractions. Visibility allows users to clearly understand their options at any given moment, this is most often achieved through visual cues, like, grayed out buttons. This goes hand in hand with the feedback aspect, which provides immediate confirmation of actions. Loading indicators, color-changes and alike get used most often.
 
 \blankLine
 
 Another important part of designing a good UI are typography and colors. These
-can act as parameters for the attention and emotions of users, as well as establish visual hierarchies, which, intern, contribute again to a simpler to navigate interface. 
-
-\autocite{Paul:UIUXIntroduction}
+can act as parameters for the attention and emotions of users, as well as establish visual hierarchies, which intern, contribute again to a simpler to navigate interface. \autocite{Paul:UIUXIntroduction}
 
 \subsection{Fundamental concepts}
+In this section we will look further into these basic concepts and examine what designers can concretely do to improve usability. To make it more descriptive I will provide two examples each, one that represents an interface that doesn't follow usability guidelines, and one that improves a specific aspect of it.
+
+\blankLine
 
 \textbf{Visual Hierarchy}
 
-Visual hierarchy is a fundamental principle in UI/UX design that dictates how users perceive and navigate content. It ensures that important elements are more visually prominent, guiding users toward essential actions and information.
+Starting of with Visual hierarchy. It is the most basic principle in UI/UX design and dictates, how users perceive and navigate content. A strong visual hierarchy contributes to simplicity and ensures that important elements are more visually prominent, guiding users toward essential actions and information. Factors include the text size, weight and spacing. 
 
 \blankLine
-\textit{Bad Example:}
-A bad design lacks differentiation in text size, weight, or spacing, making it hard to distinguish between headings, body text, and interactive elements for the user. This results in cluttered interfaces, increasing cognitive load and reduced usability.
-
-\begin{figure} [H]
-    \includegraphics [width=1\textwidth] {images/paul/usabilityExamples/badVisualHierarchy.png}
-    \caption{}
-\end{figure}
+\begin{itemize}
+    \item{
+    In this example, visitors of our website are not able to clearly and promptly differentiate between headings and actual text. Because the items in the navigation bar have a different font-weight, it is distinguishable but not as clear as it could be.
+    \begin{figure} [H]
+        \center
+        \includegraphics [width=0.9\textwidth] {images/paul/usabilityExamples/badVisualHierarchy.png}
+        \caption{Example of website with weak visual hierarchy}
+    \end{figure}}
+\end{itemize}
 
 \blankLine
-\textit{Good Example:}
-A good design example effectively uses font size, color contrast, spacing, and alignment to distinguish primary content from secondary information. Headings are bold and larger, while body text is appropriately sized for readability. Proper spacing and alignment create a structured and easy-to-follow interface.
-
-\begin{figure} [H]
-    \includegraphics [width=1\textwidth] {images/paul/usabilityExamples/goodVisualHierarchy.png}
-    \caption{}
-\end{figure}
-Source: FMD University - UX Visual Hierarchy
+\begin{itemize}
+    \item {
+    If the font size and text color gets just tuned a little, it becomes suddenly much easier to distinguish primary content from secondary information. Headings are bold and larger, while body text is appropriately sized for readability. Proper spacing and alignment create a structured and pleasant reading experience.
+    \begin{figure} [H]
+        \center
+        \includegraphics [width=0.9\textwidth] {images/paul/usabilityExamples/goodVisualHierarchy.png}
+        \caption{Example of website with strong visual hierarchy}
+    \end{figure}
+    }
+\end{itemize}Source: FMD University - UX Visual Hierarchy
 
 \blankLine
 
@@ -87,16 +91,18 @@ Color selection plays a critical role in usability and aesthetics. High contrast
 
 \begin{figure} [H]
     \center
-    \includegraphics [width=0.1\textwidth] {images/paul/colorWheel.jpg}
+    \includegraphics [width=0.5\textwidth] {images/paul/colorWheel.jpg}
     \caption{Color wheel with primary, secondary and tertiary colors sorted (Source: \url{https://www.template.net/editable/114132/simple-color-wheel-chart})}
 \end{figure}
 
-{\begin{table} [H]
+\begin{table} [H]
     \centering
     \begin{tabular} {|c|c|c|}
-        \multicolumn{1}{|c|}{\textbf{Relationship Type}}} &
-\multicolumn{1}{c|}{\textbf{Description}}  &
-\multicolumn{1}{c|}{\textbf{Use case}}  \\
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Relationship Type}} &
+        \multicolumn{1}{c|}{\textbf{Description}}  &
+        \multicolumn{1}{c|}{\textbf{Use case}}  \\
+        
         \hline
         Complementary & Colors opposite each other & Creating bold contrast\\
         \hline
@@ -110,54 +116,101 @@ Color selection plays a critical role in usability and aesthetics. High contrast
     \caption{Key color combinations with effects}
     \label{Table:ColorCombinations}
 \end{table}
+
+\todo{Quelle für den table einfügen}
     
+\blankLine
+
+\textit{Bad example:}
+A bad design example features low-contrast elements, such as light gray text on a white background, making it difficult to read, especially for users with low vision. But also too many, or wrongly placed eye-catching colors can confuse and overwhelm the user.
 
 \blankLine
-A bad design example features low-contrast elements, such as light gray text on a white background, making it difficult to read, especially for users with low vision or color blindness.
 
-A good design example follows WCAG (Web Content Accessibility Guidelines) by ensuring high contrast between text and background. Colors are chosen deliberately to create visual harmony while maintaining functionality.
+\textit{Good example:}
+A good design example ensures high contrast between text and background. Colors are chosen deliberately to create visual harmony while maintaining functionality and accessibility. Well-chosen colors draw the attention to important elements. But this can also be used in reverse, for example, a button to delete something important may be colored red, to indicate a fatal action, but could also be gray, so the user must consciously decide to press it. This acts as a safety measure.
+
+\blankLine
 
 Source: Atmos - Color Theory in UI Design
 
+\blankLine
+
 \textbf{Consistent Layout \& Interaction Patterns}
 
-Consistency in design enhances user experience by ensuring that UI elements and interactions are predictable across different screens.
+Consistency in design enhances user experience by ensuring that UI elements and interactions are predictable across different states of the application. 
 
-A bad design example includes an inconsistent navigation bar where the position and style change across different screens, leading to confusion and frustration.
+\blankLine
 
+\textit{Bad example:}
+A inconsistent navigation bar where the position and style change across different screens, leading to confusion and frustration. But also purely aesthetic inconsistency impacts the overall perception of the application. 
+
+\blankLine
+
+\textit{Good example:}
 A good design example maintains a uniform layout with clearly defined navigation menus, button styles, and form elements. This consistency improves usability and allows users to develop mental models of how the system operates.
+
+\blankLine
 
 Source: Maze - UI Design Principles
 
+\blankLine
+
 \textbf{Button Placement \& Behavior}
 
-Buttons are critical interactive elements in UI design. Their placement and responsiveness affect usability and efficiency.
+Buttons are a critical and one of the most common interactive elements in UI design. Their placement, size and responsiveness affect usability and efficiency.
 
-A bad design example places primary actions (e.g., "Submit") in less prominent areas, while secondary actions (e.g., "Cancel") are emphasized, leading to potential user errors.
+\blankLine
 
-A good design example ensures that primary actions are clearly distinguishable with appropriate sizing and positioning. Visual and tactile feedback, such as hover effects or state changes, confirm user interactions.
+\textit{Bad example:}
+A bad design example places primary actions (e.g., "Submit") in less prominent or unintuitive areas, while secondary actions (e.g., "Cancel") are emphasized, leading to potential user errors. Moving forward has been related to an action on the right side of the screen since the very first user interfaces, so, putting a "Forward" button on the left side of the screen would be very unintuitive and feel weird. 
+
+\blankLine
+
+\textit{Good example:}
+A good design example ensures that primary actions are clearly distinguishable with appropriate sizing and positioning. Visual and tactile feedback, such as hover effects or color changes on click, confirm user interactions.
+
+\blankLine
 
 Source: Dribbble - Button UI Design
 
-\textbf{Feedback \& Responsiveness}
+\blankLine
 
+\textbf{Feedback}
 Providing immediate and clear feedback enhances user confidence and prevents frustration.
 
+\blankLine
+
+\textit{Bad example:}
 A bad design example lacks feedback for user actions, such as clicking a button without visual confirmation, leaving users uncertain if their action was registered.
 
+\blankLine
+
+\textit{Good example:}
 A good design example includes real-time feedback mechanisms like loading indicators, success messages, and animations to confirm user interactions.
 
+\blankLine
+
 Source: Dribbble - Feedback UI Design
+
+\blankLine
 
 \textbf{Form Design Best Practices}
 
 Forms are a crucial aspect of digital interfaces. Their usability impacts user satisfaction and data collection efficiency.
 
+\blankLine
+
+\textit{Bad example:}
 A bad design example relies solely on placeholder text without persistent labels, making it difficult for users to recall input requirements once they start typing.
 
+\blankLine
+
+\textit{Good example:}
 A good design example includes clearly visible labels, real-time validation messages, and appropriately spaced input fields, reducing user errors and improving accessibility.
 
 Source: Medium - Form Design Best Practices
+
+\blankLine
 
 \subsection{Challenges in designing for a broad user spectrum}
 
@@ -165,12 +218,8 @@ Designing for a diverse user base requires the addressing of varying levels of e
 
 \blankLine
 
+\todo{wenn zu wenig inhalt dann könnte man auch noch was schreiben wieso des so is und auf welchen psychologischen dingen des basiert}
 Interfaces should always be tailored to the needs and expectations of the end-user. This leads to challenges when the user-group is not clearly defined or consists of people with widely different backgrounds. For example elderly people often need further guidance when interacting with digital solutions than members of younger generations. This leads back to the core components of usability-design, interfaces need to be simple and unmistakable in their functionality. Failing to provide these core concepts will sooner or later result in a frustrated and shrinking user base. 
 \autocite{Paul:UIUXIntroduction}
-
-\blankLine
-
-\todo{wenn zu wenig inhalt dann könnte man auch noch was schreiben wieso des so is und auf welchen psychologischen dingen des basiert}
-
 
 \newpage
