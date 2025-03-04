@@ -7,3 +7,4 @@ displayment
 Hamidli
 Nasrullah
 wheelchair-accessibile
+CMY
