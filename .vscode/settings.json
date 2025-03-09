@@ -1,4 +1,7 @@
 {
+    "latex-workshop.intellisense.bibtexJSON.replace": {
+        
+    },
     "editor.rulers": [80,120],
 
     "workbench.colorCustomizations": {
