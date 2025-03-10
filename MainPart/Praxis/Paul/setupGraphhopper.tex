@@ -45,6 +45,10 @@ server:
 This file defines, the location of the file that contains the initial Data, as well as the directory where the calculated information gets stored, as well as the foot profile. In the \textit{server} section, parameters like the request path or port get defined. This will be needed later, for making the instance accessible through a reverse proxy managed by NGINX. 
 
 \subsubsection{Deployment}
-To deploy our instance and open the API for requests, we need to copy the map data, the .jar executable and our configuration file onto the server and then run \texttt{java -jar graphhopper-web.jar server config.yml \&}. This runs the jar file in \textit{server-mode} with our configuration-file. The \textit{\&} states that the process should start and run in the background. If this is not used, once the executing terminal is closed, also the server would shut down.
+To deploy our instance and open the API for requests, we need to copy the map data, the .jar executable and our configuration file onto the server. Afterwards, we need to execute the jar file to start our GraphHopper server. We need to tell GraphHopper in which mode to start, here we use the \textit{server-mode} and, where our config.yml file is located. Additionally, we need the \& to run it in the background so, once the executing terminal is closed, the server will not shut down. We end up with this command:
 
+
+\begin{center}
+  \texttt{java -jar graphhopper-web.jar server config.yml \&}
+\end{center}
 \newpage

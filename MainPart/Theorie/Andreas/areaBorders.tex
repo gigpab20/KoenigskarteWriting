@@ -162,3 +162,5 @@
     The convex hull algorithm is implemented within the backend as a part of the service class which analyses an area's allocated addresses to identify its boundaries. The frontend can request and use the calculated border addresses thanks to this functionality which is made available through a dedicated route. \newline
     As soon as a request is made to the route, the service class gets the area for which the border addresses are needed. The program then retrieves all the addresses in the respective area which then get processed by the convex hull algorithm. This then determines the smallest convex shape that encloses all points. The result list of all border addresses are then returned as a response to the frontend, where they are getting used for visualization and management. \newline
     The server-side calculation laod is effectively managed by implementing the convex hull calculation directly in the backend, guaranteeing reliable and consistent results on all client devices.
+
+    \newpage
