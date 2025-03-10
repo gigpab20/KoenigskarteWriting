@@ -3,7 +3,7 @@
 
 The Admin Panel is an administrative control center to efficiently manage all addresses within a single environment. It is used for planning upcoming "Sternsinger" events, ensuring that all required addresses are covered and effectively distributed among participating groups. Additionally, it provides a way to assign areas containing addresses that a group needs to visit. This zoning feature ensures that each group is responsible for only the addresses within their designated area.\\
 
-This tool enables authorized users to perform CRUD (Create, Read, Update, Delete) operations on addresses, streets, and areas. These features make it easy to quickly address issues and make changes to the areas that participants need to visit. For example, when a new street is added to the neighborhood, the administrator can update the system to include it and assign it to the appropriate area. Similarly, if a group withdraws from the event, the administrator can reassign any unvisited addresses to other groups. This ensures that the data remains up-to-date, allowing quick reactions to special cases, helping with the planning and execution of 'Sternsinger' events.\\
+This tool enables authorized users to perform CRUD operations (Create, Read, Update, Delete) on addresses, streets, and areas. These features make it easy to address issues quickly and make changes to the areas that participants need to visit. For example, when a new street is added to the neighborhood, the administrator can update the system to include it and assign it to the appropriate area. Similarly, if a group withdraws from the event, the administrator can reassign any unvisited addresses to other groups. This ensures that the data remains up-to-date, allowing quick reactions to special cases, helping with the planning and execution of "Sternsinger" events.\\
 
 This chapter will outline the implementation of the Admin Panel, detailing its components, functionalities, and widgets, and providing guidance on how to use them.\\\\
 
@@ -84,10 +84,10 @@ Existing addresses can be edited by selecting them in either the \texttt{AdminMa
 The selection fills the \texttt{InputFields} with the information of the address, and in this case, the boolean variable \texttt{isNewAddress} is set to \texttt{false} to indicate that an existing address is being updated.\\
 
 \sloppy
-The admin can then edit the information and press the "Speichern" button. This triggers the \texttt{saveAddress} method, which performs the same validation checks as when adding a new address. The \texttt{AdminAddressProvider} updates the selected address in the database, and the \texttt{Notification} is displayed. \newpage
+The administrator can then edit the information and press the "Speichern" button. This triggers the \texttt{saveAddress} method, which performs the same validation checks as when adding a new address. The \texttt{AdminAddressProvider} updates the selected address in the database, and the \texttt{Notification} is displayed. \newpage
 
 \subsubsection{Delete Address}
-After selecting an address, the admin can press the "Löschen" button to delete it. This triggers the \texttt{deleteAddress} method, which calls the \texttt{AdminAddressProvider} to delete the selected addresses.\\
+After selecting an address, the administrator can press the "Löschen" button to delete it. This triggers the \texttt{deleteAddress} method, which calls the \texttt{AdminAddressProvider} to delete the selected addresses.\\
 
 The method also triggers the \texttt{showDeleteDialog} method, which displays an \texttt{AlertDialog} to confirm the action and prevent accidental deletions.
 
@@ -105,7 +105,7 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays an
     To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses, to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\\
 
     A duplicate address is identified by the following criteria:\\
-    \textbf{street name, postal code and house number}
+    \textbf{street name, postal code, and house number}
     
 
 
@@ -202,7 +202,7 @@ Every click on the \texttt{AdminMapComponent} is checked to see if it is near a 
 
 
 \paragraph{Select a Street via Button}
-This was implemented, because, selecting the street directly on the map could be a bit spotty in its working. Through this feature, a reliable way to select a street was available, even though in the final deploynment, the street selection via map worked flawlessly. 
+This was implemented, because, selecting the street directly on the map could be a bit spotty in its working. Through this feature, a reliable way to select a street was available, even though in the final deployment, the street selection via map worked flawlessly. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{images/AdminPanel/SelectStreetButton.png}
@@ -268,22 +268,22 @@ The \texttt{ListEditPage} is used to manage \textbf{streets}, \textbf{special fe
 \end{figure}
 
 \subsubsection{QR-Code Visualization for Areas}
-To make it easier for users of the user application to access information about their area, a QR Code is generated for the selected area, which can be scanned to get all information. The QR Code contains the name of the area. The currently selected area is saved in the \texttt{selectedItem} variable. To display the QR Code, the predefined \texttt{QrImageView} is used.
+To make it easier for users of the user application to access information about their area, a QR-Code is generated for the selected area, which can be scanned to get all information. The QR-Code contains the name of the area. The currently selected area is saved in the \texttt{selectedItem} variable. To display the QR-Code, the predefined \texttt{QrImageView} is used.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{images/AdminPanel/QrImageView.png}
-    \caption{QR Code for Area}
+    \caption{QR-Code for Area}
 \end{figure}
 
 \subsubsection{QR-Code-PDF Download}
-A PDF containing  QR codes for all areas can be downloaded, making it easier to distribute the information to users. The PDF is generated using the \texttt{savePDF} method of the \texttt{PDFSaver} class.\\
+A PDF containing  QR-codes for all areas can be downloaded, making it easier to distribute the information to users. The PDF is generated using the \texttt{savePDF} method of the \texttt{PDFSaver} class.\\
 
-To generate the QR codes, the \texttt{generateQRCode} method in the \texttt{ListEditPage} class is used. This method takes a \texttt{String} as a parameter and converts it into a QR code using the predefined \texttt{QrPainter}, which helps in rendering the QR code \autocite{pub.dev/QrPainter-class}. It then generates an image of the QR code, converts it into PNG byte data, and transforms the byte data into a list of bytes (\texttt{Uint8List}) to be used in the PDF. \\
+To generate the QR-codes, the \texttt{generateQRCode} method in the \texttt{ListEditPage} class is used. This method takes a \texttt{String} as a parameter and converts it into a QR-code using the predefined \texttt{QrPainter}, which helps in rendering it \autocite{pub.dev/QrPainter-class}. It then generates an image of the QR-code, converts it into PNG byte data, and transforms the byte data into a list of bytes (\texttt{Uint8List}) to be used in the PDF. \\
 
-Then, the \texttt{savePdf} method of the \texttt{PDFSaver} class creates a PDF document containing the QR codes for all areas. It uses the predefined \texttt{pdf} package (imported as \texttt{pw}) to manage the PDF document \autocite{pub.dev/pdf}. The function starts by initializing a new PDF using the \texttt{pw.Document()} class and an empty list to store the generated QR codes. The method then iterates over the list of areas, generating a QR code for each description of all areas using \texttt{generateQRCode} and adding it to the list.\\
+Then, the \texttt{savePdf} method of the \texttt{PDFSaver} class creates a PDF document containing the QR-codes for all areas. It uses the predefined \texttt{pdf} package (imported as \texttt{pw}) to manage the PDF document \autocite{pub.dev/pdf}. The function starts by initializing a new PDF using the \texttt{pw.Document()} class and an empty list to store the generated QR-codes. The method then iterates over the list of areas, generating a code for each description of all areas using \texttt{generateQRCode} and adding it to the list.\\
 
-Afterward a page is added to the PDF document using the \texttt{pw.MultiPage} widget. This page includes a title and the description of each area along with its corresponding QR code. Once the page content is built, the PDF data is saved by calling \texttt{pdf.save()}. Finally, the \texttt{PdfSaver.savePdf} method is called to save the PDF as "Gebiete.pdf."
+Afterward a page is added to the PDF document using the \texttt{pw.MultiPage} widget. This page includes a title and the description of each area along with its corresponding QR-code. Once the page content is built, the PDF data is saved by calling \texttt{pdf.save()}. Finally, the \texttt{PdfSaver.savePdf} method is called to save the PDF as "Gebiete.pdf."
 
 \begin{figure}[H]
     \centering
@@ -408,7 +408,7 @@ Models represent and manage data structures within the Admin Panel. They are des
 
 
 \subsubsection{AreaWithBorder}
-To associate an area with its border coordinates, the \texttt{AreaWithBorder} model was introduced. It stores all border points as a list of \texttt{LatLng} objects, which are then used in the \texttt{AdminMapComponent} to draw the boundary. This visualization helps to clearly distinguish which addresses belong to which area.\\
+To associate an area with its border coordinates, the \texttt{AreaWithBorder} model was introduced. It stores all border points as a list of \texttt{LatLng} objects, which are then used in the \texttt{AdminMapComponent} to draw the boundary. This visualization helps to clearly distinguish which addresses belong to which area.
 
 
 \subsubsection{ScreenItem}
