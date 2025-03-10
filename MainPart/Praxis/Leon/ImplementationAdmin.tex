@@ -283,20 +283,20 @@ The \texttt{markerSelected} method also updates the \texttt{InputField} for the 
               .join(', ');
 \end{lstlisting}
 
-This looks like this in the \texttt{InputField}:
+The \texttt{InputField} looks like this:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{images/AdminPanel/listedHouseNumbersInputField.png}
     \caption{House numbers of multiple selected addresses}
 \end{figure}
 
-The selected addresses are saved in the \texttt{selectedAddresses} variable in the \texttt{AddressPage}. If multiple addresses are selected, certain \texttt{InputFields} such as house numbers, coordinates, or comments will be disabled because changing them for all selected addresses would not make sense. This can be achieved by setting the \texttt{editable} parameter of these \texttt{InputFields} to \texttt{selectedAddresses.length <= 1}, so that they are only editable when a single address is selected.\\
+The selected addresses are saved in the \texttt{selectedAddresses} variable in the \texttt{AddressPage}. If multiple addresses are selected, certain \texttt{InputFields} such as house numbers, coordinates, or comments will be disabled because changing them for all selected addresses would not make sense. This can be achieved by setting the \texttt{editable} parameter of these \texttt{InputFields} to \texttt{selectedAddresses.length <= 1}, so that they are only editable when a single address is selected.
 
 \subsubsection{Edit all Addresses from a Street}
 All addresses from a street can be edited at once. This is almost the same as editing multiple addresses (\ref{fig:Edit multiple addresses}), but instead of selecting the addresses by clicking on them, a street is selected. When a street is selected, all its addresses are selected. A street can be selected in two ways:
 
 \paragraph{Select Street via AdminMapComponent}
-Every click on the map is checked if it is near a street. Because there is no predefined method to check if a point is on a street, the \texttt{isPointNearPolyline} method was implemented. If 
+Every click on the \texttt{AdminMapComponent} is checked if it is near a street. Because there is no predefined method to check if a point is on a street, the \texttt{isPointNearPolyline} method was implemented. If the point is near a street, the method returns \texttt{true} otherwise \texttt{false}. More information about this method can be found in the \texttt{AdminMapComponent} section \ref{fig:AdminMapComponent}.\\
 
 \paragraph{Select Street via Button}
 This was implemented because we encountered a problem where it was not possible to click on a street when the Admin Panel was deployed. This problem only occured on some devices. To ensure that the Admin Panel is usable on all devices, a dropdown button to choose a street and a button to select it were implemented.\\
@@ -396,7 +396,7 @@ This is an example of how a \texttt{FilterRow} is defined in the \texttt{Address
  
 
 \subsection{ListEditPage}
-The \texttt{ListEditPage} is used to manage \textbf{streets}, \textbf{special features} and \textbf{areas}. It allows the administrator to add, edit and delete these entities. On the top left is a dropdown-menu, allowing selection between these three. The page is divided into two parts. On the right side, there are all entities displayed in a table, which can be selected. The information of the selected item is shown on \texttt{InputFields} on the left side, there the information can be edited and saved with the "Speichern" button. 
+The \texttt{ListEditPage} is used to manage \textbf{streets}, \textbf{special features}, and \textbf{areas}. It allows the administrator to add, edit, and delete these entities. The page is divided into two parts. On the right side, all entities are displayed in a table and can be selected. On the left, there is a dropdown menu for selecting between the three options. The information of the selected item is shown in \texttt{InputFields} on the this side, where the information can be edited, saved or deleted using the "Speichern" or the "Löschen" button.
 
 \begin{figure}[H]
     \centering
@@ -405,8 +405,7 @@ The \texttt{ListEditPage} is used to manage \textbf{streets}, \textbf{special fe
 \end{figure}
 
 \subsubsection{QR-Code Visualization for Areas}
-\todo{Paul fragen wie sein part heißt (User-App oder so)}
-To make it easier for users which use the User-App to get their area, a QR-Code is generated for every area, which can be scanned to get all information about the area. The QR-Code contains the name of the area. The currently selected area is saved in the \texttt{selectedItem} variable.
+To make it easier for users of the user application to get information about their area, a QR-Code is generated for every area, which can be scanned to get all information. The QR-Code contains the name of the area. The currently selected area is saved in the \texttt{selectedItem} variable.
 
 \begin{figure}[H]
     \centering
@@ -427,7 +426,7 @@ To display the QR-Code, the \texttt{QrImageView} Widget is used.
 \end{lstlisting}
 
 \subsubsection{QR-Code-PDF Download}
-With this functionality the administrator can download a PDF with all QR-Codes for all areas. This makes it easier to distribute the areas to the users. The PDF is generated with the \texttt{PDFSaver} class.
+A PDF with all QR-Codes for all areas can be downloaded, making it easier to distribute the areas to the users. The PDF is generated with the \texttt{savePDF} method of the \texttt{PDFSaver} class.
 
 
 
@@ -436,6 +435,7 @@ With this functionality the administrator can download a PDF with all QR-Codes f
 
 \subsubsection{AdminMapComponent}
 \label{fig:AdminMapComponent}
+
 
 
 
@@ -450,8 +450,71 @@ With this functionality the administrator can download a PDF with all QR-Codes f
 
 \subsubsection{DatabaseViewComponent}
 \label{fig:DatabaseViewComponent}
+To display the addresses in a table, this component is used. As parameters it takes the \texttt{selectedAddresses}, the filter variables aswell as the \texttt{isCtrlPressed} variable from the \texttt{AddressPage}. The \texttt{selectedAddresses} are displayed in the table and can be selected by clicking on them. \\
 
-\subsubsection{AdminAddressProvider}
+On the top are two fields 
+
+\subsubsection{PDFSaver}
+The \texttt{PdfSaver} class provides a static method to save a PDF file from a byte array. The method \texttt{savePdf} takes a Uint8List of bytes and a String representing the file name as parameters. Depending on the platform, it saves the PDF file accordingly.\\
+
+
+\lstset{style=mycsharp, caption=savePdf method in PDFSaver}
+\begin{lstlisting}
+    static Future<void> savePdf(Uint8List bytes, String fileName) async {
+        if (kIsWeb) {
+            final blob = html.Blob([bytes], 'application/pdf');
+            final url = html.Url.createObjectUrlFromBlob(blob);
+            final anchor = html.AnchorElement(href: url)
+                ..target = 'blank'
+                ..download = fileName
+                ..click();
+            html.Url.revokeObjectUrl(url);
+        } else {
+            await FileSaver.instance.saveFile(
+                name: fileName,
+                bytes: bytes,
+                ext: 'pdf',
+                mimeType: MimeType.pdf,
+            );
+        }
+    }
+    
+\end{lstlisting}
+  \subsubsection{AdminAddressProvider}
+This class serves as a bridge between the Admin Panel and the backend. It is responsible for all CRUD operations on addresses, streets, special features, and areas. It is used in the \texttt{AddressPage} and the \texttt{ListEditPage}. 
+
+The \texttt{AdminAddressProvider} includes the \texttt{ChangeNotifier} mixin. A mixin is a way to reuse code across mulitple classes, without using inheritance like in Java.\autocite{dart.dev} The \texttt{ChangeNotifier} mixin is used to notify the UI when the data changes. \autocite{flutter.dev} This is done by calling the \texttt{notifyListeners} method.\\
+
+Here is a typical method in the \texttt{AdminAddressProvider} class. It contains these functionalities:
+
+\begin{itemize}
+    \item \texttt{async}: enables non-blocking operations and ensures that the UI remains responsive while waiting for tasks like network requests to complete.
+    \item \texttt{await http.get}: sends a GET request to the server to fetch all streets and waits for the response.
+    \item \texttt{jsonDecode}: processes the JSON response from the server.
+    \item \texttt{utf8.decode}: transforms the UTF-8 encoded response body into readable text.
+    \item \texttt{map}: converts the decoded JSON to a list of \texttt{Street} objects.
+    \item \texttt{sort}: sorts the list alphabetically.
+    \item \texttt{notifyListeners}: notifies the listeners that the data has changed.
+    \item \texttt{catch}: catches any errors that occur during the operation.
+\end{itemize}
+\lstset{style=mycsharp, caption=typical method in AdminAddressProvider}
+\begin{lstlisting}
+    Future<void> fetchStreets() async {
+      try {
+        final response = await http.get(Uri.parse('$serverURL/$baseURL/admin/getAllStreets'));
+        if (response.statusCode == 200) {
+          final List<dynamic> decodedJSON = jsonDecode(utf8.decode(response.bodyBytes));
+          streets = decodedJSON.map((json) => Street.fromJson(json)).toList();
+          streets.sort((a, b) => a.name.compareTo(b.name));
+          notifyListeners();
+        } else {
+          throw Exception('Failed to load streets');
+        }
+      } catch (e) {
+        print('Error fetching streets: $e');
+      }
+    }
+\end{lstlisting}
 
 \subsubsection{CustomHttpClient}
 
