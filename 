@@ -1,0 +1,118 @@
+[33mc7272b1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mImplementationAdmin[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/ImplementationAdmin[m[33m, [m[1;31morigin/HEAD[m[33m)[m formale anpassungen
+[33m94586b8[m Merge branch 'ImplementationAdmin'
+[33m662e89c[m Merge branch 'ImplementationAdmin' of https://github.com/gigpab20/KoenigskarteWriting into ImplementationAdmin
+[33mc312ad8[m therie
+[33m3d2ec01[m[33m ([m[1;32mmain[m[33m)[m merge changes
+[33m0154079[m Merge branch 'ImplementationAdmin'
+[33m13ea1f9[m Merge branch 'PandyBackend'
+[33mfcfb59b[m Merge branch 'ImplementationAdmin'
+[33m689ac36[m Merge branch 'PandyBackend'
+[33mc6c1e09[m Merge branch 'introduction'
+[33mdf7dd52[m Merge branch 'technologies'
+[33m29c5a3d[m Merge pull request #7 from gigpab20/uiPrinciples
+[33m671b1cf[m[33m ([m[1;31morigin/uiPrinciples[m[33m)[m quellen Usability in context
+[33m9bb9fd3[m i forgor
+[33m84dcebf[m again verbesserung
+[33m1ebdd26[m verbesserungen
+[33m6de7082[m lol
+[33me81d9c1[m ufff fertig, fürs erste
+[33m3e29369[m kein plan digga ich schreib einfach
+[33mc06e359[m finished practical part
+[33md9ba45c[m kein plan digga gehirn is matsch
+[33m57e63cb[m almost completely finished it. going to bed now
+[33m1355286[m added some more
+[33m83a07fc[m added second part
+[33mcf9f67e[m added FilterRow and InputField
+[33mafbfc54[m added table to usability
+[33m6f8265b[m[33m ([m[1;31morigin/technologies[m[33m)[m changed technologies and citation style
+[33mb9fd343[m Addresspage done
+[33m956ecad[m[33m ([m[1;31morigin/introduction[m[33m)[m fixed spelling
+[33m9203e70[m fixed tense
+[33mc31d06d[m added color theory
+[33m43bd60b[m added spring framework for mr pandy
+[33m1f5aa1b[m added good and bad design
+[33m6996867[m Notification
+[33m51ce75c[m improvements on defining usability
+[33mb9f0b4e[m finished validation
+[33m0f3759d[m CRUD added
+[33m628f1a3[m Started writing Addresspage
+[33m88126a1[m continued on defining usability, still missing fundamental concepts
+[33m8a55caf[m what is usability and why is it important?
+[33m4634229[m Navigation
+[33m1903dfc[m changes, dunno
+[33mb1236ae[m nur bissl update
+[33m1d4dbbb[m fixed grammar
+[33m6d6734e[m proofread of technologies
+[33ma292612[m added describtion of border addresses
+[33mf75c948[m added various sources and images
+[33mc57f3ab[m first approache to defining usability
+[33m190b429[m init
+[33ma6bb909[m[33m ([m[1;32mtechnologies[m[33m)[m added backend tech text
+[33md29e56a[m[33m ([m[1;32mPandyBackend[m[33m)[m Merge branch 'PandyBackend' of https://github.com/gigpab20/KoenigskarteWriting into PandyBackend
+[33m8e7988b[m changed introduction for the better
+[33ma931c3a[m added dictionary entries
+[33m10c3f7f[m[33m ([m[1;31morigin/tableOfContents[m[33m, [m[1;32mintroduction[m[33m)[m Merge branch 'tableOfContents'
+[33mcd094f6[m Merge pull request #5 from gigpab20/introduction
+[33meaadbfd[m add java text
+[33m234c6ab[m deleted postgres and SharePoint because who cares
+[33mdf336f9[m changed things a bit
+[33m1cb1a39[m deleted figma section
+[33m168f7bb[m postman text
+[33m7c4dcf5[m added text for android studio
+[33mee77306[m deleted predefined bibtex entries
+[33m3dcf9d9[m added intellij logo
+[33m9cb6d54[m first iteration of intellij text
+[33m493bf54[m added graphhopper chapter
+[33mffe4ba4[m added SAVE-Error file to gitignore
+[33me1a1918[m cahnged size vs code logo
+[33m8685ac4[m added vscode logo
+[33m0789e37[m added VS Code part and removed unnecessary abbreviations
+[33m5bb3c84[m added Graphhopper
+[33m86d0e38[m fixed url for OSM Wiki.bib entry
+[33m6a2cdc7[m changed citation format to numeric
+[33mdde3cdb[m removed project management and wireframes
+[33m51a8435[m added java logo
+[33m3fad9be[m changed introduction for the better
+[33m2a28a12[m fixed image caption for OSM part
+[33mcaa627a[m added text and picture for OSM
+[33mba1fb8e[m added text and logo to docker
+[33m37ce3d5[m changes to table of contents
+[33m6f336bb[m addd text for docker
+[33m80cb3de[m added dictionary entries
+[33m788b89d[m changed introduction
+[33m79eb1a3[m finished git and github description
+[33m942be6a[m added Git part
+[33m8cd44c0[m changed logo in technologies and added source
+[33m6c59116[m Merge branch 'technologies' of https://github.com/gigpab20/KoenigskarteWriting into technologies
+[33m765aaf4[m changed dartlogo and added caption
+[33maf78ad7[m changed structure of outro and added list of figures
+[33m598e3ab[m changed dartlogo and added caption
+[33m1a1e612[m Merge branch 'origin/PandyBackend'
+[33m523a8e8[m Merge branch 'introduction'
+[33m6051879[m Merge pull request #2 from gigpab20/technologies
+[33m24bd110[m added blanklines befor logos
+[33m810e09b[m added graphics for flutter and dart...to be changed
+[33md0eaba8[m added dart Text
+[33md65f275[m added \blankLine command
+[33m4e661f8[m did some changes
+[33m5b742ed[m added first iteration of flutter description
+[33me9a2fd0[m moved finishedPage.tex to exta folder
+[33ma6d0ccd[m added file finishedPage.tex so pages can be exported easily
+[33m0313d9e[m removed temporary .aux file from repo
+[33m90e02e2[m added pictures for team and references.bib again after accidentaly deleting it before
+[33md839e52[m added todo for team
+[33m385f349[m updated team with initial sentence
+[33m6ce203d[m added team with placeholders
+[33m02ec1f6[m deleted unnessesary files in hope they get untracked
+[33m450ad7f[m changed font
+[33m370fc3e[m help!!!
+[33m5f9316d[m added .gitignore
+[33m250d94d[m added result
+[33mf271329[m added first iteration of introduction as well as todo command
+[33mc98e5d5[m Merge pull request #1 from gigpab20/tableOfContents
+[33m30255f8[m refactored Latex Structure
+[33m32762de[m[33m ([m[1;32mtableOfContents[m[33m)[m changed project structure
+[33m3a08062[m changed some things
+[33m99754fb[m updated template and deleted unnecessary files
+[33me21ecfd[m changed title page
+[33m46aeced[m intialed with Template
