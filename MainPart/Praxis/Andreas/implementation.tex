@@ -2,10 +2,45 @@
 %! Date = 20.01.2025
 \Author{\daAuthorThree}
 
-    The backend implementation combines theoretical concepts with practical solutions to ensure functionality and scalability.
+    This program's backend which offers a reliable and scalable system for handling all addresses, streets, areas and special features, is the essential layer that makes sure the admin panel and the mobile app for the guides run well. \newline
+    This backend serves as the center for data processing and communication which supports the admin and all guides through an unified API. \newline
+    It effectively manages all requests from the mobile app, where guides interact with addresses which are in their area. Furthermore, it manages all necesssary requests from the admin panel which enables accurate management and control over anything relevant for the guides such as addresses, areas, streets and special features an address may has. \newline 
+
+    One big function of the backend is to enable the admins to perform a wide range on CRUD (Create, Read, Update, Deleter) operations on all necesssary data. Nevertheless, the other function of the backend is to provide guides with their relevant area and all the addresses in this area. This functionalities are crucial for managing the caroler campaign by the admin and to ensure that the guides have access in the mobile app to accurate and up-to-date addresses and areas. \newline
+
+    We use Sprin Boot in our Backend which ensures seamless data transfer between the user interfaces (admin panel and mobile app) and the database of this project. By having an organized structure with the different layers (configuration, entities, repositories, services and controllers), we ensure that the system remains flexible, scalable and easy to maintain. \newline 
+
+    Now, this chapter will show the backend's architecture and therefore all its components while also describing how each component functions and contributes to the whole system of the backend.
 
     \subsection{Config of Spring Boot (application.properties)}
-    The \texttt{application.properties} file configures essential settings, including database connections, logging, and server parameters.
+    A Spring Boot' \texttt{applications.properties} file is crucial for specifying different setting that control the program's behavior. It contain settings for server parameters, logging, database connections and security elements which ensure that the application is running efficiently and securely. This \texttt{applications.properties} file is the reason why Spring Boot is one of the most easy frameworks to configure.
+
+    \subsubsection{Database Configuration}
+    This section defines the connection settings to the PostgreSQL database. In our case this details are set to this: 
+    \lstset{style=mycsharp, caption=Database Configuration}
+        \begin{lstlisting}
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+        \end{lstlisting}
+    In this case the first code line defines the driver that is used to interact with the PostgreSQL database. \newline
+    Similarly, the second code line provides the URL where the database is hosted. This time, the database is running localy and on the default PostgreSQL port \texttt{5432}, furthermore, the database name is set to \texttt{postgres}. \newline
+    The username and password set in the properties are both \texttt{postgres} through the last two code lines. It is important to note that these settings are for local testing and development. In a production environment, these properties would need to be replaced with more secure settings. \newline
+
+    This file also configures the Java Persistence API (JPA) and Hibernate which control the database interface, in addition to the database settings. In our case this settings look like this:
+    \lstset{style=mycsharp, caption=JPA Configuration}
+        \begin{lstlisting}
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+        \end{lstlisting}
+    The first code line enables logging of SQL queries which get executed by Hibernate. This helps in debugging and verifying that the operations are being performed on the database. \newline
+    The next code line only ensures that the SQL queries get formatted right for better readability in the logs. \newline
+    The third code line prevents Hibernate from automatically modifying the database structure to avoid accidental changes in the tables of the database. \newline
+    The last line is a setting to ensure that Hibernate generates SQL statements that comply with the PostgreSQL rules so that the SQL statements are compatible with our PostgreSQL database.
+
 
     \subsection{Entity Classes (Structure/Purpose)}
     Entity classes define the application's data model, using annotations to map fields to database tables.
