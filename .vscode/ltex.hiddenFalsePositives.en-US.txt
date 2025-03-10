@@ -2,3 +2,11 @@
 {"rule":"THE_PUNCT","sentence":"^\\QThe route gets marked by an, again, bright blue line, which creates a good contrast to the other colors used on the map and draws the attention of the user.\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\QSecondary Secondary colors arise by mixing two primary colors to equal amounts.\\E$"}
 {"rule":"A_INFINITIVE","sentence":"^\\QIt was intended to be a write once, run anywhere (WORA) language.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QPaul:ColorTheoryForBeginners [H] [width=0.9] images/paul/usabilityExamples/ColorTheoryExample.png\\E$"}
+{"rule":"SENTENCE_WHITESPACE","sentence":"^\\QPaul:ColorTheoryForBeginners [H] [width=0.9] images/paul/usabilityExamples/ColorTheoryExample.png\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[H] [width=0.5] images/paul/colorWheel.jpg Color wheel with primary, secondary and tertiary colors sorted (Source: \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q)\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[H] [width=0.9] images/paul/usabilityExamples/visualHierarchy.png Example with better visual Hierarchy through different font size and weight\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q[H] [width=0.9] images/paul/usabilityExamples/initialWebsite.png Starting point of usability example website\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe compareHouseNumbers function enables natural sorting of house numbers by separating numeric and non-numeric parts.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QTile-Layer This layer imports the tiles, so, the actual map, of OpenStreetMaps' tile server.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QTo achieve this, we just create a new Polygon object with the coordinates saved in the borderAddresses list of the AddressProvider and set a few styling options, like the stroke width and border color.\\E$"}

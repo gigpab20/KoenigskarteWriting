@@ -1,0 +1,24 @@
+    int compareHouseNumbers(String a, String b) {
+        final regex = RegExp(r'(\d+|\D+)');
+
+        final partsA = regex.allMatches(a).map((match) => match.group(0)!).toList();
+        final partsB = regex.allMatches(b).map((match) => match.group(0)!).toList();
+
+        for (int i = 0; i < partsA.length && i < partsB.length; i++) {
+          final partA = partsA[i];
+          final partB = partsB[i];
+
+          //compare numeric part
+          if (int.tryParse(partA) != null && int.tryParse(partB) != null) {
+            final numA = int.parse(partA);
+            final numB = int.parse(partB);
+            if (numA != numB) return numA.compareTo(numB);
+          } else {
+            // Compare alphabetic part
+            final comparison = partA.compareTo(partB);
+            if (comparison != 0) return comparison;
+          }
+        }
+
+        return partsA.length.compareTo(partsB.length);
+      }

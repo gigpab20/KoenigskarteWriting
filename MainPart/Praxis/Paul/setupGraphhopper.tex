@@ -1,5 +1,54 @@
+\Author{\daAuthorTwo}
+
+For the feature of marking a street that a group needs to visit, we researched a way to calculate a route between multiple different coordinates. But because this route needed to follow the street and could not be just a straight line, we ended up using the routing-engine GraphHopper. 
+
 \subsection{Why use GraphHopper?}
 
-\subsection{Configuration}
+First, GraphHopper, since it is an open-source tool, has a decent documentation, so it is easy to get started with. It met all our requirements, so, we are able to request a route between multiple and not only two coordinates, and it could be self-hosted on our own server, to avoid having to pay fees for API-Tokens. Additional it was great for development, to not be restricted in how many points to route between. The API-Interface is well documented and there are many example-requests provided on their official website. Lastly GraphHopper provides a simple setup, so getting your own server up and running can be a matter of minutes.
+
+\blankLine
 
 \subsection{Local hosting}
+
+GraphHopper comes as a .jar file. This is a java-executable and can therefor be run and used on every computer with a recent java version installed. To start the routing-engine, you first need a configuration file in which you can specify where the data can be found on your server, as well as other settings for your server, like the port it should be run.
+
+\blankLine
+
+\subsubsection{Configuration}
+
+For the configuration of our GraphHopper instance, we created the following file: 
+
+\lstset{style=config, caption=GraphHopper configuration file (config.yml)}
+\begin{lstlisting}
+graphhopper:
+    datareader.file: austria-latest.osm.pbf
+    graph.location: austria-gh
+    profiles:
+      - name: foot
+        weighting: custom
+        custom_model:
+          speed:
+            - if: true
+              limit_to: 5
+    import.osm.ignored_highways: motorway,trunk
+
+server:
+    application_connectors:
+      - type: http
+        port: 46381
+        bind_host: localhost
+    root_path: /streets/*
+    request_log:
+      appenders: []
+\end{lstlisting}
+
+This file defines, the location of the file that contains the initial Data, as well as the directory where the calculated information gets stored, as well as the foot profile. In the \textit{server} section, parameters like the request path or port get defined. This will be needed later, for making the instance accessible through a reverse proxy managed by NGINX. 
+
+\subsubsection{Deployment}
+To deploy our instance and open the API for requests, we need to copy the map data, the .jar executable and our configuration file onto the server. Afterwards, we need to execute the jar file to start our GraphHopper server. We need to tell GraphHopper in which mode to start, here we use the \textit{server-mode} and, where our config.yml file is located. Additionally, we need the \& to run it in the background so, once the executing terminal is closed, the server will not shut down. We end up with this command:
+
+
+\begin{center}
+  \texttt{java -jar graphhopper-web.jar server config.yml \&}
+\end{center}
+\newpage
