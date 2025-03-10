@@ -11,3 +11,5 @@ CMY
 GraphHopper
 DataGrip
 Sternsinger-Aktion
+vgl
+alreadyVisited

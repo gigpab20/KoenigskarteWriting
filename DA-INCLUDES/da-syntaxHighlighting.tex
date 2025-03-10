@@ -1,6 +1,31 @@
 % Package für Source Code
 \usepackage{listings}
 \usepackage{listing}
+\usepackage{xcolor}
+
+\definecolor{backgroundcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{keywordcolor}{rgb}{0.427, 0.353, 0.816}
+%\definecolor{keywordcolor}{rgb}{0.75,0.0,0.0} 
+\definecolor{commentcolor}{rgb}{0.5,0.5,0.5}
+\definecolor{Green}{rgb}{0, 0.3, 0}
+\definecolor{Pink}{rgb}{1.0, 0.75, 0.8}
+
+\lstdefinestyle{generic}{
+     backgroundcolor=\color{backgroundcolour},
+     numberstyle=\color{gray},
+     numbers=left, 
+     captionpos=b,
+ }
+
+ \lstdefinestyle{config}{
+  backgroundcolor=\color{backgroundcolour},
+  numberstyle=\color{gray},
+  numbers=left, 
+  captionpos=b,
+  basicstyle=\color{keywordcolor},  
+  moredelim=[l][\color{black}]{:},
+}
+
 
 % C-Sharp
 \definecolor{Green}{rgb}{0, 0.3, 0}
@@ -199,4 +224,4 @@ framexleftmargin=-0mm
 }
 
 % Umbennen von Code Listing
-\renewcommand{\lstlistingname}{Quellcode}
+\renewcommand{\lstlistingname}{Sourcecode}
