@@ -8,7 +8,7 @@ Before even starting the development of our app, we decided to mock up the user 
 
 This map view is the center point of our app. Here, the addresses that still need to be visited get displayed and comments can be added. The user can move, zoom or rotate the map as well as click on markers to see details and edit the comment field. There are also visual indicators for addresses that are already commented, as well as different icons depending on the specification of an address. On the bottom of our app is a navigation bar, that stays consistent across the different screens and is used to switch between them. Our primary goal was to keep the map as simple as possible to avoid distraction or overwhelming the user.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{minipage}{0.3\textwidth}
         \centering
@@ -33,19 +33,19 @@ There were two different ideas to integrate this view into the app, first, using
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.26\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/listScreenv1.png}
         \caption{Initial idea of List view with pull-out panel}
     \end{minipage}
     \hspace{0.3cm}
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.26\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/listScreenv2.png}
         \caption{List view with different opening concept}
     \end{minipage}
     \hspace{0.3cm}
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.26\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/finalList.jpeg}
         \caption{Final implementation of List view with swipe gestures}
@@ -55,23 +55,25 @@ There were two different ideas to integrate this view into the app, first, using
 In the end, a few things changed, but the basic concept stands since the project start.
 
 \subsection{Details View}
-This view was designed not to be a whole separate screen from the beginning, but it was basically completely reworked during development. At first, it was designed to be a sliding panel, just like the list view. It ended up being just a small pop-up that gets displayed when a user taps on a marker. In a future iteration of the app, this dialog should also be accessible from the list view. In this dialog, the house number, street name, postal code and a text field for comments get displayed. Through two color-coded buttons the comment can be either saved or discarded.
+This view was designed to not be a whole separate screen from the beginning, but it was basically completely reworked during development. At first, it was planned to be a sliding panel, just like the list view. It ended up being just a small pop-up that gets displayed when a user taps on a marker. In this dialog, the house number, street name, postal code and a text field for comments get displayed. Through two color-coded buttons the comment can be either saved or discarded.
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/detailsScreen.png}
-        \caption{Initial wireframe}
+        \caption{Wireframe of map screen}
     \end{minipage}
     \hspace{2cm}
     \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/finalDetails.jpeg}
-        \caption{Final screen in app}
+        \caption{Final version of map with markers}
     \end{minipage}
 \end{figure}
 
 \subsection{Possible improvements for future versions}
+
+In a future iteration of the app, the details' dialog should be accessible from the list view, also, according to the feedback we got of legitimate users of our app, it would be nice to have more states that just visited or not. For example, visited, but nobody was home, will not visit again this year, or visited, somebody was at home, but wishes to not be visited anymore. To implement this, the entire list screen needs to be completely redesigned. Additionally, the feature, that the user can see which address is closest to them would probably be useful. Furthermore, reliably displaying the users current location would be appreciated.
 
 \newpage
