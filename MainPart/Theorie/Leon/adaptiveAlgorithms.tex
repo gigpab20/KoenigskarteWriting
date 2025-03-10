@@ -7,17 +7,17 @@ This chapter explains how adaptive algorithms and real-time data integration can
 
     \subsection{Traditional Methods for Address Database Management}
 
-    Traditional address database management relies on manual or semi-automated processes that lack real-time adaptability. These methods were designed for stable environments with occasional data changes, which makes them less effective for modern mobile applications requiring constant updates. This chapter outline common challenges faced by traditional systems and their limitations.
+    Traditional address database management relies on manual or semi-automated processes that lack real-time adaptability. These methods were designed for stable environments with occasional data changes, which makes them less effective for modern mobile applications requiring constant updates. This chapter outlines common challenges faced by traditional systems and their limitations.
 
 
         \subsubsection{Manual Entry and Batch Updates}
         In the past, address databases were updated through periodic batch uploads, such as monthly CSV files, which store data in a table format with each value separated by commas. Organizations often relied on printed address lists given to field teams, with corrections submitted on paper. This method caused delays. For example, if a street name changed due to construction, mobile teams could work with outdated data for extended periods. \autocite{FasterCapital2025Mar}\\
 
 
-        Manual data entry by administrators was another common practice. Human errors, such as typos, worsened the problem, making the system less reliable. A study conducted by the Journal of Accountancy found that human error rates in manual data entry can range from 1\% to 5\%. \autocite{integrationmadeeasy2025Mar}
+        Manual data entry by administrators was another common practice. Human errors, such as typos, worsen the problem, making the system less reliable. A study conducted by the Journal of Accountancy found that human error rates in manual data entry can range from 1\% to 5\%. \autocite{integrationmadeeasy2025Mar}
 
         \subsubsection{Static Validation Rules}
-        Address database management systems often rely on strict validation rules, such as regular expressions, to verify address formats. Regular expressions define patterns for strings, making them useful for enforcing specific formats. For example, a regex pattern might require the full word "Street" instead of abbreviations like "St." or "Str.". \autocite{AutorenderWikimedia-Projekte2002Jul}
+        Address database management systems often rely on strict validation rules, such as regular expressions, to verify address formats. Regular expressions define patterns for strings, making them useful for enforcing specific formats. For example, a regex pattern might require the full word "Street" instead of abbreviations like "St." or "Str.". \autocite{AutorenderWikimedia-Projekte2002Jul}\\
 
 
         %bild einfügen
@@ -37,7 +37,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
 
 
     \subsection{Adaptive Algorithms}
-    Adaptive algorithms are methods that continuously adjust their parameters in response to new data and changing environmental conditions. These techniques are vital for applications where real-time adaptation is necessary. The following sections describe several core approaches within this domain. \autocite{AdaptiveWikimediaprojects2024Aug}
+    Adaptive algorithms are methods that continuously adjust their parameters in response to new data and changing environmental conditions. These techniques are vital for applications where real-time adaptation is necessary. The following sections describe several core approaches within this domain. \autocite{AdaptiveWikimediaprojects2024Aug}\newpage
 
 
         \subsubsection{Fuzzy Matching}
@@ -53,7 +53,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
         \end{figure}
 
         \subsubsection{Machine Learning Model}
-        Machine learning models can be trained to identify patterns in incoming data and update the database dynamically, eliminating the need for manual intervention. These models are particularly effective in rapidly changing environments, as they continuously learn from new data and provide insights to refine address information in real time.
+        Machine learning models can be trained to identify patterns in incoming data and update the database dynamically, eliminating the need for manual intervention. These models are particularly effective in rapidly changing environments, as they continuously learn from new data and provide insights to refine address information in real time.\\
 
         For example, an ML model can detect and predict changes in street names, new construction sites, or temporary roadblocks based on GPS data, social media updates, or traffic reports. By integrating these data streams, the model can anticipate issues not yet reflected in official datasets and make real-time adjustments to the address database. Moreover, as new information becomes available, the machine learning model continuously improves its predictions, adapting to evolving patterns and ensuring the database remains accurate and up-to-date. \autocite{Encora2023Nov}
         
@@ -67,8 +67,8 @@ This chapter explains how adaptive algorithms and real-time data integration can
         \textbf{Structure of Rule-Based Filters}\\
         A rule-based filter consists of logical conditions applied to address attributes:
         \begin{itemize}
-            \item \textbf{AND}: All rules must be true
-            \item \textbf{OR}: At least one rule must be true
+            \item \textbf{AND}: All rules must be true.
+            \item \textbf{OR}: At least one rule must be true.
         \end{itemize}
         
 
@@ -96,7 +96,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
         
             \item \textbf{Fault Tolerance:} Data loss due to network failures must be prevented.
         
-            \item \textbf{Consistency:} Conflicting address information from multiple sources requires resolution strategies.
+            \item \textbf{Consistency:} Conflicting address data from multiple sources needs resolution.
         \end{itemize}
                 
         \subsubsection{Core Components}
@@ -110,18 +110,18 @@ This chapter explains how adaptive algorithms and real-time data integration can
 
         \item \textbf{Data Processing:} Engines process, clean, analyze, and enhance the data.  
 
-        \item \textbf{Storage \& Delivery:} Processed data is stored in databases and made accessible through APIs.  
+        \item \textbf{Storage \& Delivery:} Processed data is stored in databases and accessed via APIs.
 
     \end{itemize}
 
         \subsubsection{Popular Frameworks}
 
-        Three frameworks dominate real-time integration: \autocite{Ranjbary2024Sep}\\
-        \textbf{Apache Kafka}: A high-throughput streaming platform. \textit{It could process GPS and traffic data to reroute teams around road closures}.\\
-        \textbf{Apache Flink}: A low-latency engine for complex workflows. \textit{Flink could power ML models predicting address changes (e.g., construction zones)}.\\
-        \textbf{AWS Kinesis}: A cloud-native service for scalability. \textit{Kinesis merges regional address updates into a global view for international teams}.\\
+        Three frameworks dominate real-time integration: \\
+        \textbf{Apache Kafka}: A high-throughput streaming platform. It could process GPS and traffic data to reroute teams around road closures.\\
+        \textbf{Apache Flink}: A low-latency engine for complex workflows. Flink could power ML models predicting address changes.\\
+        \textbf{AWS Kinesis}: A cloud-native service for scalability. Kinesis merges regional address updates into a global view for international teams.\\
         
-        Choosing between them depends on needs: Kafka for volume, Flink for processing, Kinesis for cloud scalability.
+        Choosing between them depends on needs: Kafka for volume, Flink for processing, Kinesis for cloud scalability. \autocite{Ranjbary2024Sep}
 
 
         \subsubsection{Evaluation Metrics}
@@ -132,28 +132,28 @@ This chapter explains how adaptive algorithms and real-time data integration can
         \paragraph{Accuracy}
         \label{par:accuracy}
 
-        Accuracy measures how closely the addresses in the database match real-world locations. Traditional methods often suffer from decay over time due to manual updates or infrequent batch imports. \textit{In your app, adaptive algorithms improve accuracy by continuously reconciling data from multiple sources}. For example:
-        \begin{itemize}
-            \item \textbf{Fuzzy Matching}: Corrects typos (e.g., "Hauptstrasse 1" vs. "Hauptstraße 1") by calculating similarity scores. A Levenshtein distance threshold of 85\% could auto-merge close matches \cite{fuzzy-matching-study}.
-            \item \textbf{Machine Learning}: Detects contextual errors (e.g., a hospital address suddenly appearing in a residential zone) using anomaly detection models trained on historical data.
-        \end{itemize}
-        A 2021 case study in logistics \cite{logistics-accuracy} showed that real-time integration reduced address errors by 37\% compared to monthly batch updates. *For emergency teams, even a 5\% error reduction can save critical minutes during missions.* To quantify this, accuracy is calculated as:
+        Accuracy measures how closely the addresses in the database match real-world locations, ensuring reliable address information. Traditional methods often suffer from decay over time due to manual updates or infrequent batch imports, leading to outdated or incorrect data.  \\
+
+        Inaccurate data can lead to inefficiencies, delays, or even costly mistakes. Furthermore, achieving high accuracy often involves continuous updates and validation of data, particularly when using multiple data sources. \autocite{GeeksforGeeks2024Oct}\\
+
+        Accuracy is calculated as:
         \[
         \text{Accuracy} = \frac{\text{Correct Addresses}}{\text{Total Addresses}} \times 100
         \]
-        Challenges remain, such as balancing precision (avoiding false merges) and recall (catching all duplicates), but adaptive rules (e.g., prioritizing GPS coordinates over user inputs) mitigate these trade-offs.
+    
 
         \paragraph{Latency}
         \label{par:latency}
 
-        Latency measures the delay between data generation (e.g., a street closure reported by sensors) and its availability in the app. *For mobile teams, latency above 30 seconds can render updates useless during fast-moving operations.* Key factors include:
-        \begin{itemize}
-            \item \textbf{Data Ingestion Speed}: Tools like Apache Kafka reduce delays by processing 100,000+ events per second \cite{kafka-latency}.
-            \item \textbf{Edge Processing}: Filtering data on mobile devices (e.g., discarding irrelevant GPS pings) cuts transmission time by 50\% \cite{edge-computing}.
+        Latency measures the delay between data generation and its availability in the app. For mobile teams, latency above 30 seconds can render updates useless during fast-moving operations. Reducing latency is critical for ensuring timely decision-making and operational efficiency. Key factors influencing latency include: \autocite{GeeksforGeeks2024Oct}
+
+        \begin{itemize} 
+            \item \textbf{Data Ingestion Speed}: Fast ingestion ensures data is quickly captured, minimizing delays and speeding up availability.
+            \item \textbf{Edge Processing}: Local data processing speeds up decision-making by filtering data before transmission, reducing network load.
+            \item \textbf{Network Bandwidth}: Latency is affected by network bandwidth; poor conditions, like low signal or congestion, increase delays.
+            \item \textbf{Data Prioritization}: Algorithms that prioritize critical data reduce perceived latency by processing urgent updates first.
+
         \end{itemize}
-        In tests, a prototype using Apache Flink achieved median latency of 1.2 seconds for address updates—compared to 8 hours in batch systems. However, trade-offs exist: aggressive latency reduction (e.g., in-memory caching) risks data loss during crashes. *Your app’s hybrid approach—processing critical updates instantly (e.g., disaster alerts) while queuing non-urgent tasks (e.g., historical data backups)—optimizes this balance.*
-    
-        
 
 \blankLine
 
