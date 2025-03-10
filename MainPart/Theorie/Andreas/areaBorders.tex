@@ -59,7 +59,7 @@
         \item As soon as the points are sorted, the algorithm builds the convex hull by looking at each point in the sorted list. It moves from one point to the next, while going through each point it checks if the previous three points form a right or a left turn. As soon as a right turn is detected, the last point is removed, because it would create an inward curves in the shape, which would then result in a concave hull and not a convex hull. The algorithm continues with this until the hull is fully formed.
         \item The time it takes to run the Graham's Scan is \textbf{O(N log N)}, with N as the total number of points. Therefore, the required time grows reasonably with a larger dataset which makes it efficient for moderately large sets of points.
     \end{itemize} 
-    \blankLine 
+    \autocite{Andi:typesOfConvexHullAlgos, Andi:convexHullPic} \newline \newline
     \textbf{Monotone Chain Algorithm:}
     \begin{itemize}
         \item The Monotone Chain algorithm was introduced in 1979 and is antoher efficient way to calculate a convex hull. It begins by soirting the points based on their horizontal position (x-coordinate), from the leftmost to the rightmost.
