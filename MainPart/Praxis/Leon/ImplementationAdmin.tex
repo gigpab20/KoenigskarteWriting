@@ -1,11 +1,11 @@
 \Author{\daAuthorOne}
 % \usepackage[backend=biber, style=alphabetic]{biblatex}
 
-The Admin Panel is an administrative control center to efficiently manage all addresses within a single environment. It is used for planning upcoming "Sternsinger" events, ensuring that all required addresses are covered and effectively distributed among participating groups. Additionally, it provides a way to assign areas containing addresses that a group needs to visit. This zoning feature ensures that each group is responsible for only the addresses within their designated area.\\
+The Admin Panel is an administrative control center to efficiently manage all addresses within a single environment. It is used for planning upcoming "Sternsinger" events, ensuring that all required addresses are covered and effectively distributed among participating groups. Additionally, it provides a way to assign areas containing addresses that a group needs to visit. This zoning feature ensures that each group is responsible for only the addresses within their designated area.\blankLine
 
-This tool enables authorized users to perform CRUD operations (Create, Read, Update, Delete) on addresses, streets, and areas. These features make it easy to address issues quickly and make changes to the areas that participants need to visit. For example, when a new street is added to the neighborhood, the administrator can update the system to include it and assign it to the appropriate area. Similarly, if a group withdraws from the event, the administrator can reassign any unvisited addresses to other groups. This ensures that the data remains up-to-date, allowing quick reactions to special cases, helping with the planning and execution of "Sternsinger" events.\\
+This tool enables authorized users to perform CRUD operations (Create, Read, Update, Delete) on addresses, streets, and areas. These features make it easy to address issues quickly and make changes to the areas that participants need to visit. For example, when a new street is added to the neighborhood, the administrator can update the system to include it and assign it to the appropriate area. Similarly, if a group withdraws from the event, the administrator can reassign any unvisited addresses to other groups. This ensures that the data remains up-to-date, allowing quick reactions to special cases, helping with the planning and execution of "Sternsinger" events.\blankLine
 
-This chapter will outline the implementation of the Admin Panel, detailing its components, functionalities, and widgets, and providing guidance on how to use them.\\\\
+This chapter will outline the implementation of the Admin Panel, detailing its components, functionalities, and widgets, and providing guidance on how to use them.\blankLine\blankLine
 
 
 \subsection{Navigation}
@@ -73,7 +73,7 @@ This chapter will outline the implementation of the Admin Panel, detailing its c
         \item The boolean variable \texttt{isNewAddress} is set to \texttt{true}, indicating that a new address is being created.  
     \end{itemize}  
     
-    The cleared fields can then be filled with the new information. When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs several validation checks, as shown in \ref{fig:Validation}. If the address is valid, the \texttt{AdminAddressProvider} adds it to the database, a \texttt{Notification} is displayed, and the newly added address appears.\\
+    The cleared fields can then be filled with the new information. When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs several validation checks, as shown in \ref{fig:Validation}. If the address is valid, the \texttt{AdminAddressProvider} adds it to the database, a \texttt{Notification} is displayed, and the newly added address appears.\blankLine
     
     When the map is clicked, the \texttt{onClickNewAddress} method is also invoked within the \texttt{AdminMapComponent}. The method receives the click coordinates as parameters to create the address at the selected location.  
     
@@ -81,13 +81,13 @@ This chapter will outline the implementation of the Admin Panel, detailing its c
 \subsubsection{Edit Address}
 \sloppy % Damit der Text (\texttt{DatabaseViewComponent}) nicht über den Rand hinausragt
 Existing addresses can be edited by selecting them in either the \texttt{AdminMapComponent} or the \texttt{DatabaseViewComponent}.
-The selection fills the \texttt{InputFields} with the information of the address, and in this case, the boolean variable \texttt{isNewAddress} is set to \texttt{false} to indicate that an existing address is being updated.\\
+The selection fills the \texttt{InputFields} with the information of the address, and in this case, the boolean variable \texttt{isNewAddress} is set to \texttt{false} to indicate that an existing address is being updated.\blankLine
 
 \sloppy
 The administrator can then edit the information and press the "Speichern" button. This triggers the \texttt{saveAddress} method, which performs the same validation checks as when adding a new address. The \texttt{AdminAddressProvider} updates the selected address in the database, and the \texttt{Notification} is displayed. \newpage
 
 \subsubsection{Delete Address}
-After selecting an address, the administrator can press the "Löschen" button to delete it. This triggers the \texttt{deleteAddress} method, which calls the \texttt{AdminAddressProvider} to delete the selected addresses.\\
+After selecting an address, the administrator can press the "Löschen" button to delete it. This triggers the \texttt{deleteAddress} method, which calls the \texttt{AdminAddressProvider} to delete the selected addresses.\blankLine
 
 The method also triggers the \texttt{showDeleteDialog} method, which displays an \texttt{AlertDialog} to confirm the action and prevent accidental deletions.
 
@@ -102,9 +102,9 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays an
     Validation is the process of checking that data meets specific criteria before it is accepted and added to a system or database. This ensures that the data is accurate, consistent, and conforms to required standards. Validation prevents errors and inconsistencies that could arise from invalid or incomplete data, maintaining the integrity and reliability of the system. It helps catch mistakes early, such as missing fields or incorrect data inputs. By ensuring that only valid data is processed, validation plays a crucial role in preserving data quality. \autocite{ContributorstoWikimediaprojects2025Feb}
 
 \paragraph{isDuplicateAddress}
-    To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses, to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\\
+    To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses, to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\blankLine
 
-    A duplicate address is identified by the following criteria:\\
+    A duplicate address is identified by the following criteria:\blankLine
     \textbf{street name, postal code, and house number}
     
 
@@ -163,7 +163,7 @@ To display this notification, the \texttt{showNotification} method is called. Th
 
 \subsubsection{Edit multiple Addresses}
 \label{fig:Edit multiple addresses}
-To make it easier to edit multiple addresses at once, the control|command key on the keyboard is listened to, meaning the system detects and responds to when the key is pressed. When this key is pressed, the \texttt{isCtrlPressed} variable is set to \texttt{true}. This variable is passed to the \texttt{DatabaseViewComponent} and the \texttt{AdminMapComponent} to inform them that multiple addresses are to be selected.\\
+To make it easier to edit multiple addresses at once, the control|command key on the keyboard is listened to, meaning the system detects and responds to when the key is pressed. When this key is pressed, the \texttt{isCtrlPressed} variable is set to \texttt{true}. This variable is passed to the \texttt{DatabaseViewComponent} and the \texttt{AdminMapComponent} to inform them that multiple addresses are to be selected.\blankLine
 
 
 To detect when the control|command key is pressed or released, the predefined \texttt{RawKeyboardListener} widget is used. This widget listens for keyboard events and updates the state of the \texttt{isCtrlPressed} variable accordingly. When the key is pressed, the widget sets \texttt{isCtrlPressed} to \texttt{true}, indicating that it is being held down. Alternatively, when the  key is released, \texttt{isCtrlPressed} is set to \texttt{false}, signaling that the key is no longer pressed.
@@ -184,7 +184,7 @@ The selected addresses are saved in the \texttt{selectedAddresses} variable in t
 
 
 \subsubsection{Edit all Addresses from a Street}
-All addresses on a street can be edited at once, simplifying bulk modifications. This process is similar to editing multiple addresses (\ref{fig:Edit multiple addresses}), but instead of manually selecting each address, the entire street is selected at once. This allows for quicker adjustments, ensuring consistency across all addresses on the selected street. Once a street is chosen, all associated addresses are automatically included in the selection. \\
+All addresses on a street can be edited at once, simplifying bulk modifications. This process is similar to editing multiple addresses (\ref{fig:Edit multiple addresses}), but instead of manually selecting each address, the entire street is selected at once. This allows for quicker adjustments, ensuring consistency across all addresses on the selected street. Once a street is chosen, all associated addresses are automatically included in the selection. \blankLine
 
 A street can be selected in two ways:  
 
@@ -213,7 +213,7 @@ This was implemented, because, selecting the street directly on the map could be
 
 
 \subsubsection{Edit Odd / Even Streets}
-One requirement was that addresses from a street could be automatically assigned to two areas based on whether the house number is even or odd. This is because it is common for addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This division makes it easier to assign the street sides to different areas, so that "Sternsinger" participants don't have to cross the street as often.\\ 
+One requirement was that addresses from a street could be automatically assigned to two areas based on whether the house number is even or odd. This is because it is common for addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This division makes it easier to assign the street sides to different areas, so that "Sternsinger" participants don't have to cross the street as often.\blankLine 
 To make this possible, the administrator first selects a street in the \texttt{AdminMapComponent} (\ref{fig:Select Street}), and then a blue button appears beneath the \texttt{InputFields}.
 \begin{figure}[H]
     \centering
@@ -253,7 +253,7 @@ To make this possible, the administrator first selects a street in the \texttt{A
 
 \newpage
 
-The filter is passed and applied to both the \texttt{AdminMapComponent} and the \texttt{DatabaseViewComponent}. The criteria and their enabled/disabled state are managed by a series of variables within the \texttt{AddressPage} class. These variables control which filters are active and store the selected filter values. They are defined as follows:\\
+The filter is passed and applied to both the \texttt{AdminMapComponent} and the \texttt{DatabaseViewComponent}. The criteria and their enabled/disabled state are managed by a series of variables within the \texttt{AddressPage} class. These variables control which filters are active and store the selected filter values. They are defined as follows:\blankLine
 
 The filter is then applied to the addresses within the components. The filtering process is done step-by-step, starting with the area filter, followed by the special feature filter, and finally the street filter. If any of the filter conditions are met, the addresses are filtered accordingly. Only the \texttt{filteredAddresses} are displayed in the \texttt{AdminMapComponent} and the \texttt{DatabaseViewComponent}.
  
@@ -277,11 +277,11 @@ To make it easier for users of the user application to access information about 
 \end{figure}
 
 \subsubsection{QR-Code-PDF Download}
-A PDF containing  QR-codes for all areas can be downloaded, making it easier to distribute the information to users. The PDF is generated using the \texttt{savePDF} method of the \texttt{PDFSaver} class.\\
+A PDF containing  QR-codes for all areas can be downloaded, making it easier to distribute the information to users. The PDF is generated using the \texttt{savePDF} method of the \texttt{PDFSaver} class.\blankLine
 
-To generate the QR-codes, the \texttt{generateQRCode} method in the \texttt{ListEditPage} class is used. This method takes a \texttt{String} as a parameter and converts it into a QR-code using the predefined \texttt{QrPainter}, which helps in rendering it \autocite{pub.dev/QrPainter-class}. It then generates an image of the QR-code, converts it into PNG byte data, and transforms the byte data into a list of bytes (\texttt{Uint8List}) to be used in the PDF. \\
+To generate the QR-codes, the \texttt{generateQRCode} method in the \texttt{ListEditPage} class is used. This method takes a \texttt{String} as a parameter and converts it into a QR-code using the predefined \texttt{QrPainter}, which helps in rendering it \autocite{pub.dev/QrPainter-class}. It then generates an image of the QR-code, converts it into PNG byte data, and transforms the byte data into a list of bytes (\texttt{Uint8List}) to be used in the PDF. \blankLine
 
-Then, the \texttt{savePdf} method of the \texttt{PDFSaver} class creates a PDF document containing the QR-codes for all areas. It uses the predefined \texttt{pdf} package (imported as \texttt{pw}) to manage the PDF document \autocite{pub.dev/pdf}. The function starts by initializing a new PDF using the \texttt{pw.Document()} class and an empty list to store the generated QR-codes. The method then iterates over the list of areas, generating a code for each description of all areas using \texttt{generateQRCode} and adding it to the list.\\
+Then, the \texttt{savePdf} method of the \texttt{PDFSaver} class creates a PDF document containing the QR-codes for all areas. It uses the predefined \texttt{pdf} package (imported as \texttt{pw}) to manage the PDF document \autocite{pub.dev/pdf}. The function starts by initializing a new PDF using the \texttt{pw.Document()} class and an empty list to store the generated QR-codes. The method then iterates over the list of areas, generating a code for each description of all areas using \texttt{generateQRCode} and adding it to the list.\blankLine
 
 Afterward a page is added to the PDF document using the \texttt{pw.MultiPage} widget. This page includes a title and the description of each area along with its corresponding QR-code. Once the page content is built, the PDF data is saved by calling \texttt{pdf.save()}. Finally, the \texttt{PdfSaver.savePdf} method is called to save the PDF as "Gebiete.pdf."
 
@@ -325,15 +325,15 @@ This component displays the addresses on a geographic map. The map used is OpenS
 \paragraph{Select a Street}
 \label{fig:Select Street}
 
-To select a street, the \texttt{isPointNearPolyline} method was implemented. This method checks whether the click was on a street. It takes the coordinates of the click as a \texttt{LatLng} object and a street as a list of \texttt{LatLngs}. After each click on the map, a loop is triggered that calls the \texttt{isPointNearPolyline} method for every street, passing the click coordinates during each iteration.\\
+To select a street, the \texttt{isPointNearPolyline} method was implemented. This method checks whether the click was on a street. It takes the coordinates of the click as a \texttt{LatLng} object and a street as a list of \texttt{LatLngs}. After each click on the map, a loop is triggered that calls the \texttt{isPointNearPolyline} method for every street, passing the click coordinates during each iteration.\blankLine
 
 The \texttt{isPointNearPolyline} method uses another loop that iterates over all points of the street. Since the street is represented as a list of \texttt{LatLng} objects, each pair of consecutive points is connected to form a line segment. During each iteration of the loop, a helper method \texttt{isNear} is called to calculate the distance between the click and the currently iterated line segment.
 
 \newpage
 
-The \texttt{isNear} method takes the click point, the two points for the line and the tolerance. If the distance is smaller than the predefined tolerance, the method returns \texttt{true}, indicating that the click was on the street.\\
+The \texttt{isNear} method takes the click point, the two points for the line and the tolerance. If the distance is smaller than the predefined tolerance, the method returns \texttt{true}, indicating that the click was on the street.\blankLine
 
-The method uses the Manhattan distance to determine the distance between the click and the line. The Manhattan distance, also known as taxicab or city block distance, measures the distance between two points in a grid-based system. It is calculated as the sum of the absolute differences of the x- and y-coordinates.\\
+The method uses the Manhattan distance to determine the distance between the click and the line. The Manhattan distance, also known as taxicab or city block distance, measures the distance between two points in a grid-based system. It is calculated as the sum of the absolute differences of the x- and y-coordinates.\blankLine
 Why the absolutes? The absolute value ensures that the distance is always positive, regardless of the direction. If you were to walk 5 blocks north or 5 blocks south, the distance is the same. It's 5 blocks. This distance is then compared to the tolerance. \autocite{AlgoDaily2025Mar}
 
 \begin{center}
@@ -362,7 +362,7 @@ Because it would not make any sense to select coordinates for multiple addresses
 
 \subsubsection{DatabaseViewComponent}
 \label{fig:DatabaseViewComponent}
-To display the addresses in a table, this component was implemented. It takes the \texttt{selectedAddresses}, the filter variables, and the \texttt{isCtrlPressed} variable from the \texttt{AddressPage} as parameters. The \texttt{isCtrlPressed} variable is used to track whether multiple addresses are being selected. The \texttt{selectedAddresses} are shown in the table and can be selected by clicking on them.\\
+To display the addresses in a table, this component was implemented. It takes the \texttt{selectedAddresses}, the filter variables, and the \texttt{isCtrlPressed} variable from the \texttt{AddressPage} as parameters. The \texttt{isCtrlPressed} variable is used to track whether multiple addresses are being selected. The \texttt{selectedAddresses} are shown in the table and can be selected by clicking on them.\blankLine
 
 Above the table, two fields are displayed: one showing the number of selected addresses and the other showing the total number of found addresses. The table is implemented using the \texttt{ListView} widget, a predefined widget in Flutter.
 
@@ -375,18 +375,18 @@ Above the table, two fields are displayed: one showing the number of selected ad
 
 
 \subsubsection{PDFSaver}
-The \texttt{PdfSaver} class provides functionality for saving PDF files from a byte array. The static method \texttt{savePdf} handles the saving process depending on the platform. \\
+The \texttt{PdfSaver} class provides functionality for saving PDF files from a byte array. The static method \texttt{savePdf} handles the saving process depending on the platform. \blankLine
 
-For web applications, it creates a \texttt{Blob} containing the PDF data, generates a temporary URL, and triggers a download via an \texttt{AnchorElement}. After the download starts, the temporary URL is revoked to free resources.\\
+For web applications, it creates a \texttt{Blob} containing the PDF data, generates a temporary URL, and triggers a download via an \texttt{AnchorElement}. After the download starts, the temporary URL is revoked to free resources.\blankLine
 
 On non-web platforms, the method utilizes the \texttt{FileSaver} package to store the PDF file. The \texttt{saveFile} function is used, specifying the file name, byte data, and MIME type to ensure proper file handling.
 
 
 \newpage
   \subsubsection{AdminAddressProvider}
-  This class serves as a bridge between the Admin Panel and the backend. It is responsible for all CRUD operations on addresses, streets, special features, and areas. It is used in the \texttt{AddressPage} and the \texttt{ListEditPage}. \\
+  This class serves as a bridge between the Admin Panel and the backend. It is responsible for all CRUD operations on addresses, streets, special features, and areas. It is used in the \texttt{AddressPage} and the \texttt{ListEditPage}. \blankLine
 
-  The \texttt{AdminAddressProvider} includes the \texttt{ChangeNotifier} mixin. A mixin is a way to reuse code across multiple classes without using inheritance, as in Java. \autocite{dart.dev} The \texttt{ChangeNotifier} mixin is used to notify the UI when the data changes. \autocite{flutter.dev}  \\
+  The \texttt{AdminAddressProvider} includes the \texttt{ChangeNotifier} mixin. A mixin is a way to reuse code across multiple classes without using inheritance, as in Java. \autocite{dart.dev} The \texttt{ChangeNotifier} mixin is used to notify the UI when the data changes. \autocite{flutter.dev}  \blankLine
   
   This notification is triggered by calling the \texttt{notifyListeners} method. Below is a typical method in the \texttt{AdminAddressProvider} class, which demonstrates these functionalities:  
   
@@ -420,7 +420,7 @@ Widgets are used to build and reuse UI components in Flutter. They help maintain
 
 \subsubsection{InputField}
 \label{fig:InputField} 
-This widget defines a customizable input field. The \texttt{InputField} requires a label and a \texttt{TextEditingController} to manage the input. Optional parameters include a boolean \texttt{editable}, a list of \texttt{Strings} called \texttt{dropDownOptions}, and a boolean \texttt{isCoordinateInput} to specify whether the input should be numeric.\\
+This widget defines a customizable input field. The \texttt{InputField} requires a label and a \texttt{TextEditingController} to manage the input. Optional parameters include a boolean \texttt{editable}, a list of \texttt{Strings} called \texttt{dropDownOptions}, and a boolean \texttt{isCoordinateInput} to specify whether the input should be numeric.\blankLine
 
 To indicate whether the \texttt{InputField} is editable, icons are displayed on the left side of the field. If the field is not editable, a blocked symbol appears. If it is editable, a pencil icon is shown. When the \texttt{InputField} is editable and not a dropdown, a cross icon appears on the right side. Pressing this icon clears the content.
 
@@ -430,7 +430,7 @@ To indicate whether the \texttt{InputField} is editable, icons are displayed on 
     \caption{InputField examples}
 \end{figure}
 
-If the \texttt{dropDownOptions} parameter is provided with a non-empty list of \texttt{Strings}, the input field is rendered as a dropdown menu. The selected value is displayed, and users can choose from the available options. The selected dropdown value is automatically synchronized with the \texttt{TextEditingController}. \\
+If the \texttt{dropDownOptions} parameter is provided with a non-empty list of \texttt{Strings}, the input field is rendered as a dropdown menu. The selected value is displayed, and users can choose from the available options. The selected dropdown value is automatically synchronized with the \texttt{TextEditingController}. \blankLine
 
 To ensure valid inputs, the \texttt{InputField} uses an \texttt{inputFormatter} for validation. This formatter is applied only when the \texttt{isNumberInput} parameter is set to true. For more details about the validation, refer to \ref{fig:InputField Coordinates Validation}.
 
