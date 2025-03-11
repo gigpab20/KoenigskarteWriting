@@ -91,6 +91,9 @@ To actually receive and the data in our database, we built our backend API. It c
     \todo{vielleicht noch die extractPoints function da rein?}
 \end{itemize}
 
+\subsubsection{Performance}
+To improve our performance, the first thing to change would be to move away from HTTP-Request to Web-Sockets. This would be a more suitable technology, since, only when the data on the server updates, we get an HTTP-Frame. Through this change we could drastically minimize the traffic our app produces, as well as the performance, since the widgets do not net to re-render constantly.   
+
 \subsection{Implementation of the FlutterMap Component}
 
 The FlutterMap widget is build up in layers, which all can be individually ordered and configured. In this part, the layers that we utilized and what configuration options we set will be described. 
@@ -112,5 +115,29 @@ The FlutterMap widget is build up in layers, which all can be individually order
   
   This is the final and arguably most important layer, because here we set a marker for every address. This marker can vary, depending on the specification that the admin assigned to an address in the Admin-Panel. This was implemented by decoding the Base64 string, that is saved in the address object and stores the marker-image. Additionally, if a comment is saved in the address, a little warning indicator gets display on the upper right-hand side of this encoded image. This got introduced, so that users could see at a glance if there was something special to know about an address. We solved this by using a Stack widget. Additionally, we added a GestureDetector, on top of this stack. This is used to open the details' dialog in which the user can modify the comment field. 
 \end{itemize}
+
+\subsection{Implementation of the List Screen}
+
+Now, we will take a look through our list component. The interactive elements here are the two \textit{Dismissible} containers as well as the icon that indicates, if an address has been visited.
+
+The logic behind the color coded \textit{Dismissibles} is just based on the \textit{alreadyVisited} attribute of address. There is also a function (\textit{isWholeStreetVisited}) that checks, if every address of a Street has already been visited. When the users swipe the street item, a dialog gets display, that prompts the user to confirm their action do avoid accidental swipes.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/paul/listScreen/setIsVisitedTrue.jpeg}
+      \caption{Setting \textit{alreadyVisited} true}
+  \end{minipage}
+  \hspace{2cm}
+  \begin{minipage}{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/paul/listScreen/setIsVisitedFalse.jpeg}
+      \caption{Same for setting it false}
+  \end{minipage}
+\end{figure}
+
+\subsubsection{Future outlook for List Screen}
+In the future, this component will likely be completely redesigned. This is due to the changed requirement, that users want to be able to finer select the state of each address. This could be resolved by replacing the sliding gesture with a Dropbox. Then also a filter should be implemented, so, addresses that have a specific state, like, \textit{visited, but nobody was home, will visit again}. Also, a \textit{onClick} event will be defined that opens the details dialog.
 
 \newpage

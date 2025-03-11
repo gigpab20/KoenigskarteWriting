@@ -1,0 +1,11 @@
+\Author{\daAuthorTwo}
+
+Now we will look into the final deployment off all our server resources.
+
+\subsection{Server architecture}
+From our supervisor Prof. DI Loibner, we got access to a server with 16 gigabytes of memory. This was nessecarry, because we needed to run two java applications, our own backend, as well as the GH-instance which was quite hungry concerning RAM. We could access this server through a \textit{Webmin} portal.
+
+\blankLine
+
+\subsection{NGINX}
+Since we had one domain we could use but two API-Interfaces, we needed to set up HTTP-Routes. For this we used the reverse-proxy feature of NGINX
