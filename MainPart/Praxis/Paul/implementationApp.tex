@@ -16,7 +16,7 @@ Due to the fact that, the backend returns the addresses unsorted, the Address-Pr
 
 \blankLine
 
-The \textit{compareHouseNumbers} function enables natural sorting of house numbers by separating numeric and non-numeric parts. It extracts sequences of digits and letters, then compares numeric parts as integers and non-numeric parts alphabetically. This ensures that, for example, "10a" is correctly sorted before "10c". The function is useful for maintaining an intuitive order in the address list, improving readability and usability.
+The \textit{compareHouseNumbers} function performs natural sorting of house numbers by splitting them into alternating numeric and non-numeric components. It achieves this using a regular expression that extracts sequences of digits and non-digit characters separately. The function then iterates through these parts, comparing numeric segments as integers to ensure correct numerical order and comparing non-numeric segments lexicographically. This approach ensures that house numbers such as "10a" and "10c" are sorted in an intuitive order, with "10a" preceding "10c". If all corresponding parts are equal, the function resolves ties by comparing the lengths of the extracted parts lists. This method improves the readability and usability of address lists by maintaining a logical, human-friendly order.
 
 \lstset{style=generic, caption=compareHouseNumbers function (AddressProvider.dart)}
 \begin{lstlisting}
@@ -87,8 +87,6 @@ To actually receive and the data in our database, we built our backend API. It c
     \item \textbf{fetch route information for streets}
     
     Call to our GraphHopper instance. Iterates over every key of the \textit{addressMap}, requests the routing data and calls function \textit{extractPoints} to extract only valid data out of the whole JSON response.
-    
-    \todo{vielleicht noch die extractPoints function da rein?}
 \end{itemize}
 
 \subsubsection{Performance}
@@ -138,4 +136,4 @@ The logic behind the color coded \textit{Dismissibles} is just based on the \tex
 \end{figure}
 
 \subsubsection{Future outlook for List Screen}
-In the future, this component will likely be completely redesigned. This is due to the changed requirement, that users want to be able to finer select the state of each address. This could be resolved by replacing the sliding gesture with a Dropbox. Then also a filter should be implemented, so, addresses that have a specific state, like, \textit{visited, but nobody was home, will visit again}. Also, a \textit{onClick} event will be defined that opens the details dialog.
+In the future, this component will likely be completely redesigned. This is due to the changed requirement, that users want to be able to finer select the state of each address. This could be resolved by replacing the sliding gesture with a Dropbox. Then also a filter should be implemented, so, addresses that have a specific state, like, \textit{visited, but nobody was home, will visit again}. Also, a \textit{onClick} event will be defined that opens the details' dialog.
