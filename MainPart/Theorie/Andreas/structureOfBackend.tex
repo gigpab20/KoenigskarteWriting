@@ -42,7 +42,10 @@
     DTOs are crucial for a backend architecture due to their abilities to enhance the security, maintainability, as well as the performance of the data. Their ability to hide data is among their major strengths because they support exposing only the necessary information to clients without showing sensitive data. \newline
     From a performance-perspective, DTOs maximize network efficiency by only sending the data that is required for the current action performed by the backend. This advantage is particularly valuable in systems where bandwidth and response time are essential. \newline
     Lastly, DTOs are adaptable which allows developers to customize responses to specific use cases. They can support data combination from different entities or the exclusion of unnecessary fields which then results in more efficient responses and easier processing. \newline
-    By utilizing DTOs as they are intended, applications can achieve better modularity, security and overall performance. \newline \newline
+    By utilizing DTOs as they are intended, applications can achieve better modularity, security and overall performance. 
+
+    \newpage
+
     \textbf{Example for Using DTOs} \newline
     A common scenario where DTOs are useful is when managing user information in an application. \newline
     Imagine a system that stores user details such as first name, last name, email and password. If the application exposes the user data to external clients, it could lead to security risks, as sensitive information like passwords should never be shared. Instead of exposing the entire user object, a DTO can be used to filter out unnecessary or sensitive data and only transfer the relevant information. \newline
@@ -55,7 +58,7 @@
         \end{itemize}
     \textbf{Using Validation:}
         \begin{itemize}
-            \item Data validation in DTOs is required to maintain data integrity and prevent processing invalid or incomplete data. By applying validation rules, such as not allowing a field to be empty or limiting the length of different fields, errors are caught early. This prevents incorrect data from being passed on to the logic or inserted to the database.
+            \item Data validation in DTOs is required to maintain data integrity and prevent processing invalid or incomplete data. By applying validation rules, such as not allowing a field to be empty or limiting the length of different fields, errors are caught early. This prevents incorrect data from being passed on to the logic or inserted to the database. \newpage
         \end{itemize}
     \textbf{Using Automation Tools:}
         \begin{itemize}
@@ -72,7 +75,7 @@
     \end{itemize}
     \textbf{Performance Impact:}
     \begin{itemize}
-        \item While DTOs are used to reduce the amount of data transferred over the network, mapping entities to DTOs and vice versa is extra processing. This process will be a bottleneck in performance in high-traffic applications. Using optimized mapping strategies and automated tools for this purpose can help this problem. This still needs to be taken into consideration when implementing DTOs.
+        \item While DTOs are used to reduce the amount of data transferred over the network, mapping entities to DTOs and vice versa is extra processing. This process will be a bottleneck in performance in high-traffic applications. Using optimized mapping strategies and automated tools for this purpose can help this problem. This still needs to be taken into consideration when implementing DTOs.\newpage
     \end{itemize}
     \textbf{Consistency:}
     \begin{itemize}
@@ -82,4 +85,3 @@
     \begin{itemize}
         \item In use cases involving simple data interactions, DTOs may not be required. Adding DTOs to every operation will probably add a layer of abstraction that will not be as valuable. In this scenario, working with entities directly could be a simpler and cleaner approach.
     \end{itemize} \Autocite{Andi:DTOs}
-    
