@@ -32,9 +32,8 @@
     To better understand the concept, consider a set of points randomly placed on a flat surface. If a rubber band would be stretched around those points, it would form a shape that encloses the outermost points. This resulting shape is the convex hull, which is the smallest convex polygon that fully encloses all points. The image below shows exactly this process, with the points being surrounded by the convex hull. This gives a visual representation of the convex hull algorithm.
     \begin{figure} [H]
         \centering
-        \includegraphics [width=1\textwidth] {images/andreas/areaBorders/convexHull.jpg}
-        \caption{Process of the Convex Hull Algorithm}
-        \cite{Andi:convexHullPic}
+        \includegraphics [width=0.7\textwidth] {images/andreas/areaBorders/convexHull.jpg}
+        \caption{Process of the Convex Hull Algorithm (Source: \url{https://www.geeksforgeeks.org/convex-hull-algorithm})}
     \end{figure} 
     \blankLine 
     A convex polygon is a shape where all the corners point outward and there are no inward curves or sharp angles. To put it simply, if you draw a straight line between any two points inside the shape, it will always remain inside or on the shape's edge. This indicates that there are never any inward corners on the convex hull. In contrast, a concave polygon has atleast one or more inward curves where the interior angle is greater than 180 degrees. \newline
@@ -51,12 +50,14 @@
     The convex hull algorithm si especially helpful for identifying a set of points' boundary and eliminating any extra points that fall inside it. In the cas of the addresses of each area, for example, the convex hull algorithm helps in defining the outermost boundaries that enclose these points in the smallest possible area. Whether in pathfinding, geographical mapping or other spatial analysis applications that demand distinct boundary limits, this procedure is crucial.
 
     \subsubsection{Types of Convex Hull Algorithms}
-    The convex hull can be calculated using a variety of algorithms, with the most popualar being \textbf{Graham's Scan} and the \textbf{Monotone Chain algorithm}. Because of their effectiveness and capacity to manage sizable datasets, these algorithms have been widely adopted. \newline \newline
+    The convex hull can be calculated using a variety of algorithms, with the most popualar being \textbf{Graham's Scan} and the \textbf{Monotone Chain algorithm}. Because of their effectiveness and capacity to manage sizable datasets, these algorithms have been widely adopted.
+
+    \blankLine
 
     \textbf{Graham's Scan Algorithm:} 
     \begin{itemize}
         \item Graham's Scan is a methods which was introduced in 1972 to find the convex hull of a set of points. The process starts by sorting the points based on the "polar angle" of each point relative to the bottom-most point. Simply speaking, the polar angle is the angle between a point and a reference direction which is often the horizontal axis (the x-axis).
-        \item As soon as the points are sorted, the algorithm builds the convex hull by looking at each point in the sorted list. It moves from one point to the next, while going through each point it checks if the previous three points form a right or a left turn. As soon as a right turn is detected, the last point is removed, because it would create an inward curves in the shape, which would then result in a concave hull and not a convex hull. The algorithm continues with this until the hull is fully formed.
+        \item As soon as the points are sorted, the algorithm builds the convex hull by looking at each point in the sorted list. It moves from one point to the next, while going through each point it checks if the previous three points form a right or a left turn. As soon as a right turn is detected, the last point is removed, because it would create an inward curve in the shape, which would then result in a concave hull and not a convex hull. The algorithm continues with this until the hull is fully formed.
         \item The time it takes to run the Graham's Scan is \textbf{O(N log N)}, with N as the total number of points. Therefore, the required time grows reasonably with a larger dataset which makes it efficient for moderately large sets of points.
     \end{itemize} 
     \autocite{Andi:typesOfConvexHullAlgos, Andi:convexHullPic} \newline \newline
@@ -105,7 +106,7 @@
     \end{itemize}
     \textbf{Animal Behavior}
     \begin{itemize}
-        \item In ethology, the study of animal behavior, convex hulls are used to identify and anmial's home range. The convex hull gives the estimated area an animal needs to be provided with for its inhabitat. In ecological sutdies, this approach is helpful for tracking animal movement patterns, determining territories and keeping an eye on endangered species.
+        \item In ethology, the study of animal behavior, convex hulls are used to identify and anmial's home range. The convex hull gives the estimated area an animal needs to be provided with for its inhabitat. In ecological sutdies, this approach is helpful for tracking animal movement patterns, determining territories and keeping an eye on endangered species.\newpage
     \end{itemize}
     \textbf{Astronomy and Astrophysics}
     \begin{itemize}
@@ -122,7 +123,7 @@
 
     \begin{figure} [H]
         \centering
-        \includegraphics [width=.55\textwidth] {images/andreas/areaBorders/mbb.png}
+        \includegraphics [width=0.55\textwidth] {images/andreas/areaBorders/mbb.png}
         \caption{Difference between MBB and Convex Hull}
         \cite{Andi:mbbPic}
     \end{figure}
@@ -139,6 +140,8 @@
         \cite{Andi:alphaShapePic}
     \end{figure}
 
+    \newpage
+    
     \textbf{Delaunay Triangulation}
     \begin{itemize}
         \item Delaunay Triangulation is a method that makes a mesh of triangles which connect a set of points while maximizing the minimum angle of each traingle. This ensures a well-formed structure. A border can be roughly approximated by using the Triangulation's outside edges, especially when pairing this method with techniques like Alpha Shapes. THis method is mostly used in geographic information systems (GIS). While it provides a more structured representation of an area, it often requires post-processing to extract a meaningful boundary.
