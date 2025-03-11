@@ -2,21 +2,698 @@
 %! Date = 20.01.2025
 \Author{\daAuthorThree}
 
-    The backend implementation combines theoretical concepts with practical solutions to ensure functionality and scalability.
+    This program's backend which offers a reliable and scalable system for handling all addresses, streets, areas and special features, is the essential layer that makes sure the admin panel and the mobile app for the guides run well. \newline
+    This backend serves as the center for data processing and communication which supports the admin and all guides through an unified API. \newline
+    It effectively manages all requests from the mobile app, where guides interact with addresses which are in their area. Furthermore, it manages all necesssary requests from the admin panel which enables accurate management and control over anything relevant for the guides such as addresses, areas, streets and special features an address may has. \newline 
+
+    One big function of the backend is to enable the admins to perform a wide range on CRUD (Create, Read, Update, Deleter) operations on all necesssary data. Nevertheless, the other function of the backend is to provide guides with their relevant area and all the addresses in this area. This functionalities are crucial for managing the caroler campaign by the admin and to ensure that the guides have access in the mobile app to accurate and up-to-date addresses and areas. \newline
+
+    We use Sprin Boot in our Backend which ensures seamless data transfer between the user interfaces (admin panel and mobile app) and the database of this project. By having an organized structure with the different layers (configuration, entities, repositories, services and controllers), we ensure that the system remains flexible, scalable and easy to maintain. \newline 
+
+    Now, this chapter will show the backend's architecture and therefore all its components while also describing how each component functions and contributes to the whole system of the backend.
 
     \subsection{Config of Spring Boot (application.properties)}
-    The \texttt{application.properties} file configures essential settings, including database connections, logging, and server parameters.
+    The \texttt{application.properties} file in our Spring Boot application is the main configuration file where all the necesssary settings which are related to the application's behavior are defined. This behavior ranges from the database connection to server properties. In our project, this file ensures that the backend is appropriately configured so it connects to the database, exposes the API on the correct network address and port and it makes sure that security settings such as CORS policies are configured right.
+
+        \subsubsection{Database Configuration}
+        One of the main functions of the \texttt{application.properties} is to set the database connection. In our case, we utilize the PostgreSQL database and the following properties set the necessary connection details:
+        \lstset{style=mycsharp, caption=Database Configuration}
+        \begin{lstlisting}
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+        \end{lstlisting}
+        \begin{itemize}
+            \item \texttt{spring.datasource.driver-class-name} defines the driver which is required for the PostgreSQL.
+            \item \texttt{spring.datasource.url} sets the connection string to the local database.
+            \item \texttt{spring.datasource.username} and \texttt{spring.datasource.password} provide the credentials for the database access on the local computer.
+        \end{itemize}
+        This configuration ensures that the backend can interact with the local database to store and retrieve all the data effieciently.
+
+        \subsubsection{JPA and Hibernate Settings}
+        Spring Boot uses Hibernate for the default JPA implementation. We used the following configuration for this:
+        \lstset{style=mycsharp, caption=JPA/Hibernate Settings}
+        \begin{lstlisting}
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+        \end{lstlisting} 
+
+        \begin{itemize}
+            \item \texttt{spring.jpa.show-sql=true} and \verb|spring.jpa.properties.hibernate.format_sql=true| enable and format the logging of SQL statements that get executed in the backend.
+            \item \texttt{spring.jpa.hibernate.ddl-auto=none} ensures that Hibernate does not automatically generate or modify the database tables based on the schemes from the entity classes.
+            \item \texttt{spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect} just tells Hibernate to use SQL optimizations which are PostgreSQL-specific.
+        \end{itemize}
+        
+        \subsubsection{Server Configuration}
+        The backend application needs to be accessible over a network and the following configuration sets its address and port:
+        \lstset{style=mycsharp, caption=Server Configuration}
+        \begin{lstlisting}
+server.address=0.0.0.0
+server.port=46380
+server.servlet.context-path=/addresses            
+        \end{lstlisting} 
+        \begin{itemize}
+            \item \texttt{server.address=0.0.0.0} and \texttt{server.port=46380} set the address and the port of the server.
+            \item \texttt{server.servlet.context-path=/addresses} ensures that all API endpoints have the \texttt{/address} prefix.
+        \end{itemize}
+
+        \subsubsection{CORS Configuration}
+        To allow secure communication between the frontend-interfaces (Admin Panel and mobile app), we needed to configure Cross-Origin Resource Sharin (CORS)
+        \lstset{style=mycsharp, caption=CORS Configuration}
+        \begin{lstlisting}
+spring.web.cors.allowed-origins=https://projektlr.htl-kaindorf.at
+spring.web.cors.allowed-methods=GET,POST,PUT,DELETE                      
+        \end{lstlisting} 
+        This configuration solved an error we got during the development process.
 
     \subsection{Entity Classes (Structure/Purpose)}
-    Entity classes define the application's data model, using annotations to map fields to database tables.
+    Entity classes use JPA annotations to transfer Java objects to the database as tables. These entity classes are necessary for database interaction to ensure structured data storage and retrieval. \newline
+    Each entity, such as addresses, areas, streets and special features of addresses corresponds to a different concept in the system. However, together they build a relation model that is well-structured and easy to manage. \newline
+
+    \textbf{Annotations:} \newline
+    There are several annotations we used in our project to make the entites easier to understand. For example, the area entity looks like this:  
+    \lstset{style=mycsharp, caption=Area Entity}
+    \begin{lstlisting}
+@Data
+@Entity
+@Table(name = "gebiet")
+public class Area {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "gebietid")
+    private Long areaId;
+        
+    @Column(name = "bezeichnung")
+    private String desc;
+}                  
+    \end{lstlisting} 
+
+    In this class, the \texttt{@Data} annotation is used to generate necesssary methods like \texttt{Getters} and \texttt{Setters}. \texttt{@Entity} ensures that JPA actually recognizes the class as an entity and \texttt{@Table} is used to give the table of this class a custom name. Furthermore, \texttt{@Id} sets an identifier for the entity. In this case the id is getting generated automatically with the \texttt{@GeneratedValue} annotation. \newline
+    
+    \textbf{Unique identifier:} \newline
+    The most important aspect of the backend is handling all the addresses. Every address has an unique identifier which is defined by a \texttt{house number} and a \texttt{street}. Therefore, we can not use a single primary key as an identifier for each address. \newline
+    The \texttt{AddressId} class is used to manage this composite key which ensures that each address has its own unique identifier without requiring to generate an artificial identifier.
+    \lstset{style=mycsharp, caption=AddressId}
+    \begin{lstlisting}
+@Data
+public class AddressId implements Serializable { 
+    private String houseNumber;
+    private Long streetId;
+}                         
+    \end{lstlisting} 
+    It is shown in the code snippet from the AddressId class that it uses the mentioned variables as a combination of identifiers which then results in us not needing to make an artificial identifier like a number that goes up everytime the admin adds a new address. \newline
+
+    This composite keys are the best practice if it is not possible to use only on variable as the primary key. This is how the \texttt{AddressId} class is added to the address entity: 
+    \lstset{style=mycsharp, caption=IDs in Address-Entity}
+    \begin{lstlisting}
+@IdClass(AddressId.class)
+public class Address {
+    @Id
+    @Column(name = "Hausnummer")
+    private String houseNumber;
+
+    @Id
+    @Column(name = "Strasseid")
+    private Long streetId;
+}                         
+    \end{lstlisting} 
+    The annotation \texttt{@IdClass} has to be used to define what class is used to define the variables of the primary key. Aftrwards, the corresponding variables, which are in our case \texttt{houseNumber} and \texttt{streetId}, have to be defined as variables in the entity class. Also the annotation \texttt{@Id} has to be used over the variables in the entity class to set is as actual IDs. \newline 
+
+    \textbf{Variables in Entities:} \newline
+    There are several types of variable-types in an entity class. First, the "normal" variable which has no connection to other entities or are in the id in any way. These get used for data that is not related to any other entities. This is an example from the address entity of such a variable:
+    \lstset{style=mycsharp, caption="Normal" Variable}
+    \begin{lstlisting}
+@Column(name = "latitude")
+private double latitude;
+    
+@Column(name = "longitude")
+private double longitude;
+    
+@Column(name = "schonbesucht")
+private Boolean alreadyVisited;                     
+    \end{lstlisting} 
+    In this case, these variables safe the location data of each address and if the address had already been visited. It uses the \texttt{@Column} annotation which is needed because sometimes the name of the column in the database table and the name of the variable in the code may not match for better handling in the code. Otherwise, the variables are just defined with their respective datatype. \newline
+
+    The other type of variables are related variables which have a connection to another entity in some way.
+    \lstset{style=mycsharp, caption=ManyToOne Variable}
+    \begin{lstlisting}
+@ManyToOne
+@JoinColumn(name = "gebietid")
+private Area area;
+    
+@ManyToOne
+@JoinColumn(name = "besonderheitid")
+private SpecialFeature specialFeature;                    
+    \end{lstlisting} 
+
+    This code snippet defines two variables in our address entity which use the \texttt{@ManyToOne} annotation. This is crucial because each address belongs to an area and can have a special feature. We use the ids from the other entites to make sure that the relationship of the two entites are always right. In this case, because it is a ManyToOne relationship, we did not need to define the address entity in the other classes. \newline
+
+    Sometimes the variable have more complex relationships than just with a simpl identifier that gets compared. We had such a case in our project and it came out like this: 
+    \lstset{style=mycsharp, caption=Complex ManyToOne Variable}
+    \begin{lstlisting}
+@ManyToOne(cascade = CascadeType.PERSIST)
+@JoinColumns({
+@JoinColumn(name = "Strasseid", referencedColumnName = "Strasseid", insertable = false, updatable = false),
+@JoinColumn(name = "Postleitzahl", referencedColumnName = "Postleitzahl", insertable = false, updatable = false)
+})
+private Street street;                   
+    \end{lstlisting} 
+    This code snippet defines a variable which is related to the street entity. The street entity also has a composite key as its id so we had to use the \texttt{@JoinColumns} annotation to have a reference to the composite key of the street entity. 
 
     \subsection{JPA-Repositories (DB Access and CRUD Operations)}
-    Repositories simplify database access by providing methods for CRUD operations and enabling custom queries.
+    JPA repositories are a crucial part of the backend to simplify database access by providing methods for many different CRUD (Create, Read, Update, Delete) operations. We utilize repository interfaces that extend \texttt{JpaRepository} instead of manually implementing all these methods that is given to us by the \texttt{JpaRepository}. For example our \texttt{AddressRepo} interface gets defined like this:  \newline
+    \lstset{style=mycsharp, caption=AddressRepo Interface}
+    \begin{lstlisting}
+public interface AddressRepo extends JpaRepository<Address, Integer>{}          
+    \end{lstlisting} 
+    The interface extends \texttt{JpaRepository} with the Address being the entity that gets influenced by the CRUD (Create, Read, Update, Delete) operations and \texttt{Integer} being an id. \newline
+
+    A JPA repository is an interface rather than a normal java class. We extend an interface with the \texttt{JpaRepository}. By that we inherit many built-in database methods that make data management significantly easier. Almost any entity class has its own repository interface which allows us to retrieve, check and manipulate database entries with simple methods calls instead of writing the methods ourselves. \newline
+
+    Such a repository can also set custom methods based on variable names. For example this code snippet finds a street based on its name and postal code:
+    \lstset{style=mycsharp, caption=Find Street By Name And Postal Code}
+    \begin{lstlisting}
+Street findStreetByNameAndPostalCode(String name, String postalCode);          
+    \end{lstlisting} 
+    As JPA automatically recognizes the method names, these queries do not require any explicit sql statements.
+
+    \textbf{Custom Queries with @Query} \newline
+    Although JPA simplifies database interactions in any way, there are some specific cases where automatic query generation does not work. In our project, we encountered an issue where Hibernate had problems to correctly insert a new address into the table. To solve this problem, we had to create this custom SQL query in the repository:
+    \lstset{style=mycsharp, caption=Insert Address with Custom Query}
+    \begin{lstlisting}
+@Modifying
+@Transactional
+@Query(value = "INSERT INTO adresse (hausnummer, strasseid, postleitzahl, latitude, longitude, besonderheitid, gebietid, schonbesucht, kommentar)" +
+       "VALUES (:houseNumber, :streetId, :postalCode, :latitude, :longitude, :specialFeatureId, :areaId, :alreadyVisited, :comment);",
+       nativeQuery = true)
+int insertAddress(@Param("houseNumber") String houseNumber,
+                  @Param("streetId") Long streetId,
+                  @Param("postalCode") String postalCode,
+                  @Param("latitude") double latitude,
+                  @Param("longitude") double longitude,
+                  @Param("alreadyVisited") Boolean alreadyVisited,
+                  @Param("areaId") Long areaId,
+                  @Param("specialFeatureId") Long specialFeatureId,
+                  @Param("comment") String comment);          
+    \end{lstlisting} 
+
+    This method inserts a new address with all its variables into the database but it requires additional annotations.
+    \begin{itemize}
+        \item \texttt{@Query:} Specifies the custom SQL query that has to be executed.
+        \item \texttt{@Modifying:} Indicates that this particular query modifies the database which would not be needed if it would only be a \texttt{SELECT} statement.
+        \item \texttt{@Transactional:} Ensures that the query runs in a transaction which prevents issues like incomplete data insertion.
+        \item \texttt{@Param:} Is needed so the parameters are placeholders in the SQL statement.
+    \end{itemize}
 
     \subsection{Service Classes}
-    Service classes encapsulate business logic, coordinating data flow between controllers and repositories.
+    Service classes contain the logic for the database interaction and serve as a bridge between the controllers and repositories. Before passing data to controllers or repositories, they handle data retireval and manipulation of the data.
+
+    \subsubsection{@Service Annotation}
+    The \texttt{@Service} annotation is used to define a class as an actual service component. It originates from the \texttt{@Component} annotation which makes it eligible for Spring's components scanning and dependency injection. \newline
+    Every service clas interacts with atleast one repository which gets injected through a constructor-based dependency injection using the \texttt{@Autowired} annotation. This injection looks like this in the service class: 
+    \lstset{style=mycsharp, caption=Repository Injection and @Service}
+    \begin{lstlisting}
+@Service
+public class AddressService {        
+    private final AddressRepo addressRepo;
+    private final AreaRepo areaRepo;
+    private final StreetRepo streetRepo;
+    private final SpecialFeatureRepo specialFeatureRepo;
+
+    @Autowired
+    public AddressService(AddressRepo addressRepo, AreaRepo areaRepo, StreetRepo streetRepo, SpecialFeatureRepo specialFeatureRepo) {
+        this.addressRepo = addressRepo;
+        this.areaRepo = areaRepo;
+        this.streetRepo = streetRepo;
+        this.specialFeatureRepo = specialFeatureRepo;
+    }
+}
+    \end{lstlisting}
+    Here \texttt{AddressService} depends on many repositories and Spring automatically injects the required interface. 
+
+    \subsubsection{Repository Usage in Service Methods}
+    Now that the service class has all the necesssary repositories, it has to use the methods too. Some common operation look like this: \newline
+    This method returns all addresses in the database: 
+    \lstset{style=mycsharp, caption=Fetching all Addresses}
+    \begin{lstlisting}
+public List<Address> getAllAddresses() {
+    return addressRepo.findAll();
+}
+    \end{lstlisting}
+
+    In this case, it toggle if the address has already been visited or not:
+    \lstset{style=mycsharp, caption=Toggle Already Visited}
+    \begin{lstlisting}
+public Address toggleAlreadyVisited(String houseNumber, Long streetId) {
+    Address address = addressRepo.findAddressByHouseNumberAndStreetId(houseNumber, streetId);
+    
+    address.setAlreadyVisited(address.getAlreadyVisited() == null || !address.getAlreadyVisited());
+    
+    log.info(address.toString());
+    
+    return addressRepo.save(address);
+}
+    \end{lstlisting}
+
+    And that inserts a new address with the custom query from the \texttt{AddressRepo}: 
+    \lstset{style=mycsharp, caption=Insert new Address}
+    \begin{lstlisting}
+@Transactional
+public void createNewAddress(
+    String houseNumber,
+    double lat,
+    double lng,
+    String areaDesc,
+    String postalCode,
+    String streetName,
+    String specialFeatureText,
+    String comment
+) {
+    int insert = addressRepo.insertAddress(
+                    address.getHouseNumber(),
+                    address.getStreetId(),
+                    address.getStreet().getPostalCode(),
+                    address.getLatitude(),
+                    address.getLongitude(),
+                    address.getAlreadyVisited(),
+                    address.getArea().getAreaId(),
+                    address.getSpecialFeature().getSpecialFeatureId(),
+                    address.getComment()
+    );
+}    
+    \end{lstlisting}
+
+    This methods from the repositories are used in almost every methods from the service class. From retrieving data to creating a new address, there are many methods that are built-in or can be easily created in the repository classes that get used by the service classes.
+
+    \subsubsection{Computing Border Addresses Using Convex Hull}
+    An important function of the backend is to calculate the border addresses which are around a given area. This function is implemented in the \texttt{AddressService} class. In this case, the \texttt{getBorderAddresses} method calculates the convex hull from this given area. The main method uses many helper method and an extra class so the calculation does not use so much resources. \newline
+    \textbf{Point Class} \newline
+    To calculate the convex hull, we use the longitude and latitude of the addresses in an area. Processing every address with all its fields would cost much more resources than only using the longitude and latitude of every address. That is the purpose of the \texttt{Point} class. It looks like this: 
+    \lstset{style=mycsharp, caption=Point Class}
+    \begin{lstlisting}
+@AllArgsConstructor
+@Data
+public class Point {
+    private double longitude;
+    private double latitude;
+}
+    \end{lstlisting}
+    This class only saves the longitude and latitude of an address to save a bit more resources. \newline
+
+    \textbf{Helper Methods} \newline
+    There are some methods we created that get used in the main method to get the border addresses to make it easier to understand what each method does. 
+    \textbf{PolarAngle}
+    The \texttt{polarAngle} method is used to calculate the polar angle between two points so that it can be used to find out which points are the nearest and can be compared to each other next. This method is implemented like this: 
+    \lstset{style=mycsharp, caption=Polar Angle Method}
+    \begin{lstlisting}
+public double polarAngle(Point origin, Point point) {
+    return Math.atan2(point.getLongitude() - origin.getLongitude(), point.getLatitude() - origin.getLatitude());
+}
+    \end{lstlisting}
+    The method gets two points and compares them to each other with the \texttt{Math.atan2} method which is provided by the \texttt{Math} package. \newline
+
+    \textbf{IsCounterClockwise} \newline
+    The \texttt{isCounterClockwise} method is used to check if three points are counter clockwise. This is important to make sure the convex hull is actually convex and not concave. The method to calculate this looks like this: 
+    \lstset{style=mycsharp, caption=is Counter Clockwise Method}
+    \begin{lstlisting}
+public boolean isCounterClockwise(Point p1, Point p2, Point p3) {
+    return (p2.getLatitude() - p1.getLatitude()) * (p3.getLongitude() - p1.getLongitude()) - (p2.getLongitude() - p1.getLongitude()) * (p3.getLatitude() - p1.getLatitude()) > 0;
+}
+    \end{lstlisting}
+
+    \textbf{Convex Hull}
+    The \texttt{convexHull} method uses the helper methods and other logic to return the convex hull. The method get a list of points. \newline
+    
+    The \texttt{convexHull} method starts with a clause that may directly stop the calculation. To build a convex hull, there has to be atleast four points, so if there are less than four points, the method return an empty list.
+    \lstset{style=mycsharp, caption=if Clause for Point Size}
+    \begin{lstlisting}
+if (points.size() < 3) {
+    return Collections.emptyList();
+}
+    \end{lstlisting}
+ 
+    If there enough points, the actual \texttt{convexHull} can start. First it finds the lowest point based on the latitude or the leftmost point if the latitudes of the two lowest points are the same. It goes through all the points given to the method and compares the latitude.
+    \lstset{style=mycsharp, caption=Lowest Point Calculation}
+    \begin{lstlisting}
+Point lowest = points.stream()
+    .min(Comparator.comparing(Point::getLatitude).thenComparing(Point::getLongitude))
+    .orElse(null);
+    \end{lstlisting}
+
+    Then, using one of the helper methods, the program sorts the points based on their polar angles to each other. This is relatively easy done by using a comparator given by Java.
+
+    \lstset{style=mycsharp, caption=Sort Points based on Polar Angle}
+    \begin{lstlisting}
+points.sort(Comparator.comparingDouble(p -> polarAngle(lowest, p)));
+    \end{lstlisting}
+
+    Afterwards, the method creates a stack and adds the first two points of the sorted list to the stack. 
+    \lstset{style=mycsharp, caption=Create Stack}
+    \begin{lstlisting}
+Stack<Point> stack = new Stack<>();
+stack.push(points.get(0));
+stack.push(points.get(1));
+    \end{lstlisting}
+
+    After the stack is created, the program goes through a loop that goes through every point in the list. In the loop, it creates a new variable that always gets the last added point of the stack and uses it as a reference point. Then the other helper method is used to look if the next point of the list is in the convex hull. If the next point is in the convex hull then it gets added to the stack. This stack is then returned as a list for later processing.
+    \lstset{style=mycsharp, caption=Convex Hull Calculation}
+    \begin{lstlisting}
+for (int i = 2; i < points.size(); i++) {
+    Point top = stack.pop();
+
+    while (!stack.isEmpty() && !isCounterClockwise(stack.peek(), top, points.get(i))) {
+        log.info("Popping point: " + top);
+            top = stack.pop(); // Removes top until the border makes a left turn
+        }
+
+    log.info("Pushing point: " + points.get(i));
+
+    stack.push(top);
+    stack.push(points.get(i));
+}
+
+return new ArrayList<>(stack);
+    \end{lstlisting}
+
+    In the \texttt{getBorderAddresses} method, the \texttt{convexHull} method is used and the convex hull points are stored in a list. Furthermore, this list gets used to add a tolerance to every point. This is the case because we encountered some issues while creatin this convex hull and we found out by adding a bit of tolerance that this issue was fixed. This is because the locations of the addresses are not precise enough. After adding this tolerance, the list of points that build the convex hull are returned.
+    \lstset{style=mycsharp, caption=Lowest Point Calculation}
+    \begin{lstlisting}
+List<Point> hull = convexHull(points);
+
+List<Address> borderAddresses = new ArrayList<>();
+        
+for (Point p : hull) {
+    for (Address address : addresses) {
+        double latDiff = Math.abs(address.getLatitude() - p.getLatitude());
+        double lonDiff = Math.abs(address.getLongitude() - p.getLongitude());
+        
+        if (latDiff < TOLERANCE && lonDiff < TOLERANCE) {
+            borderAddresses.add(address);
+            break;
+        }
+    }
+}
+        
+return borderAddresses;
+    \end{lstlisting}
 
     \subsection{Rest Controller (API Endpoints and their Functions)}
-    REST controllers define API endpoints, processing requests and returning responses to ensure seamless interaction with the frontend.
 
-    \newpage
+    REST controllers expose API endpoints that handle HTTP requests and then return the appropriate repsonses. These controllers allow the frontend-interfaces (Admin Panel and mobile app) to interact in any way with the backend to perform operations like retrieving, updating and deleting data. In our project, two main REST controllers are responsible for handling all the tasks: the \texttt{AddressController} and the \texttt{AdminController}.
+
+    \subsubsection{AddressController}
+    The \texttt{AddressController} class is for handlin endpoints for the guides and the mobile app and provides the necesssary functions to retrieve and update certain information. Each method in this controller corresponds to a certain operation the guides can do. These are the endpoints the \texttt{AddressController} exposes to the network: \newline \newline
+    \textbf{GET Routes} 
+    \begin{enumerate}
+        \item \textbf{\texttt{GET /} - Get All Addresses}
+        \begin{itemize}
+            \item This endpoint gets a list of all Addresses stored in the system. 
+            \item It is mostly used to display the addresses in the mobile app.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/getAllAddresses.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{GET /{area}} - Get All Addresses Of An Area}
+        \begin{itemize}
+            \item This endpoint allows users to get a list of addresses from a specific area.
+            \item The area is provided as a path variable
+        \end{itemize}
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/getAddressesByArea.png}
+            \caption{Get Route for all Addresses by Area}
+        \end{figure}
+
+        \item \textbf{\texttt{GET /{area}/borderAddress} - Get Border Addresses}
+        \begin{itemize}
+            \item This endpoint gives the frontend the border addresses of the convex hull of an area.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/getBorderAddressesOfArea.png}
+            \caption{Get Route for Border Addresses by Area}
+        \end{figure}
+    \end{enumerate}    
+
+    \textbf{PUT Routes}
+
+    \begin{enumerate}    
+        \item \textbf{\texttt{PUT /{streetId}/{houseNumber}/toggleVisited} - Toggle Visited Status}
+        \begin{itemize}
+            \item This endpoint allows toggling the "visited" status of a specific address.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/toggleAlreadyVisitedOfAddress.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /{streetName}/{postalCode}/toggleAlreadyVisitedOnStreet}}
+        \begin{itemize}
+            \item This endpoint updates the "visited" status for all addresses on a particular street, marking them as either visited or not.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/toggleAlreadyVisitedOfAddressesOnStreet.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        
+    \end{enumerate}
+
+    \subsubsection{Admin Controller}
+    This controller has all the endpoints relevant to managin the data. This routes are not meant to the guides from the mobile app, they are here for the admin in the Admin Panel. These routes are for the admin to use: \newline \newline
+    \textbf{GET Routes}
+    \begin{enumerate}
+        \item \textbf{\texttt{GET /getAllStreets} - Get All Streets}
+        \begin{itemize}
+            \item This endpoint retrieves a list of all streets in the system.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/getAllStreets.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{GET /getAllAreas} - Get All Areas}
+        \begin{itemize}
+            \item This endpoint returns a list of all areas in the system.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/getAllAreas.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{GET /getAllSpecialFeatures} - Get All Special Features}
+        \begin{itemize}
+            \item This endpoint retrieves all special features present in the system.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/getAllSF.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+    \end{enumerate}
+
+    \textbf{PUT Routes}
+    \begin{enumerate}
+        \item \textbf{\texttt{PUT /updateComment} - Update Address Comment}
+        \begin{itemize}
+            \item This endpoint allows updating the comment associated with an address.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/updateComment.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /updateAddressesByRange} - Update Addresses by Range}
+        \begin{itemize}
+            \item This endpoint updates the area of addresses based on a range of house numbers within a street
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/updateAddressesHouseRange.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /updateAddressesByParity} - Update Addresses by Parity (Odd/Even)}
+        \begin{itemize}
+            \item This endpoint updates addresses based on their house number parity (odd or even).
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/updateAddressesOddEven.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /updateAddressesByList/{areaDesc}} - Update Addresses by List}
+        \begin{itemize}
+            \item This endpoint allows bulk updates to a list of addresses, changing the any variable of each address in the provided list.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/updateAddressByList.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /editArea} - Edit Area Information}
+        \begin{itemize}
+            \item This endpoint allows modification of an area’s description and associated details.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/editArea.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /setSpecialFeature} - Set Special Feature for Address}
+        \begin{itemize}
+            \item This endpoint assigns a special feature to an address.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/setSFOfAddress.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /editAddress} - Edit an Address}
+        \begin{itemize}
+            \item This endpoint allows the modification of an existing address, such as updating its house number, street name, or additional details.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/editAddress.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /editAddresses} - Edit Multiple Addresses}
+        \begin{itemize}
+            \item This endpoint allows bulk edits to multiple addresses at once, facilitating large-scale updates.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/editAddresses.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{PUT /editSpecialFeature} - Edit Special Feature}
+        \begin{itemize}
+            \item This endpoint allows to edit a special feature that is already existing in the database.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/editSF.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+    \end{enumerate}
+
+    \textbf{POST Routes}
+    \begin{enumerate}
+        \item \textbf{\texttt{POST /addAddress} - Add a New Address}
+        \begin{itemize}
+            \item This endpoint allows the creation of a new address record.
+            \item All relevant details such as house number, street name, postal code, and coordinates must be provided.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/addAddress.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{POST /addStreet} - Add a New Street}
+        \begin{itemize}
+            \item This endpoint creates a new street record, specifying its name and postal code.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/addStreet.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{POST /addArea/{areaDesc}} - Add a New Area}
+        \begin{itemize}
+            \item This endpoint allows the addition of a new area to the system.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/addArea.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{POST /addSpecialFeature} - Add a New Special Feature}
+        \begin{itemize}
+            \item This endpoint creates a new special feature.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/addSF.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+    \end{enumerate}
+
+    \textbf{DELETE Routes}
+    \begin{enumerate}
+        \item \textbf{\texttt{DELETE /deleteStreet} - Delete a Street}
+        \begin{itemize}
+            \item This endpoint deletes a street from the system.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/deleteStreet.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{DELETE /deleteArea} - Delete an Area}
+        \begin{itemize}
+            \item This endpoint deletes an area from the system.
+            \item All addresses in that area may need to be reassigned or deleted as well.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/deleteArea.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{DELETE /deleteSpecialFeature} - Delete a Special Feature}
+        \begin{itemize}
+            \item This endpoint removes a special feature from the system.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/deleteSF.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+
+        \item \textbf{\texttt{DELETE /deleteAddress} - Delete an Address}
+        \begin{itemize}
+            \item This endpoint deletes an address from the system.
+        \end{itemize} 
+        \begin{figure} [H]
+            \centering
+            \includegraphics [width=1\textwidth] {images/andreas/praxis/deleteAddress.png}
+            \caption{Get Route for all Addresses}
+        \end{figure}
+    \end{enumerate}
+    
+
+    %\lstset{style=mycsharp, caption=Lowest Point Calculation}
+    %\begin{lstlisting}
+
+    
+
+    %\end{lstlisting}
+
+    %\begin{figure} [H]
+    %    \centering
+    %    \includegraphics [width=1\textwidth] {images/andreas/praxis/getAllAddresses.png}
+    %    \caption{}
+    %\end{figure}
+
