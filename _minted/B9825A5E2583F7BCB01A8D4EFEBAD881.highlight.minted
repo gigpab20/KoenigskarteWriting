@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{server}\PYG{p}{.}\PYG{n+na}{address}\PYG{o}{=}\PYG{l+m+mf}{0.0}\PYG{l+m+mf}{.0}\PYG{l+m+mf}{.0}
+\PYG{n}{server}\PYG{p}{.}\PYG{n+na}{port}\PYG{o}{=}\PYG{l+m+mi}{46380}
+\PYG{n}{server}\PYG{p}{.}\PYG{n+na}{servlet}\PYG{p}{.}\PYG{n+na}{context}\PYG{o}{\PYGZhy{}}\PYG{n}{path}\PYG{o}{=}\PYG{o}{/}\PYG{n}{addresses}
+\end{MintedVerbatim}

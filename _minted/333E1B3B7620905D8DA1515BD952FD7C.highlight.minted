@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@Column}\PYG{p}{(}\PYG{n}{name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{latitude}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{latitude}\PYG{p}{;}
+
+\PYG{n+nd}{@Column}\PYG{p}{(}\PYG{n}{name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{longitude}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{longitude}\PYG{p}{;}
+
+\PYG{n+nd}{@Column}\PYG{p}{(}\PYG{n}{name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{schonbesucht}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kd}{private}\PYG{+w}{ }\PYG{n}{Boolean}\PYG{+w}{ }\PYG{n}{alreadyVisited}\PYG{p}{;}
+\end{MintedVerbatim}

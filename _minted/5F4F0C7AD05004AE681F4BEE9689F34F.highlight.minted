@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n+nf}{polarAngle}\PYG{p}{(}\PYG{n}{Point}\PYG{+w}{ }\PYG{n}{origin}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Point}\PYG{+w}{ }\PYG{n}{point}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{atan2}\PYG{p}{(}\PYG{n}{point}\PYG{p}{.}\PYG{n+na}{getLongitude}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{origin}\PYG{p}{.}\PYG{n+na}{getLongitude}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{point}\PYG{p}{.}\PYG{n+na}{getLatitude}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{origin}\PYG{p}{.}\PYG{n+na}{getLatitude}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
