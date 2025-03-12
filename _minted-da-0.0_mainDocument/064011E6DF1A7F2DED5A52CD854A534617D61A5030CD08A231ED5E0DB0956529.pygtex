@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{jpa}\PYG{p}{.}\PYG{n+na}{show}\PYG{o}{\PYGZhy{}}\PYG{n}{sql}\PYG{o}{=}\PYG{k+kc}{true}
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{jpa}\PYG{p}{.}\PYG{n+na}{properties}\PYG{p}{.}\PYG{n+na}{hibernate}\PYG{p}{.}\PYG{n+na}{format\PYGZus{}sql}\PYG{o}{=}\PYG{k+kc}{true}
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{jpa}\PYG{p}{.}\PYG{n+na}{hibernate}\PYG{p}{.}\PYG{n+na}{ddl}\PYG{o}{\PYGZhy{}}\PYG{n}{auto}\PYG{o}{=}\PYG{n}{none}
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{jpa}\PYG{p}{.}\PYG{n+na}{properties}\PYG{p}{.}\PYG{n+na}{hibernate}\PYG{p}{.}\PYG{n+na}{dialect}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{org}\PYG{p}{.}\PYG{n+na}{hibernate}\PYG{p}{.}\PYG{n+na}{dialect}\PYG{p}{.}\PYG{n+na}{PostgreSQLDialect}
+\end{Verbatim}
