@@ -131,7 +131,7 @@ public class Address {
     \captionof{listing}{IDs in Address-Entity}
 
     The annotation \texttt{@IdClass} has to be used to define what class is used to define the variables of the primary key. Afterwards, the corresponding variables, which are in our case \texttt{houseNumber} and \texttt{streetId}, have to be defined as variables in the entity class. Also, the annotation \texttt{@Id} has to be used over the variables in the entity class to set them as actual IDs. \newline 
-    \textbf{Variables in Entities:} \newline
+    \textbf{Variables in Entities:} \newline \newline
     There are several types of variable types in an entity class. First, the "normal" variable, which has no connection to other entities or is in the ID in any way. These get used for data that is not related to any other entities. This is an example from the address entity of such a variable:
     \begin{minted}{java}
 @Column(name = "latitude")
@@ -326,6 +326,7 @@ public boolean isCounterClockwise(Point p1, Point p2, Point p3) {
     \captionof{listing}{is Counter Clockwise Method}
 
     \textbf{Convex Hull}
+    
     The \texttt{convexHull} method uses the helper methods and other logic to return the convex hull. The method gets a list of points. \newline
     
     The \texttt{convexHull} method starts with a clause that may directly stop the calculation. To build a convex hull, there have to be at least four points, so if there are less than four points, the method returns an empty list.

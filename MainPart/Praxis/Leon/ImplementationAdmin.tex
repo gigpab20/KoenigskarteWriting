@@ -103,7 +103,7 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays an
 \label{fig:Validation}
     Validation is the process of checking that data meets specific criteria before it is accepted and added to a system or database. This ensures that the data is accurate, consistent, and conforms to required standards. Validation prevents errors and inconsistencies that could arise from invalid or incomplete data, maintaining the integrity and reliability of the system. It helps catch mistakes early, such as missing fields or incorrect data inputs. By ensuring that only valid data is processed, validation plays a crucial role in preserving data quality. \autocite{ContributorstoWikimediaprojects2025Feb}
 
-\paragraph{isDuplicateAddress}
+\paragraph*{isDuplicateAddress}
     To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.
 
     \blankLine
@@ -161,6 +161,7 @@ To start the process, a new \texttt{Address} object is created and passed to the
 
 To display this notification, the \texttt{showNotification} method is called. This method sets the \texttt{notificationVisible} variable to \texttt{true} and starts a \texttt{timer} to reset it to \texttt{false} after three seconds, causing the notification to disappear shortly after. The method accepts a message as a parameter, which is stored in the \texttt{notificationText} variable. When the \texttt{notificationVisible} variable is set to \texttt{true}, the UI component that shows the notification is rendered.
 
+\pagebreak
 
 \subsubsection{Edit multiple Addresses}
 \label{fig:Edit multiple addresses}
