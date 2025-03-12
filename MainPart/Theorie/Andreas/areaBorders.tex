@@ -31,6 +31,8 @@
         \item \textbf{Increased Efficiency:} The guides are able to finish their work more quickly because the boundaries of each area are clearly marked. They can focus on their designated area and plan their routes to be as efficient as possible and to not cross any other areas in the process.
     \end{enumerate}
 
+    \newpage
+
     \subsection{Overview of the Convex Hull Algorithm}
     The convex hull algorithm is a fundamental concept in computational geometry. On a two-dimensional system, it is used to find the smallest convex polygon that can hold a specific set of points. Simply put, it determines the outer border or edge that surrounds each of the specified points. The convex hull, which is the outer boundary, is the tightest shape that can enclose every point without any spaces in between. \newline
     
@@ -41,7 +43,10 @@
         \caption{Process of the Convex Hull Algorithm \autocite{ProcessOfHull:Img}}
     \end{figure} 
     \blankLine 
-    A convex polygon is a shape where all the corners point outward and there are no inward curves or sharp angles. To put it simply, if you draw a straight line between any two points inside the shape, it will always remain inside or on the shape's edge. This indicates that there are never any inward corners on the convex hull. In contrast, a concave polygon has at least one or more inward curves where the interior angle is greater than 180 degrees. \newline
+    A convex polygon is a shape where all the corners point outward and there are no inward curves or sharp angles. To put it simply, if you draw a straight line between any two points inside the shape, it will always remain inside or on the shape's edge. This indicates that there are never any inward corners on the convex hull. In contrast, a concave polygon has at least one or more inward curves where the interior angle is greater than 180 degrees.
+
+    \pagebreak
+
     To better visualize the difference, the image below shows that all the angles of the convex polygon have less than 180 degrees, therefore they are "pointy". However, on the concave polygon, it is visible that the angles on top has more than 180 degrees, therefore the polygon has an inwards curve \autocite{Andi:convexPolygon}
 
     \begin{figure} [H]
@@ -57,7 +62,7 @@
     \subsubsection{Types of Convex Hull Algorithms}
     The convex hull can be calculated using a variety of algorithms, with the most popular being \textbf{Graham's Scan} and the \textbf{Monotone Chain algorithm}. Because of their effectiveness and capacity to manage sizable datasets, these algorithms have been widely adopted.
 
-    \blankLine
+    \pagebreak
 
     \textbf{Graham's Scan Algorithm:} 
     \begin{itemize}
@@ -76,7 +81,7 @@
     \subsubsection{Key concepts in the Convex Hull Algorithm}
     The convex hull algorithm has a number of key concepts, all of which are essential to guaranteeing the algorithm's accuracy and effectiveness.
 
-    \pagebreak
+    \blankLine
 
     \textbf{Orientation:}
     \begin{itemize}
@@ -98,10 +103,10 @@
         \item The convexity of the polygon that is formed by a convex hull algorithm ensures that there are no inward curves. This is crucial because the convex hull represents the smallest possible polygon that does not have any concave edges or inward curves.
     \end{itemize} \autocite{Andi:keyConcepts}
 
+    \pagebreak
+
     \subsection{Use Cases of the Convex Hull in Industry}
     The ability of the convex hull algorithm to define boundaries of a complex dataset in an efficient way makes it widely used across a variety of fields. Convex hulls offer crucial tools for examining spatial relationships, visualizing data, and resolving optimization issues in a variety of fields. Here are some fields that use this algorithm.
-
-    \pagebreak
 
     \textbf{Geographical Mapping}
     \begin{itemize}
@@ -119,6 +124,9 @@
     \begin{itemize}
         \item In ethology, the study of animal behavior, convex hulls are used to identify an animal's home range. The convex hull gives the estimated area an animal needs to be provided with for its habitat. In ecological studies, this approach is helpful for tracking animal movement patterns, determining territories and keeping an eye on endangered species.
     \end{itemize}
+
+    \pagebreak
+    
     \textbf{Astronomy and Astrophysics}
     \begin{itemize}
         \item Astronomers utilize convex hulls to define the limits of star clusters and other celestial bodies. Scientists can determine a cluster's outer limit by looking at the convex hull of stars, which helps them study things like galactic formation, star density and gravitational impacts in space.
@@ -131,11 +139,10 @@
     \begin{itemize}
         \item The simplest technique for calculating area boundaries is the MBB. It determines the smallest rectangle that completely encloses a specified set of points. The edges of the box are normally aligned with the coordinate axes, which makes it efficient with the computing resources and easy to implement. Applications like spatial indexing in databases and image processing use this technique. However, it does not consider things like concavities and irregularities in the point distribution, which may lead to the MBB not always correctly reflecting the data. The picture below shows a figure that visualizes the difference between the MBB and the convex hull. The convex hull is the gray inner area and the outer line is the MBB. This shows that the convex hull is more precise. \autocite{Andi:mbb}
     \end{itemize} 
-
     \begin{figure} [H]
         \centering
-        \includegraphics [width=0.55\textwidth] {images/andreas/areaBorders/mbb.png}
-        \caption{Difference between MBB and Convex Hull\autocite{Andi:mbbPic}}
+        \includegraphics [width=0.45\textwidth] {images/andreas/areaBorders/mbb.png}
+        \caption{Difference between MBB and Convex Hull \autocite{Andi:mbbPic}}
         
     \end{figure}
 
@@ -153,8 +160,8 @@
     
     \textbf{Delaunay Triangulation}
     \begin{itemize}
-        \item Delaunay Triangulation is a method that makes a mesh of triangles that connect a set of points while maximizing the minimum angle of each triangle. This ensures a well-formed structure. A border can be roughly approximated by using the triangulation's outside edges, especially when pairing this method with techniques like Alpha Shapes. This method is mostly used in geographic information systems (GIS). While it provides a more structured representation of an area, it often requires post-processing to extract a meaningful boundary.
-    \end{itemize} \autocite{Andi:DT}
+        \item Delaunay Triangulation is a method that makes a mesh of triangles that connect a set of points while maximizing the minimum angle of each triangle. This ensures a well-formed structure. A border can be roughly approximated by using the triangulation's outside edges, especially when pairing this method with techniques like Alpha Shapes. This method is mostly used in geographic information systems (GIS). While it provides a more structured representation of an area, it often requires post-processing to extract a meaningful boundary. \autocite{Andi:DT}
+    \end{itemize} 
 
     \begin{figure} [H]
         \centering
@@ -169,6 +176,8 @@
     Finally, our choice was significantly influenced by ease of implementation. The convex hull approach does not require a lot of parameter adjusting, is well-documented, and is simple to incorporate. This made it a practical choice, which allows for a reliable and efficient solution without adding unnecessary complexity. \newline
     A fair balance between accuracy and efficiency was achieved by selecting the convex hull method, which allowed area borders to be calculated quickly while still providing a clear visual representation of each area.
 
+    \pagebreak
+    
     \subsection{Integration of the Algorithm into the Backend}
     The convex hull algorithm is implemented within the backend as a part of the service class, which analyzes an area's allocated addresses to identify its boundaries. The frontend can request and use the calculated border addresses thanks to this functionality, which is made available through a dedicated route. \newline
     As soon as a request is made to the route, the service class gets the area for which the border addresses are needed. The program then retrieves all the addresses in the respective area, which then get processed by the convex hull algorithm. This then determines the smallest convex shape that encloses all points. The result list of all border addresses is then returned as a response to the frontend, where they are getting used for visualization and management. \newline

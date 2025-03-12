@@ -1,12 +1,14 @@
 \Author{\daAuthorOne}
-% \usepackage[backend=biber, style=alphabetic]{biblatex}
 
-The Admin Panel is an administrative control center to efficiently manage all addresses within a single environment. It is used for planning upcoming "Sternsinger" events, ensuring that all required addresses are covered and effectively distributed among participating groups. Additionally, it provides a way to assign areas containing addresses that a group needs to visit. This zoning feature ensures that each group is responsible for only the addresses within their designated area.\blankLine
+The Admin Panel is an administrative control center to efficiently manage all addresses within a single environment. It is used for planning upcoming "Sternsinger" events, ensuring that all required addresses are covered and effectively distributed among participating groups. Additionally, it provides a way to assign areas containing addresses that a group needs to visit. This zoning feature ensures that each group is responsible for only the addresses within their designated area.
 
-This tool enables authorized users to perform CRUD operations (Create, Read, Update, Delete) on addresses, streets, and areas. These features make it easy to address issues quickly and make changes to the areas that participants need to visit. For example, when a new street is added to the neighborhood, the administrator can update the system to include it and assign it to the appropriate area. Similarly, if a group withdraws from the event, the administrator can reassign any unvisited addresses to other groups. This ensures that the data remains up-to-date, allowing quick reactions to special cases, helping with the planning and execution of "Sternsinger" events.\blankLine
+\blankLine
 
-This chapter will outline the implementation of the Admin Panel, detailing its components, functionalities, and widgets, and providing guidance on how to use them.\blankLine\blankLine
+This tool enables authorized users to perform CRUD operations (Create, Read, Update, Delete) on addresses, streets, and areas. These features make it easy to address issues quickly and make changes to the areas that participants need to visit. For example, when a new street is added to the neighborhood, the administrator can update the system to include it and assign it to the appropriate area. Similarly, if a group withdraws from the event, the administrator can reassign any unvisited addresses to other groups. This ensures that the data remains up-to-date, allowing quick reactions to special cases, helping with the planning and execution of "Sternsinger" events.
 
+\blankLine
+
+This chapter will outline the implementation of the Admin Panel, detailing its components, functionalities, and widgets, and providing guidance on how to use them.
 
 \subsection{Navigation}
 
@@ -101,10 +103,12 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays an
 \label{fig:Validation}
     Validation is the process of checking that data meets specific criteria before it is accepted and added to a system or database. This ensures that the data is accurate, consistent, and conforms to required standards. Validation prevents errors and inconsistencies that could arise from invalid or incomplete data, maintaining the integrity and reliability of the system. It helps catch mistakes early, such as missing fields or incorrect data inputs. By ensuring that only valid data is processed, validation plays a crucial role in preserving data quality. \autocite{ContributorstoWikimediaprojects2025Feb}
 
-\paragraph*{isDuplicateAddress}
-    To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\blankLine
+\paragraph{isDuplicateAddress}
+    To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.
 
-    A duplicate address is identified by the following criteria:\blankLine
+    \blankLine
+    
+    A duplicate address is identified by the following criteria:
     \textbf{street name, postal code, and house number}
     
 

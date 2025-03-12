@@ -2,8 +2,6 @@
 
 Before even starting the development of our app, we decided to mock up the user interface. This turned out to be very helpful during implementation because we had an idea of how things should look and did not need to think about design choices while writing code. We used Figma to create these wireframes.
 
-\blankLine
-
 \subsection{Map View}
 
 This map view is the center point of our app. Here, the addresses that still need to be visited get displayed, and comments can be added. The user can move, zoom, or rotate the map as well as click on markers to see details and edit the comment field. There are also visual indicators for addresses that are already commented, as well as different icons depending on the specification of an address. On the bottom of our app is a navigation bar that stays consistent across the different screens and is used to switch between them. Our primary goal was to keep the map as simple as possible to avoid distraction or overwhelming the user.
@@ -48,7 +46,7 @@ There were two different ideas to integrate this view into the app. First, using
     \begin{minipage}{0.26\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/finalList.jpeg}
-        \caption{Final implementation of List view with swipe gestures}
+        \caption{Final implementation of List view with swiping}
     \end{minipage}
 \end{figure}
 
@@ -62,13 +60,13 @@ This view was designed to not be a whole separate screen from the beginning, but
     \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/detailsScreen.png}
-        \caption{Wireframe of map screen}
+        \caption{Wireframe of details slider}
     \end{minipage}
     \hspace{2cm}
     \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/paul/wireframes/finalDetails.jpeg}
-        \caption{Final version of map with markers}
+        \caption{Final details pop-up}
     \end{minipage}
 \end{figure}
 
@@ -78,3 +76,5 @@ This page was initially not planned or mocked up, since it was still unclear how
 \subsection{Possible improvements for future versions}
 
 In a future iteration of the app, the details' dialog should be accessible from the list view, also, according to the feedback we got from legitimate users of our app, it would be nice to have more states than just visited or not. For example, visited, but nobody was home, will not visit again this year, or visited, somebody was at home, but wishes to not be visited anymore. To implement this, the entire list screen needs to be completely redesigned. Additionally, the feature that the user can see which address is closest to them would probably be useful. Furthermore, reliably displaying the user's current location would be appreciated.
+
+\newpage

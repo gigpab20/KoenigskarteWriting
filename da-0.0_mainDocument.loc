@@ -1,0 +1,29 @@
+\contentsline {listing}{\numberline {1}{\ignorespaces Database Configuration}}{52}{listing.1}%
+\contentsline {listing}{\numberline {2}{\ignorespaces JPA/Hibernate Settings}}{52}{listing.2}%
+\contentsline {listing}{\numberline {3}{\ignorespaces Server Configuration}}{53}{listing.3}%
+\contentsline {listing}{\numberline {4}{\ignorespaces CORS Configuration}}{53}{listing.4}%
+\contentsline {listing}{\numberline {5}{\ignorespaces Area Entity}}{54}{listing.5}%
+\contentsline {listing}{\numberline {6}{\ignorespaces AddressId}}{55}{listing.6}%
+\contentsline {listing}{\numberline {7}{\ignorespaces IDs in Address-Entity}}{55}{listing.7}%
+\contentsline {listing}{\numberline {8}{\ignorespaces "Normal" Variable}}{56}{listing.8}%
+\contentsline {listing}{\numberline {9}{\ignorespaces ManyToOne Variable}}{56}{listing.9}%
+\contentsline {listing}{\numberline {10}{\ignorespaces Complex ManyToOne Variable}}{57}{listing.10}%
+\contentsline {listing}{\numberline {11}{\ignorespaces AddressRepo Interface}}{57}{listing.11}%
+\contentsline {listing}{\numberline {12}{\ignorespaces Find Street By Name And Postal Code}}{58}{listing.12}%
+\contentsline {listing}{\numberline {13}{\ignorespaces Insert Address with Custom Query}}{59}{listing.13}%
+\contentsline {listing}{\numberline {14}{\ignorespaces Repository Injection and @Service}}{60}{listing.14}%
+\contentsline {listing}{\numberline {15}{\ignorespaces Fetching all Addresses}}{60}{listing.15}%
+\contentsline {listing}{\numberline {16}{\ignorespaces Toggle Already Visited}}{61}{listing.16}%
+\contentsline {listing}{\numberline {17}{\ignorespaces Insert new Address}}{61}{listing.17}%
+\contentsline {listing}{\numberline {18}{\ignorespaces Point Class}}{62}{listing.18}%
+\contentsline {listing}{\numberline {19}{\ignorespaces Polar Angle Method}}{62}{listing.19}%
+\contentsline {listing}{\numberline {20}{\ignorespaces is Counter Clockwise Method}}{63}{listing.20}%
+\contentsline {listing}{\numberline {21}{\ignorespaces if Clause for Point Size}}{63}{listing.21}%
+\contentsline {listing}{\numberline {22}{\ignorespaces Lowest Point Calculation}}{63}{listing.22}%
+\contentsline {listing}{\numberline {23}{\ignorespaces Sort Points Based on Polar Angle}}{63}{listing.23}%
+\contentsline {listing}{\numberline {24}{\ignorespaces Create Stack}}{64}{listing.24}%
+\contentsline {listing}{\numberline {25}{\ignorespaces Convex Hull Calculation}}{64}{listing.25}%
+\contentsline {listing}{\numberline {26}{\ignorespaces Lowest Point Calculation}}{65}{listing.26}%
+\contentsline {listing}{\numberline {27}{\ignorespaces compareHouseNumbers function (AddressProvider.dart)}}{80}{listing.27}%
+\contentsline {listing}{\numberline {28}{\ignorespaces use of compareHouseNumbers function (AddressProvider.dart)}}{81}{listing.28}%
+\contentsline {listing}{\numberline {29}{\ignorespaces extraction of coordinates from border addresses (AddressProvider.dart)}}{81}{listing.29}%
