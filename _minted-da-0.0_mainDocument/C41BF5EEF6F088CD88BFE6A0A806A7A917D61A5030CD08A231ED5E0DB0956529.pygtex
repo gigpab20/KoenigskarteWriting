@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{datasource}\PYG{p}{.}\PYG{n+na}{driver}\PYG{o}{\PYGZhy{}}\PYG{k+kd}{class}\PYG{err}{\PYGZhy{}}\PYG{n+nc}{name}\PYG{o}{=}\PYG{n}{org}\PYG{p}{.}\PYG{n+na}{postgresql}\PYG{p}{.}\PYG{n+na}{Driver}
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{datasource}\PYG{p}{.}\PYG{n+na}{url}\PYG{o}{=}\PYG{n}{jdbc}\PYG{p}{:}\PYG{n}{postgresql}\PYG{p}{:}\PYG{c+c1}{//localhost:5432/postgres}
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{datasource}\PYG{p}{.}\PYG{n+na}{username}\PYG{o}{=}\PYG{n}{postgres}
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{datasource}\PYG{p}{.}\PYG{n+na}{password}\PYG{o}{=}\PYG{n}{postgres}
+\end{Verbatim}

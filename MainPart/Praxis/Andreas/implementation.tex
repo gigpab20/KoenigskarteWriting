@@ -17,13 +17,14 @@
 
         \subsubsection{Database Configuration}
         One of the main functions of the \texttt{application.properties} is to set the database connection. In our case, we utilize the PostgreSQL database and the following properties set the necessary connection details:
-        \lstset{style=springproperties, caption=Database Configuration}
+        
         \begin{minted}{java}
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
 spring.datasource.username=postgres
 spring.datasource.password=postgres
-        \end{mitned}
+        \end{minted}
+        \captionof{listing}{Database Configuration}
         \begin{itemize}
             \item \texttt{spring.datasource.driver-class-name} defines the driver which is required for the PostgreSQL.
             \item \texttt{spring.datasource.url} sets the connection string to the local database.
@@ -33,28 +34,30 @@ spring.datasource.password=postgres
 
         \subsubsection{JPA and Hibernate Settings}
         Spring Boot uses Hibernate for the default JPA implementation. We used the following configuration for this:
-        \lstset{style=springproperties, caption=JPA/Hibernate Settings}
+
+        \captionof{listing}{JPA/Hibernate Settings}
         \begin{minted}{java}
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.hibernate.ddl-auto=none
 spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
         \end{minted} 
-
+        
         \begin{itemize}
-            \item \texttt{spring.jpa.show-sql=true} and \newline \texttt{spring.jpa.properties.hibernate.format\_sql=true} enable and format the logging of SQL statements that get executed in the backend.
-            \item \texttt{spring.jpa.hibernate.ddl-auto=none} ensures that Hibernate does not automatically generate or modify the database tables based on the schemes from the entity classes.
-            \item \texttt{spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect} just tells Hibernate to use SQL optimizations which are PostgreSQL-specific.
+            \item \textit{spring.jpa.show-sql=true} and \textit{spring.jpa.properties.hibernate.format\_sql=true} enable and format the logging of SQL statements that get executed in the backend.
+            \item \textit{spring.jpa.hibernate.ddl-auto=none} ensures that Hibernate does not automatically generate or modify the database tables based on the schemes from the entity classes.
+            \item \textit{spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect} just tells Hibernate to use SQL optimizations which are PostgreSQL-specific.
         \end{itemize}
         
         \subsubsection{Server Configuration}
         The backend application needs to be accessible over a network, and the following configuration sets its address and port:
-        \lstset{style=springproperties, caption=Server Configuration}
         \begin{minted}{java}
 server.address=0.0.0.0
 server.port=46380
 server.servlet.context-path=/addresses            
         \end{minted} 
+        \captionof{listing}{Server Configuration}
+
         \begin{itemize}
             \item \texttt{server.address=0.0.0.0} and \texttt{server.port=46380} Set the address and the port of the server.
             \item \texttt{server.servlet.context-path=/addresses} ensures that all API endpoints have the \texttt{/address} prefix.
@@ -62,20 +65,22 @@ server.servlet.context-path=/addresses
 
         \subsubsection{CORS Configuration}
         To allow secure communication between the frontend interfaces (Admin Panel and mobile app), we needed to configure Cross-Origin Resource Sharing (CORS)
-        \lstset{style=springproperties, caption=CORS Configuration}
         \begin{minted}{java}
 spring.web.cors.allowed-origins=https://projektlr.htl-kaindorf.at
 spring.web.cors.allowed-methods=GET,POST,PUT,DELETE                      
         \end{minted} 
+        \captionof{listing}{CORS Configuration}
+
         This configuration solved an error we got during the development process.
 
+        \pagebreak
+        
     \subsection{Entity Classes (Structure/Purpose)}
     Entity classes use JPA annotations to transfer Java objects to the database as tables. These entity classes are necessary for database interaction to ensure structured data storage and retrieval. \newline
     Each entity, such as addresses, areas, streets and special features of addresses, corresponds to a different concept in the system. However, together they build a relation model that is well-structured and easy to manage. \newline
 
     \textbf{Annotations:} \newline
     There are several annotations we used in our project to make the entities easier to understand. For example, the area entity looks like this:  
-    %\lstset{style=java, caption=Area Entity}
     \begin{minted}{java}
 @Data
 @Entity
@@ -90,13 +95,15 @@ public class Area {
     private String desc;
 }                  
     \end{minted} 
+    \captionof{listing}{Area Entity}
 
-    In this class, the \texttt{@Data} annotation is used to generate necessary methods like \texttt{Getters} and \texttt{Setters}. \texttt{@Entity} ensures that JPA actually recognizes the class as an entity and \texttt{@Table} is used to give the table of this class a custom name. Furthermore, \texttt{@Id} sets an identifier for the entity. In this case the ID is getting generated automatically with the \texttt{@GeneratedValue} annotation. \newline
+    In this class, the \texttt{@Data} annotation is used to generate necessary methods like \texttt{Getters} and \texttt{Setters}. \texttt{@Entity} ensures that JPA actually recognizes the class as an entity and \texttt{@Table} is used to give the table of this class a custom name. Furthermore, \texttt{@Id} sets an identifier for the entity. In this case the ID is getting generated automatically with the \texttt{@GeneratedValue} annotation.
+    
+    \pagebreak
     
     \textbf{Unique identifier:} \newline
     The most important aspect of the backend is handling all the addresses. Every address has a unique identifier, which is defined by a \texttt{house number} and a \texttt{street}. Therefore, we cannot use a single primary key as an identifier for each address. \newline
     The \texttt{AddressId} class is used to manage this composite key. which ensures that each address has its own unique identifier without requiring the generation of an artificial identifier.
-    \lstset{style=java, caption=AddressId}
     \begin{minted}{java}
 @Data
 public class AddressId implements Serializable { 
@@ -104,10 +111,11 @@ public class AddressId implements Serializable {
     private Long streetId;
 }                         
     \end{minted} 
+    \captionof{listing}{AddressId}
+
     It is shown in the code snippet from the AddressId class that it uses the mentioned variables as a combination of identifiers, which then results in us not needing to make an artificial identifier like a number that goes up every time the admin adds a new address. \newline
 
     These composite keys are the best practice if it is not possible to use only one variable as the primary key. This is how the \texttt{AddressId} class is added to the address entity: 
-    \lstset{style=java, caption=IDs in Address-Entity}
     \begin{minted}{java}
 @IdClass(AddressId.class)
 public class Address {
@@ -120,11 +128,11 @@ public class Address {
     private Long streetId;
 }                         
     \end{minted} 
-    The annotation \texttt{@IdClass} has to be used to define what class is used to define the variables of the primary key. Afterwards, the corresponding variables, which are in our case \texttt{houseNumber} and \texttt{streetId}, have to be defined as variables in the entity class. Also, the annotation \texttt{@Id} has to be used over the variables in the entity class to set them as actual IDs. \newline 
+    \captionof{listing}{IDs in Address-Entity}
 
+    The annotation \texttt{@IdClass} has to be used to define what class is used to define the variables of the primary key. Afterwards, the corresponding variables, which are in our case \texttt{houseNumber} and \texttt{streetId}, have to be defined as variables in the entity class. Also, the annotation \texttt{@Id} has to be used over the variables in the entity class to set them as actual IDs. \newline 
     \textbf{Variables in Entities:} \newline
     There are several types of variable types in an entity class. First, the "normal" variable, which has no connection to other entities or is in the ID in any way. These get used for data that is not related to any other entities. This is an example from the address entity of such a variable:
-    \lstset{style=java, caption="Normal" Variable}
     \begin{minted}{java}
 @Column(name = "latitude")
 private double latitude;
@@ -135,10 +143,11 @@ private double longitude;
 @Column(name = "schonbesucht")
 private Boolean alreadyVisited;                     
     \end{minted} 
-    In this case, these variables save the location data of each address and whether the address had already been visited. It uses the \texttt{@Column} annotation, which is needed because sometimes the name of the column in the database table and the name of the variable in the code may not match for better handling in the code. Otherwise, the variables are just defined with their respective data types. \newline
+    \captionof{listing}{"Normal" Variable}
 
+    In this case, these variables save the location data of each address and whether the address had already been visited. It uses the \texttt{@Column} annotation, which is needed because sometimes the name of the column in the database table and the name of the variable in the code may not match for better handling in the code. Otherwise, the variables are just defined with their respective data types. \newline
     The other type of variables are related variables that have a connection to another entity in some way.
-    \lstset{style=java, caption=ManyToOne Variable}
+    \captionof{listing}{ManyToOne Variable}
     \begin{minted}{java}
 @ManyToOne
 @JoinColumn(name = "gebietid")
@@ -152,7 +161,6 @@ private SpecialFeature specialFeature;
     This code snippet defines two variables in our address entity that use the \texttt{@ManyToOne} annotation. This is crucial because each address belongs to an area and can have a special feature. We use the IDs from the other entities to make sure that the relationship of the two entities are always right. In this case, because it is a ManyToOne relationship, we did not need to define the address entity in the other classes. \newline
 
     Sometimes the variables have more complex relationships than just with a simple identifier that gets compared. We had such a case in our project, and it came out like this: 
-    \lstset{style=java, caption=Complex ManyToOne Variable}
     \begin{minted}{java}
 @ManyToOne(cascade = CascadeType.PERSIST)
 @JoinColumns({
@@ -161,28 +169,31 @@ private SpecialFeature specialFeature;
 })
 private Street street;                   
     \end{minted} 
+    \captionof{listing}{Complex ManyToOne Variable}
     This code snippet defines a variable which is related to the street entity. The street entity also has a composite key as its ID so we had to use the \texttt{@JoinColumns} annotation to have a reference to the composite key of the street entity. 
 
     \subsection{JPA-Repositories (DB Access and CRUD Operations)}
     JPA repositories are a crucial part of the backend to simplify database access by providing methods for many different CRUD (Create, Read, Update, Delete) operations. We utilize repository interfaces that extend \texttt{JpaRepository} instead of manually implementing all these methods that is given to us by the \texttt{JpaRepository}. For example, our \texttt{AddressRepo} interface gets defined like this:  \newline
-    \lstset{style=java, caption=AddressRepo Interface}
     \begin{minted}{java}
 public interface AddressRepo extends JpaRepository<Address, Integer>{}          
     \end{minted} 
+    \captionof{listing}{AddressRepo Interface}
+    \pagebreak
     The interface extends \texttt{JpaRepository} with the Address being the entity that gets influenced by the CRUD (Create, Read, Update, Delete) operations and \texttt{Integer} being an id. \newline
 
     A JPA repository is an interface rather than a normal Java class. We extend an interface with the \texttt{JpaRepository}. By that, we inherit many built-in database methods that make data management significantly easier. Almost any entity class has its own repository interface, which allows us to retrieve, check and manipulate database entries with simple methods calls instead of writing the methods ourselves. \newline
 
     Such a repository can also set custom methods based on variable names. For example, this code snippet finds a street based on its name and postal code:
-    \lstset{style=java, caption=Find Street By Name And Postal Code}
     \begin{minted}{java}
 Street findStreetByNameAndPostalCode(String name, String postalCode);          
     \end{minted} 
+    \captionof{listing}{Find Street By Name And Postal Code}
     As JPA automatically recognizes the method names, these queries do not require any explicit SQL statements.
+
+    \blankLine
 
     \textbf{Custom Queries with @Query} \newline
     Although JPA simplifies database interactions in many ways, there are some specific cases where automatic query generation does not work. In our project, we encountered an issue where Hibernate had problems correctly inserting a new address into the table. To solve this problem, we had to create this custom SQL query in the repository:
-    \lstset{style=java, caption=Insert Address with Custom Query}
     \begin{minted}{java}
 @Modifying
 @Transactional
@@ -194,6 +205,7 @@ int insertAddress(@Param("houseNumber") String houseNumber,
                   @Param("postalCode") String postalCode,
                   ...);          
     \end{minted} 
+    \captionof{listing}{Insert Address with Custom Query}
 
     This method inserts a new address with all its variables into the database, but it requires additional annotations.
     \begin{itemize}
@@ -209,7 +221,6 @@ int insertAddress(@Param("houseNumber") String houseNumber,
     \subsubsection{@Service Annotation}
     The \texttt{@Service} annotation is used to define a class as an actual service component. It originates from the \texttt{@Component} annotation, which makes it eligible for Spring's component scanning and dependency injection. \newline
     Every service class interacts with at least one repository, which gets injected through a constructor-based dependency injection using the \texttt{@Autowired} annotation. This injection looks like this in the service class: 
-    \lstset{style=java, caption=Repository Injection and @Service}
     \begin{minted}{java}
 @Service
 public class AddressService {        
@@ -225,20 +236,22 @@ public class AddressService {
     }
 }
     \end{minted}
+    \captionof{listing}{Repository Injection and @Service}
     Here \texttt{AddressService} depends on many repositories, and Spring automatically injects the required interface. 
 
     \subsubsection{Repository Usage in Service Methods}
     Now that the service class has all the necessary repositories, it has to use the methods too. Some common operations look like this: \newline
     This method returns all addresses in the database: 
-    \lstset{style=java, caption=Fetching all Addresses}
     \begin{minted}{java}
 public List<Address> getAllAddresses() {
     return addressRepo.findAll();
 }
     \end{minted}
+    \captionof{listing}{Fetching all Addresses}
+
+    \blankLine
 
     In this case, it toggles if the address has already been visited or not:
-    \lstset{style=java, caption=Toggle Already Visited}
     \begin{minted}{java}
 public Address toggleAlreadyVisited(String houseNumber, Long streetId) {
     Address address = addressRepo.findAddressByHouseNumberAndStreetId(houseNumber, streetId);
@@ -250,9 +263,9 @@ public Address toggleAlreadyVisited(String houseNumber, Long streetId) {
     return addressRepo.save(address);
 }
     \end{minted}
+    \captionof{listing}{Toggle Already Visited}
 
     And that inserts a new address with the custom query from the \texttt{AddressRepo}: 
-    \lstset{style=java, caption=Insert new Address}
     \begin{minted}{java}
 @Transactional
 public void createNewAddress(
@@ -269,14 +282,17 @@ public void createNewAddress(
     );
 }    
     \end{minted}
+    \captionof{listing}{Insert new Address}
 
     These methods from the repositories are used in almost every function of the service class. From retrieving data to creating a new address, there are many methods that are built-in or can be easily created in the repository classes that get used by the service classes.
 
     \subsubsection{Computing Border Addresses Using Convex Hull}
-    An important function of the backend is to calculate the border addresses that are around a given area. This function is implemented in the \texttt{AddressService} class. In this case, the \texttt{getBorderAddresses} method calculates the convex hull from this given area. The main method uses many helper methods and an extra class, so the calculation does not use that much resources. \newline
+    An important function of the backend is to calculate the border addresses that are around a given area. This function is implemented in the \texttt{AddressService} class. In this case, the \texttt{getBorderAddresses} method calculates the convex hull from this given area. The main method uses many helper methods and an extra class, so the calculation does not use that much resources. 
+    
+    \pagebreak
+    
     \textbf{Point Class} \newline
     To calculate the convex hull, we use the longitude and latitude of the addresses in an area. Processing every address with all its fields would cost much more resources than only using the longitude and latitude of every address. That is the purpose of the \texttt{Point} class. It looks like this: 
-    \lstset{style=java, caption=Point Class}
     \begin{minted}{java}
 @AllArgsConstructor
 @Data
@@ -285,34 +301,35 @@ public class Point {
     private double latitude;
 }
     \end{minted}
+    \captionof{listing}{Point Class}
     This class only saves the longitude and latitude of an address to save a bit more resources. \newline
 
     \textbf{Helper Methods} \newline
     There are some methods we created that get used in the main method to get the border addresses to make it easier to understand what each method does. 
     \textbf{PolarAngle}
     The \texttt{polarAngle} method is used to calculate the polar angle between two points so that it can be used to find out which points are the nearest and can be compared to each other next. This method is implemented like this: 
-    \lstset{style=java, caption=Polar Angle Method}
     \begin{minted}{java}
 public double polarAngle(Point origin, Point point) {
     return Math.atan2(point.getLongitude() - origin.getLongitude(), point.getLatitude() - origin.getLatitude());
 }
     \end{minted}
+    \captionof{listing}{Polar Angle Method}
     The method gets two points and compares them to each other with the \texttt{Math.atan2} method, which is provided by the \texttt{Math} package. \newline
 
     \textbf{IsCounterClockwise} \newline
     The \texttt{isCounterClockwise} method is used to check if three points are counterclockwise. This is important to make sure the convex hull is actually convex and not concave. The method to calculate this looks like this: 
-    \lstset{style=java, caption=is Counter Clockwise Method}
     \begin{minted}{java}
 public boolean isCounterClockwise(Point p1, Point p2, Point p3) {
     return (p2.getLatitude() - p1.getLatitude()) * (p3.getLongitude() - p1.getLongitude()) - (p2.getLongitude() - p1.getLongitude()) * (p3.getLatitude() - p1.getLatitude()) > 0;
 }
     \end{minted}
+    \captionof{listing}{is Counter Clockwise Method}
 
     \textbf{Convex Hull}
     The \texttt{convexHull} method uses the helper methods and other logic to return the convex hull. The method gets a list of points. \newline
     
     The \texttt{convexHull} method starts with a clause that may directly stop the calculation. To build a convex hull, there have to be at least four points, so if there are less than four points, the method returns an empty list.
-    \lstset{style=java, caption=if Clause for Point Size}
+    \captionof{listing}{if Clause for Point Size}
     \begin{minted}{java}
 if (points.size() < 3) {
     return Collections.emptyList();
@@ -320,7 +337,6 @@ if (points.size() < 3) {
     \end{minted}
  
     If there are enough points, the actual \texttt{convexHull} can start. First, it finds the lowest point based on the latitude or the leftmost point if the latitudes of the two lowest points are the same. It goes through all the points given to the method and compares the latitude.
-    \lstset{style=java, caption=Lowest Point Calculation}
     \begin{minted}{java}
 Point lowest = points.stream()
     .min(Comparator.comparing(
@@ -328,24 +344,24 @@ Point lowest = points.stream()
         ).thenComparing(Point::getLongitude))
     .orElse(null);
     \end{minted}
+    \captionof{listing}{Lowest Point Calculation}
 
     Then, using one of the helper methods, the program sorts the points based on their polar angles to each other. This is relatively easy to do by given a comparator provided by Java.
 
-    \lstset{style=java, caption=Sort Points Based on Polar Angle}
     \begin{minted}{java}
 points.sort(Comparator.comparingDouble(p -> polarAngle(lowest, p)));
     \end{minted}
+    \captionof{listing}{Sort Points Based on Polar Angle}
 
     Afterwards, the method creates a stack and adds the first two points of the sorted list to the stack. 
-    \lstset{style=java, caption=Create Stack}
     \begin{minted}{java}
 Stack<Point> stack = new Stack<>();
 stack.push(points.get(0));
 stack.push(points.get(1));
     \end{minted}
+    \captionof{listing}{Create Stack}
 
     After the stack is created, the program goes through a loop that goes through every point in the list. In the loop, it creates a new variable that always gets the last added point of the stack and uses it as a reference point. Then the other helper method is used to look if the next point of the list is in the convex hull. If the next point is in the convex hull, then it gets added to the stack. This stack is then returned as a list for later processing.
-    \lstset{style=java, caption=Convex Hull Calculation}
     \begin{minted}{java}
 for (int i = 2; i < points.size(); i++) {
     Point top = stack.pop();
@@ -363,9 +379,9 @@ for (int i = 2; i < points.size(); i++) {
 
 return new ArrayList<>(stack);
     \end{minted}
+    \captionof{listing}{Convex Hull Calculation}
 
     In the \texttt{getBorderAddresses} method, the \texttt{convexHull} method is used, and the convex hull points are stored in a list. Furthermore, this list gets used to add a tolerance to every point. This is the case because we encountered some issues while creating this convex hull, and we found out by adding a bit of tolerance that this issue was fixed. This is because the locations of the addresses are not precise enough. After adding this tolerance, the list of points that build the convex hull is returned.
-    \lstset{style=java, caption=Lowest Point Calculation}
     \begin{minted}{java}
 List<Point> hull = convexHull(points);
 
@@ -385,10 +401,13 @@ for (Point p : hull) {
         
 return borderAddresses;
     \end{minted}
+    \captionof{listing}{Lowest Point Calculation}
 
     \subsection{Rest Controller (API Endpoints and their Functions)}
 
     REST controllers expose API endpoints that handle HTTP requests and then return the appropriate responses. These controllers allow the frontend interfaces (Admin Panel and mobile app) to interact in any way with the backend to perform operations like retrieving, updating and deleting data. In our project, two main REST controllers are responsible for handling all the tasks: the \texttt{AddressController} and the \texttt{AdminController}.
+
+    \pagebreak
 
     \subsubsection{AddressController}
     The \texttt{AddressController} class is for handling endpoints for the guides and the mobile app and provides the necesssary functions to retrieve and update certain information. Each method in this controller corresponds to a certain operation the guides can do. These are the endpoints the \texttt{AddressController} exposes to the network: \newline \newline
@@ -581,6 +600,8 @@ return borderAddresses;
         \end{figure}
     \end{enumerate}
 
+    \pagebreak
+
     \textbf{POST Routes}
     \begin{enumerate}
         \item \textbf{\texttt{POST /addAddress} - Add a New Address}
@@ -668,3 +689,4 @@ return borderAddresses;
             \caption{Delete Route to Delete an Address}
         \end{figure}
     \end{enumerate}
+    \pagebreak
