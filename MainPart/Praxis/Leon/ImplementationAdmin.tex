@@ -101,24 +101,21 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays an
 \label{fig:Validation}
     Validation is the process of checking that data meets specific criteria before it is accepted and added to a system or database. This ensures that the data is accurate, consistent, and conforms to required standards. Validation prevents errors and inconsistencies that could arise from invalid or incomplete data, maintaining the integrity and reliability of the system. It helps catch mistakes early, such as missing fields or incorrect data inputs. By ensuring that only valid data is processed, validation plays a crucial role in preserving data quality. \autocite{ContributorstoWikimediaprojects2025Feb}
 
-\paragraph{isDuplicateAddress}
+\paragraph*{isDuplicateAddress}
     To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\blankLine
 
     A duplicate address is identified by the following criteria:\blankLine
     \textbf{street name, postal code, and house number}
     
 
-
-\newpage
-
-\paragraph{InputField filled Validation}
+\paragraph*{InputField filled Validation}
 To verify that all required \texttt{InputFields} are properly filled, the \texttt{validateAddressFields} method is called.
 
 To start the process, a new \texttt{Address} object is created and passed to the \texttt{validateAddressFields} method. The method checks each field within the \texttt{Address}. If a field is missing or incomplete, a \texttt{notification} (see \ref{fig:Notification}) is displayed to inform the user of the missing data, such as "Strasse fehlt" or "Koordinaten fehlen." If all fields are correctly filled out, the method returns \texttt{true}, signaling that the address can be saved. However, if any field is incomplete, the method returns \texttt{false}, preventing the address from being saved until all required information is provided.
 
 
 
-\paragraph{InputField Coordinates Validation}
+\paragraph*{InputField Coordinates Validation}
 \label{fig:InputField Coordinates Validation}
     The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} inputs, ensuring correct coordinates. Validation is applied only when the \texttt{isCoordinateInput} parameter is set to \texttt{true}. In that case, the \texttt{inputFormatter} is passed to the \texttt{textfield}. This \texttt{inputFormatter} guarantees that only valid inputs are accepted. These are the three validators used:
 
@@ -140,7 +137,7 @@ To start the process, a new \texttt{Address} object is created and passed to the
 \subsubsection{Additional Functionalities}
     This section outlines several functionalities that have been integrated to improve the overall usability of the application. These enhancements are specifically designed to simplify tasks while ensuring an intuitive user experience.
 
-\paragraph{Notification}
+\paragraph*{Notification}
 \label{fig:Notification}
 
     To notify the administrator about the success or failure of an operation, a \texttt{notification} is displayed at the bottom left, overlaying the \texttt{AdminMapComponent}. This \texttt{notification} appears when:
@@ -191,7 +188,7 @@ A street can be selected in two ways:
 
 
 
-\paragraph{Select a Street via AdminMapComponent}
+\paragraph*{Select a Street via AdminMapComponent}
 Every click on the \texttt{AdminMapComponent} is checked to see if it is near a street. Since there is no predefined method to check if a point is on a street, the \texttt{isPointNearPolyline} method was implemented. This method checks whether the click was on the street. More information about this method can be found in the \texttt{AdminMapComponent} section \ref{fig:AdminMapComponent}.\
 
 \begin{figure}[H]
@@ -201,7 +198,7 @@ Every click on the \texttt{AdminMapComponent} is checked to see if it is near a 
 \end{figure}
 
 
-\paragraph{Select a Street via Button}
+\paragraph*{Select a Street via Button}
 This was implemented because selecting the street directly on the map could be a bit spotty in its working. Through this feature, a reliable way to select a street was available, even though in the final deployment, the street selection via map worked flawlessly. 
 \begin{figure}[H]
     \centering
@@ -322,7 +319,7 @@ This component displays the addresses on a geographic map. The map used is OpenS
 
 
 
-\paragraph{Select a Street}
+\paragraph*{Select a Street}
 \label{fig:Select Street}
 
 To select a street, the \texttt{isPointNearPolyline} method was implemented. This method checks whether the click was on a street. It takes the coordinates of the click as a \texttt{LatLng} object and a street as a list of \texttt{LatLngs}. After each click on the map, a loop is triggered that calls the \texttt{isPointNearPolyline} method for every street, passing the click coordinates during each iteration.\blankLine
@@ -350,7 +347,7 @@ bool _isNear(LatLng p, LatLng a, LatLng b, double tol) {
 }
 \end{minted}
 
-\paragraph{Select Coordinates on Map}
+\paragraph*{Select Coordinates on Map}
 \label{fig:Select Coordinates on Map}
 
 To select coordinates to the currently selected address, a long press can be done on the map. The method \texttt{onCoordinateSelected} is then called via a callback from the \texttt{AdminMapComponent}. This sets the coordinates of the address to the coordinates of the click. The \texttt{InputFields} are then filled with the new coordinates.\

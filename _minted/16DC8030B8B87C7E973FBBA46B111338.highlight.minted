@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Point}\PYG{+w}{ }\PYG{n}{lowest}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{points}\PYG{p}{.}\PYG{n+na}{stream}\PYG{p}{(}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{Comparator}\PYG{p}{.}\PYG{n+na}{comparing}\PYG{p}{(}
+\PYG{+w}{            }\PYG{n}{Point}\PYG{p}{:}\PYG{p}{:}\PYG{n}{getLatitude}
+\PYG{+w}{        }\PYG{p}{)}\PYG{p}{.}\PYG{n+na}{thenComparing}\PYG{p}{(}\PYG{n}{Point}\PYG{p}{:}\PYG{p}{:}\PYG{n}{getLongitude}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{.}\PYG{n+na}{orElse}\PYG{p}{(}\PYG{k+kc}{null}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

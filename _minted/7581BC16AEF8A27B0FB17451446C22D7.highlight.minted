@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{n}{addressMap}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{groupBy}\PYG{p}{(}\PYG{n}{addresses}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Address}\PYG{+w}{ }\PYG{n}{address}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{address}\PYG{p}{.}\PYG{n}{street}\PYG{p}{.}\PYG{n}{name}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{addressMap}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{addressMap}\PYG{p}{.}\PYG{n}{map}\PYG{p}{(}\PYG{p}{(}\PYG{n}{key}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{value}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{          }\PYG{n}{value}\PYG{p}{.}\PYG{n}{sort}\PYG{p}{(}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{compareHouseNumbers}\PYG{p}{(}\PYG{n}{a}\PYG{p}{.}\PYG{n}{houseNumber}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{.}\PYG{n}{houseNumber}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{          }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{MapEntry}\PYG{p}{(}\PYG{n}{key}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{value}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

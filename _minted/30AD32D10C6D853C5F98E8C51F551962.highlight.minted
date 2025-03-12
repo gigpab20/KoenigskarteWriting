@@ -1,0 +1,22 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nt}{graphhopper}\PYG{p}{:}
+\PYG{+w}{    }\PYG{n+nt}{datareader.file}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{austria\PYGZhy{}latest.osm.pbf}
+\PYG{+w}{    }\PYG{n+nt}{graph.location}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{austria\PYGZhy{}gh}
+\PYG{+w}{    }\PYG{n+nt}{profiles}\PYG{p}{:}
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{name}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{foot}
+\PYG{+w}{        }\PYG{n+nt}{weighting}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{custom}
+\PYG{+w}{        }\PYG{n+nt}{custom\PYGZus{}model}\PYG{p}{:}
+\PYG{+w}{          }\PYG{n+nt}{speed}\PYG{p}{:}
+\PYG{+w}{            }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{if}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{true}
+\PYG{+w}{              }\PYG{n+nt}{limit\PYGZus{}to}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{5}
+\PYG{+w}{    }\PYG{n+nt}{import.osm.ignored\PYGZus{}highways}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{motorway,trunk}
+
+\PYG{n+nt}{server}\PYG{p}{:}
+\PYG{+w}{    }\PYG{n+nt}{application\PYGZus{}connectors}\PYG{p}{:}
+\PYG{+w}{      }\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nt}{type}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{http}
+\PYG{+w}{        }\PYG{n+nt}{port}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{46381}
+\PYG{+w}{        }\PYG{n+nt}{bind\PYGZus{}host}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{localhost}
+\PYG{+w}{    }\PYG{n+nt}{root\PYGZus{}path}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{/streets/*}
+\PYG{+w}{    }\PYG{n+nt}{request\PYGZus{}log}\PYG{p}{:}
+\PYG{+w}{      }\PYG{n+nt}{appenders}\PYG{p}{:}\PYG{+w}{ }\PYG{p+pIndicator}{[}\PYG{p+pIndicator}{]}
+\end{MintedVerbatim}
