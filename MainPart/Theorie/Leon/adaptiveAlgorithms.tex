@@ -64,7 +64,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
         Rule-based filters enforce logical constraints on address data to maintain quality and relevance in dynamic environments. A filter could flag addresses lacking GPS coordinates during emergency responses, enforcing manual verification before navigation. \autocite{helpAutodesk2025Jan}\\
         
         
-        \textbf{Structure of Rule-Based Filters}\blankLine
+        \textbf{Structure of Rule-Based Filters}\newline
         A rule-based filter consists of logical conditions applied to address attributes:
         \begin{itemize}
             \item \textbf{AND}: All rules must be true.
@@ -79,15 +79,15 @@ This chapter explains how adaptive algorithms and real-time data integration can
             \item \textbf{Historical Consistency Checks}: Detect frequently modified addresses and prompt for manual review.
         \end{itemize}
         
-        \textbf{Integration with Adaptive Algorithms}\\
-        While rule-based filters provide a structured approach to data validation, they can be enhanced with adaptive algorithms. Machine learning models can analyze user corrections over time and adjust rules dynamically. For instance, if multiple users correct the same address format, the system can learn from these patterns and refine its filtering criteria automatically.
+        \textbf{Integration with Adaptive Algorithms}\newline
+        While rule-based filters provide a structured approach to data validation, they can be enhanced with adaptive algorithms. Machine learning models can analyze user corrections over time and adjust rules dynamically. For instance, if multiple users correct the same address format, the system can learn from these patterns and refine its filtering criteria automatically. \autocite{helpAutodesk2025Jan}
         
 
     \subsection{Real-Time Data Integration Frameworks}
     Real-time data integration frameworks are systems designed to collect, process, and deliver data instantly as it is generated. Unlike traditional batch processing, which handles data in chunks, these frameworks enable continuous updates. This makes them ideal for applications where delays are unacceptable.
 
         \subsubsection{Challenges}
-        Real-time data integration faces several challenges, particularly in dynamic environments such as mobile field operations: \autocite{vexdata2024Jun}
+        Real-time data integration faces several challenges, particularly in dynamic environments such as mobile field operations: 
         
         \begin{itemize}
             \item \textbf{Data Quality:} Errors such as typos or GPS drift require adaptive algorithms for correction.
@@ -98,10 +98,11 @@ This chapter explains how adaptive algorithms and real-time data integration can
         
             \item \textbf{Consistency:} Conflicting address data from multiple sources needs resolution.
         \end{itemize}
+        \autocite{vexdata2024Jun}
                 
         \subsubsection{Core Components}
 
-        A robust real-time data integration framework consists of four key components: \autocite{Limited2025Mar}
+        A robust real-time data integration framework consists of four key components: 
 
     \begin{itemize}
         \item \textbf{Data Sources:} These include GPS sensors, external databases, and other input streams.  
@@ -113,6 +114,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
         \item \textbf{Storage \& Delivery:} Processed data is stored in databases and accessed via APIs.
 
     \end{itemize}
+    \autocite{Limited2025Mar}
 
         \subsubsection{Popular Frameworks}
 
@@ -134,18 +136,19 @@ This chapter explains how adaptive algorithms and real-time data integration can
 
         Accuracy measures how closely the addresses in the database match real-world locations, ensuring reliable address information. Traditional methods often suffer from decay over time due to manual updates or infrequent batch imports, leading to outdated or incorrect data.  \blankLine
 
-        Inaccurate data can lead to inefficiencies, delays, or even costly mistakes. Furthermore, achieving high accuracy often involves continuous updates and validation of data, particularly when using multiple data sources. \autocite{GeeksforGeeks2024Oct}\blankLine
+        Inaccurate data can lead to inefficiencies, delays, or even costly mistakes. Furthermore, achieving high accuracy often involves continuous updates and validation of data, particularly when using multiple data sources. 
 
         Accuracy is calculated as:
         \[
         \text{Accuracy} = \frac{\text{Correct Addresses}}{\text{Total Addresses}} \times 100
         \]
+        \autocite{GeeksforGeeks2024Oct}\blankLine
     
 
         \paragraph{Latency}
         \label{par:latency}
 
-        Latency measures the delay between data generation and its availability in the app. For mobile teams, latency above 30 seconds can render updates useless during fast-moving operations. Reducing latency is critical for ensuring timely decision-making and operational efficiency. Key factors influencing latency include: \autocite{GeeksforGeeks2024Oct}
+        Latency measures the delay between data generation and its availability in the app. For mobile teams, latency above 30 seconds can render updates useless during fast-moving operations. Reducing latency is critical for ensuring timely decision-making and operational efficiency. Key factors influencing latency include: 
 
         \begin{itemize} 
             \item \textbf{Data Ingestion Speed}: Fast ingestion ensures data is quickly captured, minimizing delays and speeding up availability.
@@ -154,6 +157,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
             \item \textbf{Data Prioritization}: Algorithms that prioritize critical data reduce perceived latency by processing urgent updates first.
 
         \end{itemize}
+        \autocite{GeeksforGeeks2024Oct}
 
 \blankLine
 
