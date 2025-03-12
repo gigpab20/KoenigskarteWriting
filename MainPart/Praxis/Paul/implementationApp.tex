@@ -18,8 +18,8 @@ Due to the fact that the backend returns the addresses unsorted, the Address Pro
 
 The \textit{compareHouseNumbers} function performs natural sorting of house numbers by splitting them into alternating numeric and non-numeric components. It achieves this using a regular expression that extracts sequences of digits and non-digit characters separately. The function then iterates through these parts, comparing numeric segments as integers to ensure correct numerical order and comparing non-numeric segments lexicographically. This approach ensures that house numbers such as "10a" and "10c" are sorted in an intuitive order, with "10a" preceding "10c". If all corresponding parts are equal, the function resolves ties by comparing the lengths of the extracted parts lists. This method improves the readability and usability of address lists by maintaining a logical, human-friendly order.
 
-\lstset{style=generic, caption=compareHouseNumbers function (AddressProvider.dart)}
-\begin{lstlisting}
+\lstset{style=dart, caption=compareHouseNumbers function (AddressProvider.dart)}
+\begin{minted}{dart}
     int compareHouseNumbers(String a, String b) {
         final regex = RegExp(r'(\d+|\D+)');
     
@@ -44,7 +44,7 @@ The \textit{compareHouseNumbers} function performs natural sorting of house numb
     
         return partsA.length.compareTo(partsB.length);
       }
-\end{lstlisting}
+\end{minted}
 
 \subsection{HTTP-Requests}
 
@@ -55,23 +55,23 @@ To actually access the data from our database, we built our backend API. It can 
     
     As the name suggests, it fetches and saves all addresses from the area that is set through the QR-Code. Here the \textit{compareHouseNumbers} function gets used.
 
-    \lstset{style=generic, caption=use of compareHouseNumbers function (AddressProvider.dart)}
-    \begin{lstlisting}
+    \lstset{style=dart, caption=use of compareHouseNumbers function (AddressProvider.dart)}
+    \begin{minted}{dart}
         addressMap = groupBy(addresses, (Address address) => address.street.name);
 
         addressMap = addressMap.map((key, value) {
           value.sort((a, b) => compareHouseNumbers(a.houseNumber, b.houseNumber));
           return MapEntry(key, value);
         });
-    \end{lstlisting}
+    \end{minted}
 
     \item \textbf{fetch border addresses of area}
     Fetches and extracts the coordinates of the border addresses returned by the backend.
 
     \lstset{style=generic, caption=extraction of coordinates from border addresses (AddressProvider.dart)}
-    \begin{lstlisting}
+    \begin{minted}{dart}
         borderAddresses = decodedJSON.map((json) => Address.fromJson(json)).toList().map((point) => LatLng(point.latitude, point.longitude)).toList();
-    \end{lstlisting}
+    \end{minted}
 
     \item \textbf{toggle address visited state}
     

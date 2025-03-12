@@ -2,6 +2,21 @@
 \usepackage{listings}
 \usepackage{listing}
 \usepackage{xcolor}
+\usepackage{minted}
+
+\definecolor{bgcolor}{rgb}{0.9,0.9,0.9}
+
+\renewcommand\theFancyVerbLine{\normalsize\arabic{FancyVerbLine}}
+% Set minted default style
+\setminted{
+  fontsize=\footnotesize, % Smaller font size
+  bgcolor=bgcolor, % Background color
+  linenos, % Enable line numbers
+  %numbersep=5pt, % Space between numbers and code
+  %numberstyle=\color{gray}, % Line number style
+  %frame=single, % Add a box around the code
+  breaklines=true, % Allow line breaking
+}
 
 \definecolor{backgroundcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{keywordcolor}{rgb}{0.427, 0.353, 0.816}
@@ -26,9 +41,78 @@
   moredelim=[l][\color{black}]{:},
 }
 \lstdefinestyle{dart}{
-  language=dart
+  language=java
 }
 
+\lstdefinestyle{java} {
+language=Java,
+backgroundcolor=\color{backgroundcolour},
+numberstyle=\color{gray},
+numbers=left, 
+captionpos=b,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+morekeywords={  abstract, event, new, struct,
+                as, explicit, null, switch,
+                base, extern, object, this,
+                bool, false, operator, throw,
+                break, finally, out, true,
+                byte, fixed, override, try,
+                case, float, params, typeof,
+                catch, for, private, uint,
+                char, foreach, protected, ulong,
+                checked, goto, public, unchecked,
+                class, if, readonly, unsafe,
+                const, implicit, ref, ushort,
+                continue, in, return, using,
+                decimal, int, sbyte, virtual,
+                default, interface, sealed, volatile,
+                delegate, internal, short, void,
+                do, is, sizeof, while,
+                double, lock, stackalloc,
+                else, long, static,
+                enum, namespace, string, var, 
+                value, get, set, partial, String},
+%keywordstyle=\color{keywordcolor},
+%stringstyle=\color{redstrings},
+%basicstyle=\ttfamily\small,
+%identifierstyle=\color{sblue},
+frame=single,
+linewidth=159mm,
+breaklines=true,
+%rulecolor=\color{black!40},
+tabsize=4,
+framexleftmargin=-0mm
+}
+
+\lstdefinestyle{springproperties} {
+backgroundcolor=\color{backgroundcolour},
+numberstyle=\color{gray},
+numbers=left, 
+captionpos=b,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+keywordstyle=\color{keywordcolor},
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily\small,
+identifierstyle=\color{sblue},
+frame=single,
+linewidth=159mm,
+breaklines=true,
+rulecolor=\color{black!40},
+tabsize=4,
+framexleftmargin=-0mm
+}
 
 % C-Sharp
 \definecolor{Green}{rgb}{0, 0.3, 0}

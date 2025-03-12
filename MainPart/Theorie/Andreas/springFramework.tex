@@ -28,16 +28,23 @@
         \end{itemize}      
         \Autocite{Andi:SpringBoot1, Andi:SpringBoot2}          
     
+        \blankLine
+
     \textbf{Setting up a Spring Boot app:} \newline
     A Spring Boot project can be initialized quickly using the \textbf{Spring Initializr}. For a new Spring Boot-based project, the \textbf{Spring Initializr} can be opened, where the project details are filled in and a packaged project is downloaded as a .zip file. While initializing, several factors have to be chosen that determine the project structure, such as the programming language, the version of Spring Boot, and any other dependencies required to support development. \newline
     Depending on the development environment, you can directly develop a Spring Boot project within the IDE itself. Even this method supports the same amount of configuration to simplify the process of development. Not all IDEs are capable of creating a Spring Boot project out of the box, and sometimes a separate plugin needs to be installed.\Autocite{Andi:SpringInit}
     
+    \blankLine
+
     \textbf{Difference between Spring Boot and Spring Framework:} \newline
     Spring Boot's greatest strengths over the standard Spring Framework are its simplicity and quicker development. Theoretically, this advantage is at the expense of the higher degree of flexibility that direct Spring Framework usage would provide. Practically, the compromise is more than  worth it, as the Spring Framework's annotation system can still be utilized to inject other dependencies effectively. Besides, all Spring Framework functionalities, like easy event handling and native security, continue to be accessible. \Autocite{Andi:SpringBoot2}
     
     \subsection{Spring Data JPA}
     Spring Data JPA stands for Java Persistence API and provides a specification for persisting, reading and managing data from the object in the program, which are called entities, to project's tables in the database. JPA specifies a set of rules for developing interfaces that follow specific standards. Therefore, JPA serves as a set of guidelines for implementing Object Relational Mapping (ORM). 
-    ORM is the process of persisting an object in Java directly into a database table. \newline
+    ORM is the process of persisting an object in Java directly into a database table.
+
+    \blankLine
+    
     The goal of Spring Data JPA is to create classes called "repositories", which significantly reduce the amount of unnecessary code needed to access and manipulate data from a project's database. \newline 
 
     \textbf{Entities:} \newline
@@ -61,12 +68,21 @@
     The user can then access these routes through a GUI, enabling them to manage, update, or delete data as required. \Autocite{Andi:JPA}
     
     \subsection{Lombok}
-    In the modern days of Java development, one big challenge developers face is writing boilerplate code, which are code segments that repeat themselves over and over again and get used often in a project. This is especially the case in frameworks like Spring Boot, where we use classes like the service layer that involve a significant amount of repetitive code.  \newline
+    In the modern days of Java development, one big challenge developers face is writing boilerplate code, which are code segments that repeat themselves over and over again and get used often in a project. This is especially the case in frameworks like Spring Boot, where we use classes like the service layer that involve a significant amount of repetitive code.
+
+    \blankLine
+
     "Project Lombok" is a Java library that has the aim to reduce this boilerplate code by automatically generating the code for commonly used patterns. By integrating Lombok in your Spring Boot project, you can not only simplify your code but also make it easier to read, maintain and write. 
     Lombok works great with the whole Spring framework. If you wanted to use a project with Spring Data JPA, you would not get that far without using any annotations provided by Project Lombok. To flag an entity class for Spring Data JPA, you need to use the \texttt{@Entity} annotation. This annotation comes from the Lombok library and adds a couple of 
-    features to this class so that JPA recognizes it as an entity for the database. \newline
+    features to this class so that JPA recognizes it as an entity for the database.
+
+    \blankLine
+
     Lombok injects the needed methods directly into the compiled class files when the program is getting built, which reduces the need to manually write common functions like constructors, getters and setters. When an annotation like \texttt{@Getter}, \texttt{@Setter}, \texttt{@AllArgsConstructor} is used, Lombok modifies the code before the compilation is done. This ensures that the generated methods are available at runtime while keeping the source code clean and minimal. \newline
-    For example, using \texttt{@AllArgsConstructor} tells Lombok to generate a constructor with all the variables of a class. Another useful annotation is \texttt{@Data}, which combines many methods like the \texttt{@Getter} and \texttt{@Setter}. Using this annotation further reduces repetitive code. \newline
+    For example, using \texttt{@AllArgsConstructor} tells Lombok to generate a constructor with all the variables of a class. Another useful annotation is \texttt{@Data}, which combines many methods like the \texttt{@Getter} and \texttt{@Setter}. Using this annotation further reduces repetitive code. 
+    
+    \blankLine
+    
     Since Lombok creates these methods during the compilation process, developers can keep their code clean while still having fully functional classes. \Autocite{Andi:Lombok1, Andi:Lombok2, Andi:Lombok3}
     
     \subsection{Advantages}
@@ -82,3 +98,4 @@
     \textbf{Improved Productivity:} \newline
     Tools like Spring Boot, which are part of the Spring ecosystem, significantly enhance developer productivity by providing better approaches to different problems and embedded servers. \Autocite{Andi:SpringBoot2}
     
+    \pagebreak

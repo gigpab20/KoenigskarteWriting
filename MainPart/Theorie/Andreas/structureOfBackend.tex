@@ -7,8 +7,8 @@
     \begin{figure} [H]
         \centering
         \includegraphics [width=0.75\textwidth] {images/andreas/backendstructure/springBootLayers.png}
-        \caption{Layers of Spring Boot}
-        \cite{Andi:SpringLayersPic}
+        \caption{Layers of Spring Boot \autocite{Andi:SpringLayersPic}}
+        
     \end{figure}
 
     \subsection{Controller Layer}
@@ -44,21 +44,24 @@
     Lastly, DTOs are adaptable, which allows developers to customize responses to specific use cases. They can support data combination from different entities or the exclusion of unnecessary fields, which then results in more efficient responses and easier processing. \newline
     By utilizing DTOs as they are intended, applications can achieve better modularity, security and overall performance. 
 
-    \newpage
+    \blankLine
 
     \textbf{Example for Using DTOs} \newline
     A common scenario where DTOs are useful is when managing user information in an application. \newline
     Imagine a system that stores user details such as first name, last name, email and password. If the application exposes the user data to external clients, it could lead to security risks, as sensitive information like passwords should never be shared. Instead of exposing the entire user object, a DTO can be used to filter out unnecessary or sensitive data and only transfer the relevant information. \newline
     Therefore, when a user requests a list of other users in an application, the system does not need to send private details like passwords. As an alternative, the application can create a DTO that only contains essential information, such as first name, last name and email. This would ensure that the system remains secure while still providing necessary data for the application to function properly. \newline
     DTOs also help to optimize performance by limiting the amount of data transferred. Without DTOs, the application would send the passwords between a client and a server every time the backend needs to send data. However, by using DTOs, the application is limited to sending the first name, last name and email but not the password. \newline 
-    To ensure DTOs are as efficient as possible within a backend application, certain best practices should be followed. \newline 
+    To ensure DTOs are as efficient as possible within a backend application, certain best practices should be followed.
+
+    \blankLine
+
     \textbf{Keeping DTOs Simple:}
         \begin{itemize}
             \item DTOs should only contain the necessary fields required for the specific use case that it is needed for. Having too much data makes them harder to maintain and can lead to unnecessary complexity. By keeping DTOs organized, they remain efficient and can be used as they are intended.
         \end{itemize}
     \textbf{Using Validation:}
         \begin{itemize}
-            \item Data validation in DTOs is required to maintain data integrity and prevent processing invalid or incomplete data. By applying validation rules, such as not allowing a field to be empty or limiting the length of different fields, errors are caught early. This prevents incorrect data from being passed on to the logic or inserted into the database. \newpage
+            \item Data validation in DTOs is required to maintain data integrity and prevent processing invalid or incomplete data. By applying validation rules, such as not allowing a field to be empty or limiting the length of different fields, errors are caught early. This prevents incorrect data from being passed on to the logic or inserted into the database.
         \end{itemize}
     \textbf{Using Automation Tools:}
         \begin{itemize}
@@ -68,14 +71,17 @@
         \begin{itemize}
             \item Proper documentation of every DTO created in the application is crucial. Frameworks like Swagger or SpringFox provide the possibility of auto-generated API documentation, which is easily understandable by other developers concerning the structure and expected data of each DTO. This makes collaboration easier and more consistent within the project. 
         \end{itemize} 
-    While DTOs provide numerous benefits in organizing data transfer between the layers of an application, there are some challenges that come with them. As a project grows in complexity, it may take more effort to keep the DTO approach organized. It is wise to know the possible disadvantages so that DTOs can be utilized effectively without introducing unnecessary overhead. \newline \newline
+    While DTOs provide numerous benefits in organizing data transfer between the layers of an application, there are some challenges that come with them. As a project grows in complexity, it may take more effort to keep the DTO approach organized. It is wise to know the possible disadvantages so that DTOs can be utilized effectively without introducing unnecessary overhead.
+
+    \blankLine
+
     \textbf{Maintenance Overhead:}
     \begin{itemize}
         \item As an application evolves, the number of DTOs can grow extensively. Monitoring these DTOs, modifying them as new requirements emerge and maintaining them synchronized with the logic can prove to be a daunting task. Without proper structuring and an explicit DTO strategy, their maintenance can introduce excessive complexity.
     \end{itemize}
     \textbf{Performance Impact:}
     \begin{itemize}
-        \item While DTOs are used to reduce the amount of data transferred over the network, mapping entities to DTOs and vice versa is extra processing. This process will be a bottleneck in performance in high-traffic applications. Using optimized mapping strategies and automated tools for this purpose can help this problem. This still needs to be taken into consideration when implementing DTOs.\newpage
+        \item While DTOs are used to reduce the amount of data transferred over the network, mapping entities to DTOs and vice versa is extra processing. This process will be a bottleneck in performance in high-traffic applications. Using optimized mapping strategies and automated tools for this purpose can help this problem. This still needs to be taken into consideration when implementing DTOs.
     \end{itemize}
     \textbf{Consistency:}
     \begin{itemize}
@@ -85,3 +91,5 @@
     \begin{itemize}
         \item In use cases involving simple data interactions, DTOs may not be required. Adding DTOs to every operation will probably add a layer of abstraction that will not be as valuable. In this scenario, working with entities directly could be a simpler and cleaner approach.
     \end{itemize} \Autocite{Andi:DTOs}
+
+    \pagebreak

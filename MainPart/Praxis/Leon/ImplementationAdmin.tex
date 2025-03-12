@@ -340,17 +340,15 @@ Why the absolutes? The absolute value ensures that the distance is always positi
     {\Large  $d_{\text{Manhattan}} = |x_2 - x_1| + |y_2 - y_1|$}
 \end{center}
 
-\lstset{style=mycsharp, caption=isNear method}
-\begin{lstlisting}
+\lstset{style=dart, caption=isNear method}
+\begin{minted}{dart}
 bool _isNear(LatLng p, LatLng a, LatLng b, double tol) {
     double dx = b.latitude - a.latitude, dy = b.longitude - a.longitude;
     double t = ((p.latitude - a.latitude) * dx + (p.longitude - a.longitude) * dy) / (dx * dx + dy * dy);
     t = t.clamp(0, 1);
     return (p.latitude - (a.latitude + t * dx)).abs() + (p.longitude - (a.longitude + t * dy)).abs() <= tol;
 }
-\end{lstlisting}
-
-
+\end{minted}
 
 \paragraph{Select Coordinates on Map}
 \label{fig:Select Coordinates on Map}

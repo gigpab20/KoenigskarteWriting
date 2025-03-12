@@ -11,13 +11,18 @@
     Border addresses are certain points that define the outer boundaries of an area. Furthermore, an area is defined by a set of addresses which get added to a certain area prior to the caroler campaign (Königskarten Aktion). Once the area is created, the convex hull algorithm can be applied to the list of addresses to find the border addresses. These border addresses just go around the perimeter of the area. Therefore, the outcome is a precise, convex shape that covers the entire area.
     
     \subsubsection{Why Do We Use Border Addresses?}
-    Border addresses are important for a number of reasons. They give the visual definition of each area's boundaries, making it easy to manage and navigate through the different areas for admins and making it easier for each group to see the boundaries of their respective area. The use of the convex hull algorithm ensures that the boundary defined is the smallest convex shape possible that incorporates all the addresses in this area. The importance of the border addresses is outlined in the following points: \newline \newline
+    Border addresses are important for a number of reasons. They give the visual definition of each area's boundaries, making it easy to manage and navigate through the different areas for admins and making it easier for each group to see the boundaries of their respective area. The use of the convex hull algorithm ensures that the boundary defined is the smallest convex shape possible that incorporates all the addresses in this area. The importance of the border addresses is outlined in the following points:
+
+    \pagebreak
+
     \textbf{For the Admin:}
     \begin{enumerate}
         \item \textbf{Clear Visual Representation:} In the app interface, each area is shown in a different color and border addresses are highlighted by a line which goes through all the border addresses of an area. This makes it easy for the admin to see where each area is and how big they are.
         \item \textbf{Efficient Area management:} By visualizing the areas with the border addresses highlighted, the admin can rapidly evaluate the boundaries of each area. Based on the result of each area's boundaries, the admin can remove or add addresses if necessary. The management process is therefore improved by its flexibility. 
         \item \textbf{Better Decision Making:} The admin can make a well-informed decision about adding or removing addresses from an area by visually seeing how big an area is or how many addresses are in an area. Besides other factors, this information guarantees better decision-making from the admin on how to distribute the addresses to each area.
     \end{enumerate}
+
+    \blankLine
 
     \textbf{For Each Group:}
     \begin{enumerate}
@@ -33,7 +38,7 @@
     \begin{figure} [H]
         \centering
         \includegraphics [width=0.7\textwidth] {images/andreas/areaBorders/convexHull.jpg}
-        \caption{Process of the Convex Hull Algorithm (Source: \url{https://www.geeksforgeeks.org/convex-hull-algorithm})}
+        \caption{Process of the Convex Hull Algorithm \autocite{ProcessOfHull:Img}}
     \end{figure} 
     \blankLine 
     A convex polygon is a shape where all the corners point outward and there are no inward curves or sharp angles. To put it simply, if you draw a straight line between any two points inside the shape, it will always remain inside or on the shape's edge. This indicates that there are never any inward corners on the convex hull. In contrast, a concave polygon has at least one or more inward curves where the interior angle is greater than 180 degrees. \newline
@@ -42,8 +47,8 @@
     \begin{figure} [H]
         \centering
         \includegraphics [width=1\textwidth] {images/andreas/areaBorders/convexConcave.png}
-        \caption{Difference between a convex/concave polygon}
-        \cite{Andi:concaveConvex}
+        \caption{Difference between a convex/concave polygon \autocite{Andi:concaveConvex}}
+        
     \end{figure}
 
     \subsubsection{Why Use the Convex Hull?}
@@ -69,7 +74,10 @@
     \end{itemize} \autocite{Andi:typesOfConvexHullAlgos, Andi:convexHullPic}
 
     \subsubsection{Key concepts in the Convex Hull Algorithm}
-    The convex hull algorithm has a number of key concepts, all of which are essential to guaranteeing the algorithm's accuracy and effectiveness. \newline \newline
+    The convex hull algorithm has a number of key concepts, all of which are essential to guaranteeing the algorithm's accuracy and effectiveness.
+
+    \pagebreak
+
     \textbf{Orientation:}
     \begin{itemize}
         \item This is a reference to the relative orientation of three consecutive points. The convex hull algorithm determines whether to add the next point to the hull based on the orientation of a triplet of points. There are three possible orientations for the points: clockwise, anticlockwise and collinear. Only if the points are oriented counterclockwise, should the point be part of the hull. Otherwise, it should be discarded.
@@ -91,7 +99,10 @@
     \end{itemize} \autocite{Andi:keyConcepts}
 
     \subsection{Use Cases of the Convex Hull in Industry}
-    The ability of the convex hull algorithm to define boundaries of a complex dataset in an efficient way makes it widely used across a variety of fields. Convex hulls offer crucial tools for examining spatial relationships, visualizing data, and resolving optimization issues in a variety of fields. Here are some fields that use this algorithm. \newline \newline
+    The ability of the convex hull algorithm to define boundaries of a complex dataset in an efficient way makes it widely used across a variety of fields. Convex hulls offer crucial tools for examining spatial relationships, visualizing data, and resolving optimization issues in a variety of fields. Here are some fields that use this algorithm.
+
+    \pagebreak
+
     \textbf{Geographical Mapping}
     \begin{itemize}
         \item In geographic mapping, convex hulls are used to define the borders of regions. For example, while mapping a region with multiple data points, such as cities or landmarks, the convex hull helps outline the area that encloses all the points. This makes it easier to visualize and analyze the overall shape of a region, which helps with urban planning, resource management and environmental studies.
@@ -106,7 +117,7 @@
     \end{itemize}
     \textbf{Animal Behavior}
     \begin{itemize}
-        \item In ethology, the study of animal behavior, convex hulls are used to identify an animal's home range. The convex hull gives the estimated area an animal needs to be provided with for its habitat. In ecological studies, this approach is helpful for tracking animal movement patterns, determining territories and keeping an eye on endangered species.\newpage
+        \item In ethology, the study of animal behavior, convex hulls are used to identify an animal's home range. The convex hull gives the estimated area an animal needs to be provided with for its habitat. In ecological studies, this approach is helpful for tracking animal movement patterns, determining territories and keeping an eye on endangered species.
     \end{itemize}
     \textbf{Astronomy and Astrophysics}
     \begin{itemize}
@@ -124,8 +135,8 @@
     \begin{figure} [H]
         \centering
         \includegraphics [width=0.55\textwidth] {images/andreas/areaBorders/mbb.png}
-        \caption{Difference between MBB and Convex Hull}
-        \cite{Andi:mbbPic}
+        \caption{Difference between MBB and Convex Hull\autocite{Andi:mbbPic}}
+        
     \end{figure}
 
     \textbf{Alpha Shapes}
@@ -136,8 +147,8 @@
     \begin{figure} [H]
         \centering
         \includegraphics [width=.75\textwidth] {images/andreas/areaBorders/alphaShapePic.png}
-        \caption{Difference between Alpha Shape and Convex Hull}
-        \cite{Andi:alphaShapePic}
+        \caption{Difference between Alpha Shape and Convex Hull \autocite{Andi:alphaShapePic}}
+        
     \end{figure}
 
     \newpage
@@ -150,8 +161,7 @@
     \begin{figure} [H]
         \centering
         \includegraphics [width=.75\textwidth] {images/andreas/areaBorders/dtPic.png}
-        \caption{Mesh of Triangles from Delaunay Triangulation}
-        \cite{Andi:dtPic}
+        \caption{Mesh of Triangles from Delaunay Triangulation \autocite{Andi:dtPic}}
     \end{figure}
 
     \subsection{Rationale for Choosing the Convex Hull Method}

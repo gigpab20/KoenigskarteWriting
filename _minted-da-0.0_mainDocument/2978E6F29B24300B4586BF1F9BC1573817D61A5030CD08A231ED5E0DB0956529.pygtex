@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{web}\PYG{p}{.}\PYG{n+na}{cors}\PYG{p}{.}\PYG{n+na}{allowed}\PYG{o}{\PYGZhy{}}\PYG{n}{origins}\PYG{o}{=}\PYG{n}{https}\PYG{p}{:}\PYG{c+c1}{//projektlr.htl\PYGZhy{}kaindorf.at}
+\PYG{n}{spring}\PYG{p}{.}\PYG{n+na}{web}\PYG{p}{.}\PYG{n+na}{cors}\PYG{p}{.}\PYG{n+na}{allowed}\PYG{o}{\PYGZhy{}}\PYG{n}{methods}\PYG{o}{=}\PYG{n}{GET}\PYG{p}{,}\PYG{n}{POST}\PYG{p}{,}\PYG{n}{PUT}\PYG{p}{,}\PYG{n}{DELETE}
+\end{Verbatim}

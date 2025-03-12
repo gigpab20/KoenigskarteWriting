@@ -1,13 +1,37 @@
 {
-    "latex-workshop.intellisense.bibtexJSON.replace": {
-        
-    },
-    "editor.rulers": [80,120],
+    "latex-workshop.intellisense.bibtexJSON.replace": {},
+    "editor.rulers": [80, 120],
 
     "workbench.colorCustomizations": {
         "editorRuler.foreground": "#7C62D6"
     },
     "editor.wordWrap": "wordWrapColumn",
     "editor.wrappingIndent": "same",
-    "editor.wordWrapColumn": 80
+    "editor.wordWrapColumn": 80,
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (biber)",
+            "tools": ["latexmk-biber"]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk-biber",
+            "command": "latexmk",
+            "args": [
+                "-pdf",
+                "-shell-escape",
+                "-interaction=nonstopmode",
+                "-synctex=1",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ]
 }

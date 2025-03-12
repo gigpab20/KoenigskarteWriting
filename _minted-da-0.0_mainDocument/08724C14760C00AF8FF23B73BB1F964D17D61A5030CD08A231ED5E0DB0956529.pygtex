@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@Service}
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{AddressService}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{AddressRepo}\PYG{+w}{ }\PYG{n}{addressRepo}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{AreaRepo}\PYG{+w}{ }\PYG{n}{areaRepo}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{...}
+
+\PYG{+w}{    }\PYG{n+nd}{@Autowired}
+\PYG{+w}{    }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{n+nf}{AddressService}\PYG{p}{(}\PYG{n}{AddressRepo}\PYG{+w}{ }\PYG{n}{addressRepo}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{AreaRepo}\PYG{+w}{ }\PYG{n}{areaRepo}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{StreetRepo}\PYG{+w}{ }\PYG{n}{streetRepo}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SpecialFeatureRepo}\PYG{+w}{ }\PYG{n}{specialFeatureRepo}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{this}\PYG{p}{.}\PYG{n+na}{addressRepo}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{addressRepo}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{this}\PYG{p}{.}\PYG{n+na}{areaRepo}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{areaRepo}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{...}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

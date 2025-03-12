@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{compareHouseNumbers}\PYG{p}{(}\PYG{k+kt}{String}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{String}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{regex}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{RegExp}\PYG{p}{(}\PYG{l+s+s1}{r\PYGZsq{}(\PYGZbs{}d+|\PYGZbs{}D+)\PYGZsq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{partsA}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{regex}\PYG{p}{.}\PYG{n}{allMatches}\PYG{p}{(}\PYG{n}{a}\PYG{p}{).}\PYG{n}{map}\PYG{p}{((}\PYG{n}{match}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{match}\PYG{p}{.}\PYG{n}{group}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{)}\PYG{o}{!}\PYG{p}{).}\PYG{n}{toList}\PYG{p}{();}
+\PYG{+w}{        }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{partsB}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{regex}\PYG{p}{.}\PYG{n}{allMatches}\PYG{p}{(}\PYG{n}{b}\PYG{p}{).}\PYG{n}{map}\PYG{p}{((}\PYG{n}{match}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{match}\PYG{p}{.}\PYG{n}{group}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{)}\PYG{o}{!}\PYG{p}{).}\PYG{n}{toList}\PYG{p}{();}
+
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{partsA}\PYG{p}{.}\PYG{n}{length}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{partsB}\PYG{p}{.}\PYG{n}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{          }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{partA}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{partsA}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+\PYG{+w}{          }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{partB}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{partsB}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+
+\PYG{+w}{          }\PYG{c+c1}{//compare numeric part}
+\PYG{+w}{          }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{tryParse}\PYG{p}{(}\PYG{n}{partA}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{tryParse}\PYG{p}{(}\PYG{n}{partB}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{numA}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{parse}\PYG{p}{(}\PYG{n}{partA}\PYG{p}{);}
+\PYG{+w}{            }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{numB}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{.}\PYG{n}{parse}\PYG{p}{(}\PYG{n}{partB}\PYG{p}{);}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{numA}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{numB}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{numA}\PYG{p}{.}\PYG{n}{compareTo}\PYG{p}{(}\PYG{n}{numB}\PYG{p}{);}
+\PYG{+w}{          }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{c+c1}{// Compare alphabetic part}
+\PYG{+w}{            }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{n}{comparison}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{partA}\PYG{p}{.}\PYG{n}{compareTo}\PYG{p}{(}\PYG{n}{partB}\PYG{p}{);}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{comparison}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{l+m}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{comparison}\PYG{p}{;}
+\PYG{+w}{          }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{partsA}\PYG{p}{.}\PYG{n}{length}\PYG{p}{.}\PYG{n}{compareTo}\PYG{p}{(}\PYG{n}{partsB}\PYG{p}{.}\PYG{n}{length}\PYG{p}{);}
+\PYG{+w}{      }\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -19,7 +19,7 @@ GraphHopper comes as a .jar file. This is a Java executable and can therefore be
 For the configuration of our GraphHopper instance, we created the following file: 
 
 \lstset{style=config, caption=GraphHopper configuration file (config.yml)}
-\begin{lstlisting}
+\begin{minted}{yaml}
 graphhopper:
     datareader.file: austria-latest.osm.pbf
     graph.location: austria-gh
@@ -40,7 +40,7 @@ server:
     root_path: /streets/*
     request_log:
       appenders: []
-\end{lstlisting}
+\end{minted}
 
 This file defines the location of the file that contains the initial data, as well as the directory where the calculated information gets stored, as well as the foot profile. In the \textit{server} section, parameters like the request path or port get defined. This will be needed later for making the instance accessible through a reverse proxy managed by NGINX. 
 
