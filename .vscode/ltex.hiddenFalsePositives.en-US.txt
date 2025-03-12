@@ -10,3 +10,4 @@
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe compareHouseNumbers function enables natural sorting of house numbers by separating numeric and non-numeric parts.\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QTile-Layer This layer imports the tiles, so, the actual map, of OpenStreetMaps' tile server.\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QTo achieve this, we just create a new Polygon object with the coordinates saved in the borderAddresses list of the AddressProvider and set a few styling options, like the stroke width and border color.\\E$"}
+{"rule":"AGREEMENT_SENT_START","sentence":"^\\QMaps gives you recommendations and tries to provide auto-suggestions for your target.\\E$"}

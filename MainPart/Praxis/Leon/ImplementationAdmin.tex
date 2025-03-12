@@ -33,7 +33,7 @@ This chapter will outline the implementation of the Admin Panel, detailing its c
 
 \begin{subsection}{AddressPage}
     \sloppy
-    The first page, called \texttt{AddressPage}, provides an interface for managing address data, including creation, modification, and deletion. It uses a form with various input fields and a visualization component that displays addresses on a map or in a database view. The layout is divided into two parts:
+    The first page, called \texttt{AddressPage} provides an interface for managing address data, including creation, modification, and deletion. It uses a form with various input fields and a visualization component that displays addresses on a map or in a database view. The layout is divided into two parts:
 
     \begin{itemize}
         \item On the right side, all addresses are shown in either the \texttt{AdminMapComponent} (\ref{fig:AdminMapComponent}), displaying addresses on a map, or the \texttt{DatabaseViewComponent} (\ref{fig:DatabaseViewComponent}), showing them in a table.
@@ -73,7 +73,7 @@ This chapter will outline the implementation of the Admin Panel, detailing its c
         \item The boolean variable \texttt{isNewAddress} is set to \texttt{true}, indicating that a new address is being created.  
     \end{itemize}  
     
-    The cleared fields can then be filled with the new information. When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs several validation checks, as shown in \ref{fig:Validation}. If the address is valid, the \texttt{AdminAddressProvider} adds it to the database, a \texttt{Notification} is displayed, and the newly added address appears.\blankLine
+    The cleared fields can then be filled with the new information. When the "Speichern" button is pressed, the \texttt{saveAddress} method is called. This method performs several validation checks, as shown in \ref{fig:Validation}. If the address is valid, the \texttt{AdminAddressProvider} adds it to the database, a \texttt{notification} is displayed, and the newly added address appears.\blankLine
     
     When the map is clicked, the \texttt{onClickNewAddress} method is also invoked within the \texttt{AdminMapComponent}. The method receives the click coordinates as parameters to create the address at the selected location.  
     
@@ -84,7 +84,7 @@ Existing addresses can be edited by selecting them in either the \texttt{AdminMa
 The selection fills the \texttt{InputFields} with the information of the address, and in this case, the boolean variable \texttt{isNewAddress} is set to \texttt{false} to indicate that an existing address is being updated.\blankLine
 
 \sloppy
-The administrator can then edit the information and press the "Speichern" button. This triggers the \texttt{saveAddress} method, which performs the same validation checks as when adding a new address. The \texttt{AdminAddressProvider} updates the selected address in the database, and the \texttt{Notification} is displayed. \newpage
+The administrator can then edit the information and press the "Speichern" button. This triggers the \texttt{saveAddress} method, which performs the same validation checks as when adding a new address. The \texttt{AdminAddressProvider} updates the selected address in the database, and the \texttt{notification} is displayed. \newpage
 
 \subsubsection{Delete Address}
 After selecting an address, the administrator can press the "Löschen" button to delete it. This triggers the \texttt{deleteAddress} method, which calls the \texttt{AdminAddressProvider} to delete the selected addresses.\blankLine
@@ -102,7 +102,7 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays an
     Validation is the process of checking that data meets specific criteria before it is accepted and added to a system or database. This ensures that the data is accurate, consistent, and conforms to required standards. Validation prevents errors and inconsistencies that could arise from invalid or incomplete data, maintaining the integrity and reliability of the system. It helps catch mistakes early, such as missing fields or incorrect data inputs. By ensuring that only valid data is processed, validation plays a crucial role in preserving data quality. \autocite{ContributorstoWikimediaprojects2025Feb}
 
 \paragraph{isDuplicateAddress}
-    To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses, to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\blankLine
+    To determine whether an edited or newly added address already exists in the system, the new address is compared against all existing addresses to detect potential duplicates before the address is saved. The comparison takes place within the \texttt{saveAddress} method, which handles the saving operation. If an address is found to be identical to an existing one, the method returns \texttt{true}, indicating that the address is a duplicate. If no match is found, it returns \texttt{false}, confirming that the address is unique and can be safely added to the database.\blankLine
 
     A duplicate address is identified by the following criteria:\blankLine
     \textbf{street name, postal code, and house number}
@@ -114,13 +114,13 @@ The method also triggers the \texttt{showDeleteDialog} method, which displays an
 \paragraph{InputField filled Validation}
 To verify that all required \texttt{InputFields} are properly filled, the \texttt{validateAddressFields} method is called.
 
-To start the process, a new \texttt{Address} object is created and passed to the \texttt{validateAddressFields} method. The method checks each field within the \texttt{Address}. If a field is missing or incomplete, a \texttt{Notification} (see \ref{fig:Notification}) is displayed to inform the user of the missing data, such as "Strasse fehlt" or "Koordinaten fehlen." If all fields are correctly filled out, the method returns \texttt{true}, signaling that the address can be saved. However, if any field is incomplete, the method returns \texttt{false}, preventing the address from being saved until all required information is provided.
+To start the process, a new \texttt{Address} object is created and passed to the \texttt{validateAddressFields} method. The method checks each field within the \texttt{Address}. If a field is missing or incomplete, a \texttt{notification} (see \ref{fig:Notification}) is displayed to inform the user of the missing data, such as "Strasse fehlt" or "Koordinaten fehlen." If all fields are correctly filled out, the method returns \texttt{true}, signaling that the address can be saved. However, if any field is incomplete, the method returns \texttt{false}, preventing the address from being saved until all required information is provided.
 
 
 
 \paragraph{InputField Coordinates Validation}
 \label{fig:InputField Coordinates Validation}
-    The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} inputs ensuring correct coordinates. Validation is applied only when the \texttt{isCoordinateInput} parameter is set to \texttt{true}. In that case, the \texttt{inputFormatter} is passed to the \texttt{textfield}. This \texttt{inputFormatter} guarantees that only valid inputs are accepted. These are the three validators used:
+    The \texttt{InputField} validates \textbf{latitude} and \textbf{longitude} inputs, ensuring correct coordinates. Validation is applied only when the \texttt{isCoordinateInput} parameter is set to \texttt{true}. In that case, the \texttt{inputFormatter} is passed to the \texttt{textfield}. This \texttt{inputFormatter} guarantees that only valid inputs are accepted. These are the three validators used:
 
 
     \begin{itemize}
@@ -143,7 +143,7 @@ To start the process, a new \texttt{Address} object is created and passed to the
 \paragraph{Notification}
 \label{fig:Notification}
 
-    To notify the administrator about the success or failure of an operation, a \texttt{Notification} is displayed at the bottom left, overlaying the \texttt{AdminMapComponent}. This \texttt{Notification} appears when:
+    To notify the administrator about the success or failure of an operation, a \texttt{notification} is displayed at the bottom left, overlaying the \texttt{AdminMapComponent}. This \texttt{notification} appears when:
 
     \begin{itemize}
         \item An address has been added, edited, or deleted.
@@ -158,7 +158,7 @@ To start the process, a new \texttt{Address} object is created and passed to the
     \caption{Notification examples}
 \end{figure}
 
-To display this notification, the \texttt{showNotification} method is called. This method sets the \texttt{notificationVisible} variable to \texttt{true} and starts a \texttt{Timer} to reset it to \texttt{false} after three seconds, causing the notification to disappear shortly after. The method accepts a message as a parameter, which is stored in the \texttt{notificationText} variable. When the \texttt{notificationVisible} variable is set to \texttt{true}, the UI component which shows the notification is rendered.
+To display this notification, the \texttt{showNotification} method is called. This method sets the \texttt{notificationVisible} variable to \texttt{true} and starts a \texttt{timer} to reset it to \texttt{false} after three seconds, causing the notification to disappear shortly after. The method accepts a message as a parameter, which is stored in the \texttt{notificationText} variable. When the \texttt{notificationVisible} variable is set to \texttt{true}, the UI component that shows the notification is rendered.
 
 
 \subsubsection{Edit multiple Addresses}
@@ -202,7 +202,7 @@ Every click on the \texttt{AdminMapComponent} is checked to see if it is near a 
 
 
 \paragraph{Select a Street via Button}
-This was implemented, because, selecting the street directly on the map could be a bit spotty in its working. Through this feature, a reliable way to select a street was available, even though in the final deployment, the street selection via map worked flawlessly. 
+This was implemented because selecting the street directly on the map could be a bit spotty in its working. Through this feature, a reliable way to select a street was available, even though in the final deployment, the street selection via map worked flawlessly. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{images/AdminPanel/SelectStreetButton.png}
@@ -213,7 +213,7 @@ This was implemented, because, selecting the street directly on the map could be
 
 
 \subsubsection{Edit Odd / Even Streets}
-One requirement was that addresses from a street could be automatically assigned to two areas based on whether the house number is even or odd. This is because it is common for addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This division makes it easier to assign the street sides to different areas, so that "Sternsinger" participants don't have to cross the street as often.\blankLine 
+One requirement was that addresses from a street could be automatically assigned to two areas based on whether the house number is even or odd. This is because it is common for addresses with even house numbers to be on one side of the street and those with odd house numbers on the other side. This division makes it easier to assign the street sides to different areas so that "Sternsinger" participants don't have to cross the street as often.\blankLine 
 To make this possible, the administrator first selects a street in the \texttt{AdminMapComponent} (\ref{fig:Select Street}), and then a blue button appears beneath the \texttt{InputFields}.
 \begin{figure}[H]
     \centering
@@ -223,7 +223,7 @@ To make this possible, the administrator first selects a street in the \texttt{A
 
 \begin{figure}[H] 
     \begin{minipage}{0.6\textwidth}
-        After pressing this button, a dialog appears, where the administrator can select the areas for addresses with even and odd house numbers on this street. The "Speichern" button triggers the \texttt{AdminAddressProvider} and displays a \texttt{Notification} (\ref{fig:Notification}) indicating whether the operation was successful or not. Afterward, the dialog is closed.
+        After pressing this button, a dialog appears, where the administrator can select the areas for addresses with even and odd house numbers on this street. The "Speichern" button triggers the \texttt{AdminAddressProvider} and displays a \texttt{notification} (\ref{fig:Notification}) indicating whether the operation was successful or not. Afterward, the dialog is closed.
     \end{minipage}
     \hfill
     \begin{minipage}{0.35\textwidth}
@@ -283,7 +283,7 @@ To generate the QR-codes, the \texttt{generateQRCode} method in the \texttt{List
 
 Then, the \texttt{savePdf} method of the \texttt{PDFSaver} class creates a PDF document containing the QR-codes for all areas. It uses the predefined \texttt{pdf} package (imported as \texttt{pw}) to manage the PDF document \autocite{pub.dev/pdf}. The function starts by initializing a new PDF using the \texttt{pw.Document()} class and an empty list to store the generated QR-codes. The method then iterates over the list of areas, generating a code for each description of all areas using \texttt{generateQRCode} and adding it to the list.\blankLine
 
-Afterward a page is added to the PDF document using the \texttt{pw.MultiPage} widget. This page includes a title and the description of each area along with its corresponding QR-code. Once the page content is built, the PDF data is saved by calling \texttt{pdf.save()}. Finally, the \texttt{PdfSaver.savePdf} method is called to save the PDF as "Gebiete.pdf."
+Afterward, a page is added to the PDF document using the \texttt{pw.MultiPage} widget. This page includes a title and the description of each area along with its corresponding QR-code. Once the page content is built, the PDF data is saved by calling \texttt{pdf.save()}. Finally, the \texttt{PdfSaver.savePdf} method is called to save the PDF as "Gebiete.pdf."
 
 \begin{figure}[H]
     \centering

@@ -41,7 +41,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
 
 
         \subsubsection{Fuzzy Matching}
-        Fuzzy Matching, also known as Approximate String-Matching or Fuzzy Logic Name Matching, is a string-matching algorithm that helps identify duplicate strings, words, or entries that closely resemble each other, even when there are abbreviations or misspellings. The technique works by applying edit operations such as insertion, deletion, substitution, and transposition to adjust the strings. These operations are measured in terms of an "editing distance," which influences the match score.\blankLine
+        Fuzzy matching, also known as approximate string-matching or fuzzy logic name matching, is a string-matching algorithm that helps identify duplicate strings, words, or entries that closely resemble each other, even when there are abbreviations or misspellings. The technique works by applying edit operations such as insertion, deletion, substitution, and transposition to adjust the strings. These operations are measured in terms of an "editing distance," which influences the match score.\blankLine
         
         Fuzzy matching is widely applied in various fields, such as document data extraction, spell-checking suggestions, deduplication, and even genome sequencing. It helps achieve high data accuracy by identifying and matching errors. \autocite{Nieters2024Dec}
 
@@ -51,7 +51,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
             \caption{Fuzzy Matching Example}
             \label{fig:fuzzy-matching}
         \end{figure}
-        
+
         \subsubsection{Machine Learning Model}
         Machine learning models can be trained to identify patterns in incoming data and update the database dynamically, eliminating the need for manual intervention. These models are particularly effective in rapidly changing environments, as they continuously learn from new data and provide insights to refine address information in real time.\blankLine
 
@@ -79,7 +79,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
             \item \textbf{Historical Consistency Checks}: Detect frequently modified addresses and prompt for manual review.
         \end{itemize}
         
-        \textbf{Integration with Adaptive Algorithms}\blankLine
+        \textbf{Integration with Adaptive Algorithms}\\
         While rule-based filters provide a structured approach to data validation, they can be enhanced with adaptive algorithms. Machine learning models can analyze user corrections over time and adjust rules dynamically. For instance, if multiple users correct the same address format, the system can learn from these patterns and refine its filtering criteria automatically.
         
 
@@ -121,7 +121,7 @@ This chapter explains how adaptive algorithms and real-time data integration can
         \textbf{Apache Flink}: A low-latency engine for complex workflows. Flink could power ML models predicting address changes.\blankLine
         \textbf{AWS Kinesis}: A cloud-native service for scalability. Kinesis merges regional address updates into a global view for international teams.\blankLine
         
-        Choosing between them depends on needs: Kafka for volume, Flink for processing, Kinesis for cloud scalability. \autocite{Ranjbary2024Sep}
+        Choosing between them depends on needs: Kafka for volume, Flink for processing and Kinesis for cloud scalability. \autocite{Ranjbary2024Sep}
 
 
         \subsubsection{Evaluation Metrics}
